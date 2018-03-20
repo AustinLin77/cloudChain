@@ -1,0 +1,103 @@
+page-agreement {
+
+}
+
+ #yonghuxieyiapp a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas,caption,center, cite,code, dd, del, details, dfn, div, dl, dt, em,embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p,pre, q, ruby, s, samp, section,small, span, strike, strong,sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video{
+   margin:0;
+   padding:0;
+   border:0;
+ }
+#yonghuxieyiapp input{
+  white-space:nowrap;
+}
+
+#yonghuxieyiapp ul,li,ol{
+  list-style:none;
+}
+#yonghuxieyiapp img{
+  border:none;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+#yonghuxieyiapp a{
+  text-decoration:none;
+  border:none;
+  outline:none;
+  tap-highlight-color: rgba(0,0,0,0);
+  focus-ring-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-focus-ring-color: rgba(0,0,0,0);
+  -moz-tap-highlight-color: rgba(0,0,0,0);
+  -moz-focus-ring-color: rgba(0,0,0,0);
+}
+#yonghuxieyiapp a:link{
+  color: inherit;
+}
+#yonghuxieyiapp a:visited{
+  color: inherit;
+}
+#yonghuxieyiapp input,button{
+  outline:none;
+}
+#yonghuxieyiapp{
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  font-size: 0.3rem;
+}
+#yonghuxieyiapp .item{
+  border-radius: 4px;
+  border: 1px solid #e6ebf5;
+  background-color: #fff;
+  overflow: hidden;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+  color: #2d2f33;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+#yonghuxieyiapp .item .title{
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  font-weight: 700;
+
+}
+#yonghuxieyiapp .item .biaoti{
+  font-weight:500;
+  background: #eee;
+  padding-left: 3px;
+  text-align: center;
+}
+#yonghuxieyiapp .item .content{
+  font-size: 0.25rem;
+  color: #555;
+}
+#yonghuxieyiapp .item ul li{
+  text-indent:0.5rem;
+  font-size: 0.23rem;
+}
+#yonghuxieyiapp  .item .content img{
+  display: block;
+  width: 80%;
+  margin: 5px auto;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.3);
+}
+#yonghuxieyiapp .item .content p{
+  text-indent:0.5rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#yonghuxieyiapp .item .content .sstitle{
+  text-indent:0.1rem;
+  font-size: 0.26rem;
+  color: #000;
+}
+#yonghuxieyiapp .item .content .stitle{
+  font-size: 0.27rem;
+  color: #000;
+}
+#yonghuxieyiapp .toTop{
+  position: fixed;
+  bottom: 40px;
+  right: 10px;
+}
