@@ -1,0 +1,64 @@
+<!--
+  Generated template for the SuppliersDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>供应商详情</ion-title>
+  </ion-navbar>
+  <div class="myFDiv">
+    <img src="{{data.logo}}" style="height: 60px;width: 60px">
+  </div>
+  <ion-segment [(ngModel)]="kinds" color="primary" >
+    <ion-segment-button *ngFor="let testItem of testArray" value="{{testItem}}">
+      {{testItem}}
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content >
+  <div (swipe)="swipeEvnet($event)">
+    <div [ngSwitch]="kinds">
+      <div *ngSwitchCase="'企业介绍'">
+        <div class="loopHead" >
+          <div class="loopHeadP">官网</div>
+          <div class="loopHeadM">{{data.website}}</div>
+        </div>
+        <div class="loopHead" >
+          <div class="loopHeadP">注册资金</div>
+          <div class="loopHeadM">{{data.registeredCapital}}</div>
+        </div>
+        <div class="loopHead" >
+          <div class="loopHeadP">法人代表</div>
+          <div class="loopHeadM">{{data.legalPerson}}</div>
+        </div>
+        <div class="loopHead" >
+          <div class="loopHeadP">成立时间</div>
+          <div class="loopHeadM">{{data.incorporationDate}}</div>
+        </div>
+        <div class="loopHead" >
+          <div class="loopHeadP">公司地址</div>
+          <div class="loopHeadM">{{data.address}}</div>
+        </div>
+        <div class="loopHead" >
+          <div class="loopHeadP">联系人</div>
+          <div class="loopHeadM">{{data.principalPerson}}</div>
+        </div>
+        <div class="loopHead" >
+          <div class="loopHeadP">联系电话</div>
+          <div class="loopHeadM">{{data.switchboardNumber}}</div>
+        </div>
+      </div>
+      <div *ngSwitchCase="'销售商品'">
+        <div class="mySDiv" *ngFor="let good of goodList" (click)="goToGoodsDetails(good.name,good.id)">
+          <img src="{{good.imgPathList}}" class="myPic">
+          <div style="padding: 10px;height: 100%;width: 78%">
+            <div style="font-family: 微软雅黑;font-size: 16px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100%">{{good.name}}</div>
+            <div class="myDetails">{{good.currency}}{{good.price}}/{{good.unit}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

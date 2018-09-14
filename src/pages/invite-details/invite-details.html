@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>招标详情</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+  <div class="firstD">
+    <div class="firstInD">{{data.title}}</div>
+    <div class="firstInOneD">
+      <div style="flex: 1;text-align: center">招标信息编号 : {{data.tenderCode}}</div><div style="flex: 1;text-align: center">发布时间 : {{data.issueDate}}</div>
+    </div>
+  </div>
+  <div class="secondD">
+     <div class="secondInD">
+       <ion-icon name="document"  style="font-size: 18px;margin-right:8px"></ion-icon>
+       <div (click)="downLoad()" id="download"><a>下载附件</a></div>
+     </div>
+    <div class="oneD">联系人 : {{data.contact}}</div><div class="twoD">联系电话 : {{data.telphone}}</div>
+    <div class="twoD">电子邮箱 : {{data.email}}</div><div class="twoD">传真 : {{data.fax}}</div>
+  </div>
+</ion-content>

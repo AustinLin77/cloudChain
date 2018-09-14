@@ -9,8 +9,8 @@ import { TabsPage } from '../pages/tabs/tabs';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
-  // rootPage: any = LoginPage;
+
+   rootPage: any = TabsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -19,12 +19,12 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
-
-    var token = localStorage.getItem('token');
-    if(token) {
-      this.rootPage = TabsPage;
-    } else {
-      this.rootPage = LoginPage;
-    }
+    this.rootPage = TabsPage;
+    //  var token = localStorage.getItem('token');
+    //  if(token) {
+    //    this.rootPage = TabsPage;
+    // } else {
+    //    this.rootPage = LoginPage;
+    //  }
   }
 }

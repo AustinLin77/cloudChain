@@ -1,0 +1,195 @@
+import { Injectable } from '@angular/core';
+import { ToastController, AlertController, LoadingController } from 'ionic-angular';
+import {Http, Response, Headers, RequestOptions} from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+import { APP_SERVE_URL_TEST } from "./Constants";
+
+@Injectable()
+export class HttpService {
+
+  loading;
+
+  constructor(private http: Http, public toastCtrl: ToastController, public alertCtrl: AlertController, public loadCtrl: LoadingController) {
+  }
+
+  public get(url: string, paramObj: any) {
+    url = APP_SERVE_URL_TEST + url;
+    return this.http.get(url + this.toQueryString(paramObj))
+      .toPromise()
+      .then(res => this.handleSuccess(res.json()))
+      .catch(error => this.handleError(error));
+  }
+
+  public getWithHeader(url: string, paramObj: any) {
+    url = APP_SERVE_URL_TEST + url + this.toQueryString(paramObj);
+    var authorization = 'Bearer ' + localStorage.getItem("token");
+    var teamId = localStorage.getItem("teamId");
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': authorization, 'X-TenantId':teamId, "Prefer-Lang":"zh-CN"});
+    console.log(headers);
+    console.log(url);
+    console.log(paramObj);
+    return this.http.get(url, new RequestOptions({headers: headers}))
+      .toPromise()
+      .then(res => this.handleSuccess(res.json()))
+      .catch(error => this.handleError(error));
+  }
+
+  public post(url: string, paramObj: any) {
+    url = APP_SERVE_URL_TEST + url;
+    let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded', "Prefer-Lang":"zh-CN"});
+    return this.http.post(url, this.toBodyString(paramObj), new RequestOptions({headers: headers}))
+      .toPromise()
+      .then(res => this.handleSuccess(res.json()))
+      .catch(error => this.handleError(error));
+  }
+
+  public postBody(url: string, paramObj: any) {
+    this.showLoading();
+    url = APP_SERVE_URL_TEST + url;
+    let headers = new Headers({'Content-Type': 'application/json', "Prefer-Lang":"zh-CN"});
+    return this.http.post(url, paramObj, new RequestOptions({headers: headers}))
+      .toPromise()
+      .then(res => this.handleSuccess(res.json()))
+      .catch(error => this.handleError(error));
+  }
+
+  public postWithHeaders(url: string, paramObj: any) {
+    url = APP_SERVE_URL_TEST + url;
+    var authorization = 'Bearer ' + localStorage.getItem("token");
+    var teamId = localStorage.getItem("teamId");
+    var userName = localStorage.getItem("userName");
+    let headers = new Headers({'Content-Type': 'application/json', 'X-TenantId':teamId, 'X-Logined-Sign': userName, "Prefer-Lang":"zh-CN"});
+    console.log(headers);
+    console.log(url);
+
+    return this.http.post(url, paramObj, new RequestOptions({headers: headers}))
+      .toPromise()
+      .then(res => this.handleSuccess(res.json()))
+      .catch(error => this.handleError(error));
+  }
+
+  public putWithHeaders(url: string, paramObj: any) {
+    url = APP_SERVE_URL_TEST + url;
+    var userName = localStorage.getItem("userName");
+    console.log(url);
+
+    var authorization = 'Bearer ' + localStorage.getItem("token");
+    var teamId = localStorage.getItem("teamId");
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': authorization, 'X-TenantId':teamId, "Prefer-Lang":"zh-CN"});
+    // let headers = new Headers({'Content-Type': 'application/json', 'X-TenantId':teamId, 'X-Logined-Sign': userName});
+    return this.http.put(url, paramObj, new RequestOptions({headers: headers}))
+      .toPromise()
+      .then(res => this.handleSuccess(res.json()))
+      .catch(error => this.handleError(error));
+  }
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 1500,
+    });
+    toast.present();
+  }
+
+  showLoading() {
+    if(!this.loading){
+      this.loading = this.loadCtrl.create({
+        content: 'loading...'
+      });
+      this.loading.present();
+    }
+  }
+
+  dismissLoading() {
+    if(this.loading){
+      this.loading.dismiss();
+      this.loading = null;
+    }
+  }
+
+  clearLocalstorage() {
+
+  }
+
+  private handleSuccess(result) {
+    this.dismissLoading();
+    if(this.loading) this.loading.dismiss();
+    if (result['status'] === 401) {
+      this.showAlert();
+    }
+    return result;
+  }
+
+  showAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'token 过期， 需要重新登录!',
+      subTitle: '点击确定重新登录',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  private handleError(error: Response | any) {
+    this.dismissLoading();
+    let msg = '请求失败';
+    if (error.status == 0) {
+      msg = '请求地址错误';
+    }
+    if (error.status == 400) {
+      msg = '请求无效';
+      console.log('请检查参数类型是否匹配');
+    }
+    if (error.status == 404) {
+      msg = '请求资源不存在';
+      console.error(msg+'，请检查路径是否正确');
+    }
+    console.log(error);
+    this.presentToast(error.message);
+    return error._body;
+  }
+
+  private toQueryString(obj) {
+    let ret = [];
+    for (let key in obj) {
+      key = encodeURIComponent(key);
+      let values = obj[key];
+      if (values && values.constructor == Array) {//数组
+        let queryValues = [];
+        for (let i = 0, len = values.length, value; i < len; i++) {
+          value = values[i];
+          queryValues.push(this.toQueryPair(key, value));
+        }
+        ret = ret.concat(queryValues);
+      } else { //字符串
+        ret.push(this.toQueryPair(key, values));
+      }
+    }
+    return '?' + ret.join('&');
+  }
+
+  private toBodyString(obj) {
+    let ret = [];
+    for (let key in obj) {
+      key = encodeURIComponent(key);
+      let values = obj[key];
+      if (values && values.constructor == Array) {//数组
+        let queryValues = [];
+        for (let i = 0, len = values.length, value; i < len; i++) {
+          value = values[i];
+          queryValues.push(this.toQueryPair(key, value));
+        }
+        ret = ret.concat(queryValues);
+      } else { //字符串
+        ret.push(this.toQueryPair(key, values));
+      }
+    }
+    return ret.join('&');
+  }
+
+  private toQueryPair(key, value) {
+    if (typeof value == 'undefined') {
+      return key;
+    }
+    return key + '=' + encodeURIComponent(value === null ? '' : String(value));
+  }
+}

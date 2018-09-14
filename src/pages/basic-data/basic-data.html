@@ -1,0 +1,20 @@
+<!--
+  Generated template for the BasicDataPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>基础数据</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <button ion-item *ngFor="let data of dataSource" (click)="itemTapped($event, data)"  >
+    <div style="display: inline-block;position: absolute;left: 15px;">{{data.key}}</div>
+  </button>
+</ion-content>

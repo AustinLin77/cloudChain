@@ -1,0 +1,48 @@
+page-purchasing-management-list-detail {
+
+  .top{
+    height: 40px;
+    display: flex;
+  }
+  .top button{
+    flex: 1;
+    text-align: center;
+  }
+
+  .top button:hover{
+    border-radius: 0;
+    color: #007aff;
+    border-bottom: solid 3px #007aff;
+  }
+  .content{
+  }
+  button{
+    background: #fff;
+    border: none;
+    box-shadow: none;
+  }
+  .content ul li{
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1px #eee;
+  }
+  .content ul li span:first-child{
+    width: 40%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .content ul li span:last-child{
+    flex:1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .palce .title{
+    height: 35px;
+    line-height: 35px;
+    padding-left: 10px;
+    background: #eee;
+  }
+}

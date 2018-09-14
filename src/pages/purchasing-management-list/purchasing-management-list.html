@@ -1,0 +1,65 @@
+<!--
+  Generated template for the CustomerManagePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title><span *ngIf="showSearch == 'false'">请购单据</span>
+    </ion-title>
+    <ion-searchbar (ionInput)="getItems()" [(ngModel)]="myInput" *ngIf="showSearch == 'true'" style="height: 0.2rem"
+                   (ionCancel)="onCancel()" animated=true autocomplete="off" placeholder="输入单号查询"
+    >
+
+    </ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only  (click)="onCancelOrSearch(0)" *ngIf="cancelOrSearch == 1">
+        <ion-icon  name="search"></ion-icon>
+      </button>
+      <button ion-button icon-only  (click)="onCancelOrSearch(1)" *ngIf="cancelOrSearch == 0">
+        取消
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <div style="height: 40px; position: relative" class="ready" *ngIf="showSearchLoaction == 'false'">
+    <button  style="border-bottom: solid 3px #0071ff" (click)="onPageTypeChange('1')">
+      已审批
+    </button>
+    <button style="" (click)="onPageTypeChange('0')">
+      未审批
+    </button>
+  </div>
+  <div class="searchLoaction" *ngIf="showSearchLoaction == 'true'">
+    <ul *ngFor="let data of searchLoactionData let i = index">
+      <li>
+        <span><ion-icon name="alarm"></ion-icon></span>
+        <span class="conter" (click)="setSearch(data)">{{data}}</span>
+        <span (click)="removeSearch(i)"><ion-icon name="close"></ion-icon></span>
+      </li>
+    </ul>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div style="background-color: #eee;" *ngIf="showSearchLoaction == 'false'" >
+    <button ion-item *ngFor="let data of dataSource1" (click)="itemTapped($event, data)" style="border-top: solid 10px #eee ">
+      <div style="color: #555;">请购单编号：{{data.orderNumber}}</div>
+      <div style="position: absolute;top: 9%;right: 5%;color: #e51c23;">{{data.state}}</div>
+      <div style="position: absolute;bottom: 9%;right: 5%;color: #aaa;;">币种: {{data.currency}}</div>
+      <div>
+        <div style="padding-top: 10px;color: #aaa;">申&nbsp;&nbsp;请&nbsp;&nbsp;人:&nbsp;&nbsp;{{data.applicantName}}</div>
+        <div style="color: #aaa">订单类型:&nbsp;&nbsp;{{data.orderType}}</div>
+        <div style="color: #aaa">单据日期:&nbsp;&nbsp;{{data.createAt}}</div>
+        <div style="color: #aaa">合&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计:&nbsp;&nbsp;{{data.total}}</div>
+      </div>
+
+      <div style="position: absolute;top: 0;right: 0;height: 100%;display: flex;justify-content: center;align-items: center">
+      </div>
+    </button>
+  </div>
+
+
+</ion-content>

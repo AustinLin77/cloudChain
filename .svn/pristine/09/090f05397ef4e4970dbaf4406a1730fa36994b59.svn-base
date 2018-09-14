@@ -1,0 +1,92 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "node-sha1",
+        "scope": null,
+        "escapedName": "node-sha1",
+        "name": "node-sha1",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/Joe/Desktop/CloudChain"
+    ]
+  ],
+  "_from": "node-sha1@latest",
+  "_id": "node-sha1@1.0.1",
+  "_inCache": true,
+  "_location": "/node-sha1",
+  "_nodeVersion": "4.0.0",
+  "_npmUser": {
+    "name": "leahcimic",
+    "email": "leahcimic@gmail.com"
+  },
+  "_npmVersion": "2.14.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "node-sha1",
+    "scope": null,
+    "escapedName": "node-sha1",
+    "name": "node-sha1",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/node-sha1/-/node-sha1-1.0.1.tgz",
+  "_shasum": "32ed847d8513157b96dec6b79e8c47bcaeb78e1c",
+  "_shrinkwrap": null,
+  "_spec": "node-sha1",
+  "_where": "/Users/Joe/Desktop/CloudChain",
+  "author": {
+    "name": "Michael Leaney",
+    "email": "leahcimic@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/leahciMic/node-sha1/issues"
+  },
+  "dependencies": {},
+  "description": "Exports a SHA1 function that uses node's crpyto module under the hood",
+  "devDependencies": {
+    "jasmine": "^2.3.2"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "32ed847d8513157b96dec6b79e8c47bcaeb78e1c",
+    "tarball": "https://registry.npmjs.org/node-sha1/-/node-sha1-1.0.1.tgz"
+  },
+  "gitHead": "48db79bacb1f8c681a9f308c96ed42bfb7cfdb43",
+  "homepage": "https://github.com/leahciMic/node-sha1#readme",
+  "keywords": [
+    "sha1",
+    "crypto",
+    "hash",
+    "digest",
+    "stream",
+    "buffer",
+    "string"
+  ],
+  "license": "ISC",
+  "main": "lib/sha1.js",
+  "maintainers": [
+    {
+      "name": "leahcimic",
+      "email": "leahcimic@gmail.com"
+    }
+  ],
+  "name": "node-sha1",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leahciMic/node-sha1.git"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "version": "1.0.1"
+}

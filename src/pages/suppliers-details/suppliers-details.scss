@@ -1,0 +1,51 @@
+page-suppliers-details {
+  .loopHead{
+    background-color: white;
+    height: 40px;
+    display: flex;
+    border-bottom: solid 1px #eeeeee
+  }
+  .loopHeadP{
+    font-family: 微软雅黑;
+    font-size: 14px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px
+  }
+  .loopHeadM{
+    font-family:  微软雅黑;
+    font-size: 14px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px
+  }
+  .myFDiv{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+  }
+  .mySDiv{
+    height: 90px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: solid #eeeeee 1px
+  }
+  .myPic{
+    height: 70px;
+    width: 20%;
+    margin-left: 10px
+  }
+  .myDetails{
+    font-size: 12px;
+    font-family: 宋体;
+    color: #488aff;
+    margin-top: 10px
+  }
+}

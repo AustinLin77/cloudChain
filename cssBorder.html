@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box">
+  <div class="content">内容占位</div>
+</div>
+<style>
+.box {
+width: 200px;
+background: repeating-linear-gradient(135deg, transparent, transparent 3px, #000 3px, #000 8px);
+animation: shine 1s infinite linear;
+overflow: hidden;
+}
+.content {
+height: 128px;
+margin: 1px; padding: 10px;
+background-color: #fff;
+}
+@keyframes shine {
+0% { background-position: -1px -1px;}
+100% { background-position: -12px -12px;}
+}
+</style>
+</body>
+</html>

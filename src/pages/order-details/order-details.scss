@@ -1,0 +1,80 @@
+page-order-details {
+  .loopHead{
+    background-color: white;
+    height: 50px;
+    display: flex;
+    border-bottom: solid 1px #eeeeee
+  }
+  .loopHeadP{
+    font-family: 微软雅黑;
+    font-size: 16px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px
+  }
+  .loopHeadM{
+    font-family: 宋体;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    color: #007aff;
+  }
+  .footer{
+    border-top: solid #eeeeee 1px;
+    height: 60px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .total{
+    background-color: white;
+    display: flex;
+    height: 65px;
+    border-bottom:solid #eeeeee 1px;
+    padding-right: 10px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .divF{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left:10px;
+    padding-right: 10px
+  }
+  .divFIn{
+    height: 90%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-family: 宋体;
+    margin-left: 10px
+  }
+  .divS{
+    height: 90px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: solid #eeeeee 1px;
+    background-color: #eeeeee
+  }
+  .divSPic{
+    height: 70px;
+    width: 70px;
+    margin-left: 10px
+  }
+  .divDetails{
+    padding: 10px;
+    height: 100%;
+    margin-right: 8px;
+    text-align: right;
+    flex:1
+  }
+}

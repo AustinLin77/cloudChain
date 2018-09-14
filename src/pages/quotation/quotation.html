@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>填写报价单</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+  <div class="dSty">
+    填写以下报价信息,提交后将发送至买家
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP"><span style="color: red;margin-right: 5px;height: 100%;display:flex; align-items: center">*</span>含税价</div>
+    <div class="loopHeadM">
+      <input placeholder="请填写含税价" class="myInput" type="number" min="0" (blur)="adjust()" [(ngModel)]="price">
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP"><span style="color: red;margin-right: 5px;height: 100%;display:flex; align-items: center">*</span>币种</div>
+    <div class="loopHeadM" style="position: relative">
+      <ion-select [(ngModel)]="currencyC" placeholder="请选择币种" cancelText="取消" okText="确定" [selectOptions]="selectOptionsOne" class="mySelect" >
+        <ion-option *ngFor="let option of data[0].currency" value='{{option}}'>{{option}}</ion-option>
+      </ion-select>
+    </div>
+  </div>
+  <!--<div class="loopHead">-->
+    <!--<div class="loopHeadP">税率%</div>-->
+    <!--<div class="loopHeadM" style="position: relative">-->
+      <!--<ion-select [(ngModel)]="rate" placeholder="请选择税率" cancelText="取消" okText="确定" [selectOptions]="selectOptionsTwo" class="mySelect">-->
+        <!--<ion-option value='{{option}}' *ngFor="let option of data[0].rate">{{option}}</ion-option>-->
+      <!--</ion-select>-->
+    <!--</div>-->
+  <!--</div>-->
+  <div class="loopHead">
+    <div class="loopHeadP"><span style="color: red;margin-right: 5px;height: 100%;display:flex; align-items: center">*</span>最小起订量</div>
+    <div class="loopHeadM" style="position: relative">
+      <ion-select [(ngModel)]="min" placeholder="请选择最小起订量" cancelText="取消" okText="确定" [selectOptions]="selectOptionsThree" class="mySelect">
+        <ion-option value='{{optionMin}}' *ngFor="let optionMin of data[0].minOrder">{{optionMin}}</ion-option>
+      </ion-select>
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP"><span style="color: red;margin-right: 5px;height: 100%;display:flex; align-items: center">*</span>最大起订量</div>
+    <div class="loopHeadM" style="position: relative">
+      <ion-select [(ngModel)]="max" placeholder="请选择最大起订量" cancelText="取消" okText="确定" [selectOptions]="selectOptionsFour" class="mySelect" >
+        <ion-option value='{{optionMax}}' *ngFor="let optionMax of data[0].maxOrder">{{optionMax}}</ion-option>
+      </ion-select>
+    </div>
+  </div>
+  <div class="loopHead" style="position: relative">
+    <div class="loopHeadP"><span style="color: red;margin-right: 5px;height: 100%;display:flex; align-items: center">*</span>有效期开始</div>
+    <div class="loopHeadM">
+      <ion-datetime displayFormat="YYYY-MM-DD" placeholder="请选择需求日期" [(ngModel)]="myDateStart" cancelText="取消" doneText="确定"> </ion-datetime>
+    </div>
+  </div>
+  <div class="loopHead" style="position: relative">
+    <div class="loopHeadP"><span style="color: red;margin-right: 5px;height: 100%;display:flex; align-items: center">*</span>有效期结束</div>
+    <div class="loopHeadM">
+      <ion-datetime displayFormat="YYYY-MM-DD" placeholder="请选择需求日期" [(ngModel)]="myDateEnd" cancelText="取消" doneText="确定"> </ion-datetime>
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP"><span style="color: red;margin-right: 5px;height: 100%;display:flex; align-items: center;width: 6px"></span>报价说明</div>
+    <div class="loopHeadM">
+      <input placeholder="请填写报价说明" class="myInput" [(ngModel)]="introduce">
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP"><span style="color: red;margin-right: 5px;height: 100%;display:flex; align-items: center">*</span>机构</div>
+    <div class="loopHeadM" style="position: relative">
+      <ion-select [(ngModel)]="organization" placeholder="请选择机构" cancelText="取消" okText="确定" [selectOptions]="selectOptionsFive" class="mySelect">
+        <ion-option value='{{option.id}}' *ngFor="let option of organizations">{{option.name}}</ion-option>
+      </ion-select>
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP"><span style="color: red;margin-right: 5px;height: 100%;display:flex; align-items: center">*</span>联系人</div>
+    <div class="loopHeadM">
+      <input placeholder="请填写联系人" class="myInput"   [(ngModel)]="contactPerson">
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP"><span style="color: red;margin-right: 5px;height: 100%;display:flex; align-items: center">*</span>联系电话</div>
+    <div class="loopHeadM">
+      <input placeholder="请填写联系电话" class="myInput" type="number" [(ngModel)]="contactNum">
+    </div>
+  </div>
+  <div class="myBottomDiv">
+    <button ion-button class="myButton" (click)="mySubmit()">确定</button>
+  </div>
+</ion-content>

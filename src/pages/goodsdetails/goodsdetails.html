@@ -1,0 +1,92 @@
+<!--
+  Generated template for the GoodsdetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary"  [hideBackButton]="canGo==false" [class.navbarSty]="canGo==false" [class.navbarStySec]="canGo==true">
+    <ion-buttons start *ngIf="chain==0&&canGo==false">
+      <button ion-button icon-only (click)="ownerBack()" navPush >
+        <ion-icon name="arrow-back"></ion-icon>Back
+      </button>
+    </ion-buttons>
+    <ion-icon name="arrow-back" class="navIcon" (click)="ownerBack()" navPush *ngIf="chain==1&&canGo==false"></ion-icon>
+    <ion-title >商品详情</ion-title>
+
+  </ion-navbar>
+  <!--<ion-navbar color="primary"  hideBackButton="true"  class="navbarSty">-->
+    <!--<ion-buttons start *ngIf="chain==0">-->
+      <!--<button ion-button icon-only (click)="ownerBack()" navPush >-->
+        <!--<ion-icon name="arrow-back"></ion-icon>Back-->
+      <!--</button>-->
+    <!--</ion-buttons>-->
+    <!--<ion-icon name="arrow-back" class="navIcon" (click)="ownerBack()" navPush *ngIf="chain==1"></ion-icon>-->
+    <!--<ion-title style="display: flex;justify-content: flex-start" >商品详情</ion-title>-->
+  <!--</ion-navbar>-->
+</ion-header>
+<ion-content >
+  <div style="height: 200px;margin-top: 0;width: 100%">
+    <ion-slides [pager]="numOfPic" autoplay="600" speed="800"  #sliders>
+      <ion-slide *ngFor="let slide of slides" >
+        <img src="{{slide}}" class="picSty" (click)="openBigImg()">
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div class="dSty">
+    <div class="innerDSty">
+      <span class="nameSty">{{data.name}}</span>
+      <span  [class.hot]="data.hot == '热'"  [class.cold]="data.hot == '低'" class="popSty">{{data.hot}}</span>
+    </div>
+    <div class="priceSty">{{data.currency+data.price}}/{{data.unit}}</div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">产品编码</div>
+    <div class="loopHeadM">{{data.code}}</div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">供应商</div>
+    <div class="loopHeadM">{{data.companyName}}</div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">发货地址</div>
+    <div class="loopHeadM">{{data.deliveryAddress}}</div>
+  </div>
+  <div class="propertySty">规格</div>
+  <div class="loopHead" *ngFor="let standard of data.propList" >
+    <div class="loopHeadP">{{standard.name}}</div>
+    <div class="loopHeadM">{{standard.propValue}}</div>
+  </div>
+  <div class="loopHead" *ngIf="haveValue" style="display: flex;align-items: center;justify-content: center">无规格信息</div>
+  <div class="propertySty">商品信息</div>
+  <div class="picGroupSty">
+    <img src="{{slides[0]}}" style="height: 180px;width: 90%">
+  </div>
+  <div class="decriSty">
+    <span style="width: 90%;height: 90%;text-align: center" id="description"></span>
+  </div>
+
+</ion-content>
+<ion-footer class="footer">
+  <ion-grid class="ionGird">
+    <ion-row style="height: 100%">
+      <ion-col col-4 class="ionCol">
+        <div style="border-right: solid #eeeeee; " class="colInnerO">
+          <ion-icon name="list" (click)="suppliersDetails()"></ion-icon>
+        </div>
+       <div class="colInnerO" (click)="goToShop()" >
+         <ion-icon name="cart" ></ion-icon>
+         <ion-badge class="badge">{{shopNum}}</ion-badge>
+
+       </div>
+      </ion-col>
+      <ion-col col-4 style="padding: 0;height: 100%">
+        <div class="colInnerT" ><button class="colInnerT" (click)="addShopNum()" style="color: white"  [disabled]="flag">加入进货单</button></div>
+      </ion-col>
+      <ion-col col-4 style="padding: 0;height: 100%">
+        <div class="colInnerTH" (click)="confirm()">提交申请</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

@@ -1,0 +1,37 @@
+page-submit-status {
+.statusLogo{
+  height: 150px;
+  width: 100%;
+  display:flex ;
+  align-items: center;
+  justify-content: center;
+}
+  .imgLogo{
+    height: 70px;
+    width: 70px;
+  }
+  .note{
+    height: 50px;
+    width: 100%;
+    display:flex ;
+    justify-content: center;
+    font-family: 微软雅黑;
+    padding: 10px;
+  }
+
+  .buttonGroup{
+    height: 100px;
+    width: 100%;
+    display:flex ;
+    align-items: center;
+    justify-content: center;
+  }
+  .myIcon{
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    color: white;
+    font-size: 24px;
+    z-index: 99999
+  }
+}

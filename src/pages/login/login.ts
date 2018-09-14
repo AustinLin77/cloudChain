@@ -8,7 +8,10 @@ import { HomePage } from '../home/home';
 import { TabsPage } from '../../pages/tabs/tabs';
 import { APP_SERVE_URL_TEST } from '../../service/Constants';
 
-var sha1 = require('node-sha1');
+// var sha1 = require('node-sha1');
+
+import sha1 from 'node-sha1'
+
 
 @IonicPage()
 @Component({
@@ -58,20 +61,24 @@ export class LoginPage {
     }
 
     var passw = sha1(this.password);
-    var data = {'username': this.userName, 'password': passw};
+    var data = {'username': this.userName, 'password': passw , "challenge":"",
+      "validate" : "", "seccode" : ""};
     console.log(data);
-    this.httpService.postBody('auth', data).then(res => this.handleSuccess(res));
+    this.httpService.postBody('/login', data).then(res => this.handleSuccess(res));
   }
 
   private handleSuccess(result) {
-    var token = result.token;
+    console.log(result);
+    var token = result.result.token;
+    console.log(token);
     if (typeof(token)=="undefined") {
       this.httpService.presentToast("用户名或密码错误！");
       return;
     }
     localStorage.setItem("token", token);
     localStorage.setItem("userName", this.userName);
-    this.httpService.getWithHeader('user', {}).then(res => this.handleUserInfoSuccess(res));
+
+    this.httpService.getUser('http://wmsapi.sunwoda.com/user', {}).then(res => this.handleUserInfoSuccess(res));
   }
 
   private handleUserInfoSuccess(result) {
@@ -86,13 +93,41 @@ export class LoginPage {
     }
     localStorage.setItem("teamId", tenamtId);
     localStorage.setItem("userName", userName);
-    localStorage.setItem("id", id);
+    localStorage.setItem("userId", id);
     localStorage.setItem("avatar", APP_SERVE_URL_TEST + '/' + avatar);
-    this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.setRoot(TabsPage,);
+    // var maxTime = 1800; // seconds
+    // var time = maxTime;
+    // document.body.addEventListener("touchmove", function() {
+    //   time = maxTime; // reset
+    // }, false);
+    // document.body.addEventListener("touchstart", function() {
+    //   time = maxTime; // reset
+    // }, false);
+    // var intervalId = window.setInterval(function() {
+    //   console.log("aaa")
+    //   time--;
+
+    //   if(time <= 0) {
+    //     ShowInvalidLoginMessage();
+    //     clearInterval(intervalId);
+    //   }
+    // }, 1000)
+    //
+    // function ShowInvalidLoginMessage() {
+    //   // 清除sessionstorage中的登录ID
+    //   // 退到登陆界面
+    //   localStorage.removeItem("token");
+    //   localStorage.removeItem("userName");
+    //   localStorage.removeItem("teamId");
+    //   localStorage.removeItem("id");
+    //   localStorage.removeItem('sort');
+    //
+    // }
   }
 
   forgetPassw() {
-    this.navCtrl.push(ForgetPasswordPage);
+    this.navCtrl.push('ForgetPasswordPage');
   }
 
   forwardAgreement() {

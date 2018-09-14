@@ -1,0 +1,124 @@
+page-production {
+
+  ::-webkit-scrollbar{
+    display:none;
+  }
+  .loopContentT{
+    height: 100%;
+    margin-top: 0;
+    width: 100%
+  }
+  .gird{
+    width: 100%;
+    height: 100%;
+    text-align: center
+  }
+  .ionrow{
+    //height: 100%;
+    overflow-y: scroll;
+    text-align: center;
+    display: flex;
+
+  }
+  .hot{
+    background-color: #f53d3d;
+  }
+  .cold{
+    background-color: #488aff;
+  }
+  .navbarSty{
+    text-align: center;
+    z-index: 9
+  }
+  .navIcon{
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    color: white;
+    font-size: 24px;
+    z-index: 99999
+  }
+  .picSty{
+    height:90px;
+    width: 90%
+  }
+  .dSty {
+    width: 90%;
+    display: flex;
+    justify-content: center
+  }
+  .nameSty{
+    font-size: 12px;
+    flex:1;
+    overflow:scroll;
+    height: 16px
+  }
+  .popSty{
+    font-size: 12px;
+    margin-left: 2px;
+    color: white;
+    width: 12px
+  }
+  .normal{
+    color:#00b0e8
+  }
+.sort{
+  color:#00b0e8
+}
+  .sortBy{
+    color:#00b0e8
+  }
+  .price{
+    color:#00b0e8
+  }
+  .try{
+    background-color: #cccccc;
+    position: fixed;
+    height: 80px;
+    align-items: center;
+    width: 90%;
+    z-index: 9999;
+    display: flex;
+    opacity:1;
+    top:20%;
+    left: 5%;
+    -webkit-animation:topeaseinAnimate 0.6s ;
+  }
+  .help{
+    position:fixed;
+    top: 104px;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.7);
+
+
+  }
+
+  @-webkit-keyframes topeaseinAnimate {
+    0% {
+      left:5%;
+      top:-20%;
+
+
+    }
+    100% {
+      left:5%;
+      top:20%;
+
+    }
+  }
+  .input{
+    width: 80%;
+    height: 40px;
+    margin-left: 5px;
+    padding-left: 10px;
+    border:  solid #cccccc;
+    border-radius: 5px;
+    outline: none;
+    background: #F9F0DA;
+    color: #9E9C9C;
+  }
+}
+

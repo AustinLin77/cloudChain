@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>订单详情</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div *ngFor="let option of allData">
+    <div class="divF" >
+      <ion-icon name="paper" style="font-size: 24px;width: 20px"></ion-icon>
+      <div class="divFIn">{{option.company}}</div>
+    </div>
+    <div *ngFor="let good of option.content">
+       <div class="divS" >
+
+           <img src="{{good.imgPathList}}" class="divSPic">
+        <div style="width: 180px;padding: 10px;height: 100%">
+          <div style="font-family: 微软雅黑;font-size: 16px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+            {{good.goodsName}}
+          </div>
+       </div>
+       <div class="divDetails">
+         <div style="color: red;font-size: 16px">{{good.currency}}{{good.price}}</div>
+         <div style="color: red;font-size: 16px;margin-top: 15px">×{{good.qty}}</div>
+       </div>
+      </div>
+      <div class="loopHead" >
+        <div class="loopHeadP">需求日期</div>
+        <div class="loopHeadM">{{good.requiredDate}}</div>
+      </div>
+      <div class="loopHead" >
+        <div class="loopHeadP">收货库存组织</div>
+        <div class="loopHeadM">{{good.orgName}}</div>
+      </div>
+      <div class="loopHead" >
+        <div class="loopHeadP">意向单号</div>
+        <div class="loopHeadM">{{option.asn}}</div>
+      </div>
+    </div>
+    <div class="total" >
+      <div style="height: 30px;width: 100%;text-align: right;line-height: 30px">共{{option.content.length}}件商品  实付款 : <span style="color: red;font-size:15px ">{{myUnit}}{{option.total}}</span></div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="footer">
+
+  <button ion-button  color="primary" style="margin-left: 20px;margin-right: 10px" (click)="buyAgain()">再次购买</button>
+</ion-footer>

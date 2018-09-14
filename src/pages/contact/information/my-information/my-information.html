@@ -1,0 +1,73 @@
+<!--
+  Generated template for the MyInformationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>公司信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="loopHead" style="height: 70px">
+    <div class="loopHeadP">头像</div>
+    <div class="loopHeadM"  >
+     <img src="{{data.logo}}" style="width:50px; height:50px; border-radius:50%; overflow:hidden;">
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">公司名</div>
+    <div class="loopHeadM">
+      {{data.name}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">注册资本</div>
+    <div class="loopHeadM">
+      {{data.registeredCapital}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">成立时间</div>
+    <div class="loopHeadM">
+      {{data.incorporationDate}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">组织代码</div>
+    <div class="loopHeadM">
+      {{data.organizingCode}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">社会信用代码</div>
+    <div class="loopHeadM">
+      {{data.codeCredit}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">公司地址</div>
+    <div class="loopHeadM">
+      {{data.address}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">法人代表</div>
+    <div class="loopHeadM">
+      {{data.legalPerson}}
+    </div>
+  </div>
+
+  <div class="loopHeadS">
+    <div class="loopHeadP" style="align-items: center">简介</div>
+    <div class="loopHeadN"  > {{data.introduction}}</div>
+  </div>
+  <div style="width: 100%;height:120px;display: flex;align-items: center;justify-content: center">
+    <button (click)="onQuit()" ion-button round style="width: 320px;height: 45px;">退出登录</button>
+  </div>
+</ion-content>

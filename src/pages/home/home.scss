@@ -1,3 +1,130 @@
 page-home {
+  .hot{
+    background-color: #f53d3d;
+  }
+  .cold{
+    background-color: #488aff;
+  }
+  .onGoing{
+    background-color: deeppink;
+  }
+  .nextTime{
+    background-color: #488aff;
+  }
+  ::-webkit-scrollbar{
+    display:none;
+  }
+  .menu{
+    opacity:1;
+    width: 80%;
+    height: 523px;
+    position: absolute;
+    right: 0;top: 50px;
+    z-index: 99;
+    background-color:white
+  }
+  .bg{
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color:#cccccc
+  }
+  .head{
+    background-color: #00b0e8;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative
+  }
+  .mail{
+    font-size: 25px;
+    color: white;
+    margin-left: 10px
+  }
+  .form{
+    margin-left: 10px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+  .input{
+    width: 85%;
+    height: 32px;
+    padding-left: 10px;
+    border:  solid #7BA7AB;
+    border-radius: 5px;
+    outline: none;
+    background: #F9F0DA;
+    color: #9E9C9C;
+  }
+  .search{
+    font-size: 25px;
+    color: white;
+    margin-left:5px
+  }
+  .ionMenu{
+    font-size: 24px;
+    color: white;
+    position: absolute;
+    right: 10px;
+    top: 13px
+  }
+  .loop{
+    margin-top: 0;
+    width: 100%;
+    border-top: solid 8px #eee
+  }
+  .loopHead{
+    background-color: white;
+    height: 30px;
+    display: flex;
+    border-bottom: solid 1px #eeeeee
+  }
+  .loopHeadP{
+    font-family: 微软雅黑;
+    font-size: 16px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px
+  }
+  .loopHeadM{
+    font-family: 宋体;
+    font-size: 12px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 5px
+  }
+  .loopContent{
+    height: 150px;
+    margin-top: 0;
+    width: 100%
+  }
+  .loopContentBottom{
+    margin-top: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+  .gird{
+    width: 100%;
+    height: 100%;
+    text-align: center
+  }
+  .ionrow {
+    height: 100%;
+    overflow-x: scroll;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
 
 }

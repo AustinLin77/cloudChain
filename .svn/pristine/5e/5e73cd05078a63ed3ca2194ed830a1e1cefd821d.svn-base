@@ -1,0 +1,94 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "@ionic-native/status-bar@4.5.3",
+        "scope": "@ionic-native",
+        "escapedName": "@ionic-native%2fstatus-bar",
+        "name": "@ionic-native/status-bar",
+        "rawSpec": "4.5.3",
+        "spec": "4.5.3",
+        "type": "version"
+      },
+      "/Users/Joe/Desktop/CloudChain"
+    ]
+  ],
+  "_from": "@ionic-native/status-bar@4.5.3",
+  "_id": "@ionic-native/status-bar@4.5.3",
+  "_inCache": true,
+  "_location": "/@ionic-native/status-bar",
+  "_nodeVersion": "8.6.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/status-bar-4.5.3.tgz_1516902672459_0.9222586713731289"
+  },
+  "_npmUser": {
+    "name": "maxlynch",
+    "email": "max@ionic.io"
+  },
+  "_npmVersion": "5.4.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "@ionic-native/status-bar@4.5.3",
+    "scope": "@ionic-native",
+    "escapedName": "@ionic-native%2fstatus-bar",
+    "name": "@ionic-native/status-bar",
+    "rawSpec": "4.5.3",
+    "spec": "4.5.3",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@ionic-native/status-bar/-/status-bar-4.5.3.tgz",
+  "_shasum": "e48d7a638e52887f59c761adff5ed5cf6d8fdb58",
+  "_shrinkwrap": null,
+  "_spec": "@ionic-native/status-bar@4.5.3",
+  "_where": "/Users/Joe/Desktop/CloudChain",
+  "author": {
+    "name": "ionic"
+  },
+  "bugs": {
+    "url": "https://github.com/ionic-team/ionic-native/issues"
+  },
+  "dependencies": {},
+  "description": "Ionic Native - Native plugins for ionic apps",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-cJZ5woxrBMtBpPfKraf6qKOCOZl2Nzx4QnLAy8zrEjOfxeolKyL76dka2pAi4qMhZKgkJIy4BIVol+L0eCgqJw==",
+    "shasum": "e48d7a638e52887f59c761adff5ed5cf6d8fdb58",
+    "tarball": "https://registry.npmjs.org/@ionic-native/status-bar/-/status-bar-4.5.3.tgz"
+  },
+  "homepage": "https://github.com/ionic-team/ionic-native#readme",
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "ihadeed",
+      "email": "ibby@zyra.ca"
+    },
+    {
+      "name": "maxlynch",
+      "email": "max@ionic.io"
+    },
+    {
+      "name": "ionicjs",
+      "email": "hi@ionicframework.com"
+    }
+  ],
+  "module": "index.js",
+  "name": "@ionic-native/status-bar",
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "@ionic-native/core": "^4.2.0",
+    "@angular/core": "*",
+    "rxjs": "^5.0.1"
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionic-team/ionic-native.git"
+  },
+  "typings": "index.d.ts",
+  "version": "4.5.3"
+}

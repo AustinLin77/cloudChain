@@ -1,0 +1,35 @@
+<!--
+  Generated template for the MyApplyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary" hideBackButton="true"  class="navbarSty">
+    <ion-buttons start *ngIf="chain==0">
+      <button ion-button icon-only (click)="ownerBack()" navPush >
+        <ion-icon name="arrow-back"></ion-icon>Back
+      </button>
+    </ion-buttons>
+    <ion-icon name="arrow-back" class="navIcon" (click)="ownerBack()" navPush *ngIf="chain==1"></ion-icon>
+    <ion-title>我发布的需求</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content style="background-color: #eeeeee" id="content">
+  <div class="myDiv" *ngFor="let i of data" (click)="appliesDetails(i.id)">
+    <div class="myInDiv">
+      <div class="nameDiv">{{i.name}}</div>
+      <div class="otherDiv">需求数量 : {{i.demandNum+i.unit}}</div>
+      <div class="otherDiv">需求日期 : {{i.requireDate}}</div>
+      <div class="areaDiv">
+        <ion-icon name="pin" class="myLitIcon"></ion-icon>{{i.receiveAddress}}</div>
+    </div>
+    <img class="myPic" src="{{i.imgPathList}}">
+  </div>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

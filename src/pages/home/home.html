@@ -1,17 +1,111 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content>
+  <div class="head">
+    <form class="form">
+      <input [(ngModel)]="searchKey"  placeholder="搜索从这里开始..." class="input"  name="search" >
+      <ion-icon name="search" class="search" (click)="goSearch()"></ion-icon>
+    </form>
+    <ion-icon name="menu" class="ionMenu" (click)="test()"></ion-icon>
+  </div>
+  <div style="height: 170px;margin-top: 0;width: 100%">
+    <ion-slides pager autoplay="600" speed="800"  #sliders  >
+      <ion-slide *ngFor="let slide of slides">
+        <img src="{{slide.imgPath}}" style="width: 100%;height: 170px">
+      </ion-slide>
+      <!--<ion-slide >-->
+        <!--<img src="{{slides[1].imgPath}}" style="width: 100%;height: 170px">-->
+      <!--</ion-slide>-->
+      <!--<ion-slide >-->
+        <!--<img src="{{slides[2].imgPath}}" style="width: 100%;height: 170px">-->
+      <!--</ion-slide>-->
+    </ion-slides>
+  </div>
+  <div class="loopContent">
+    <ion-grid style="width: 100%;height: 100%">
+      <ion-row wrap style="height: 100%;margin-top: 10px">
+        <ion-col col-3 text-center *ngFor="let option of options" (click)="optionDetails(option)" >
+              <img src="{{option.src}}" style="width: 30px;height: 30px">
+          <div >{{option.name}}</div>
+        </ion-col>
+       <ion-col col-3 text-center style="position: relative" (click)="optionDetail()">
+         <img src="assets/imgs/物流.png" style="width: 30px;height: 30px">
+         <div >物流中心</div>
+         <img src="assets/imgs/敬请期待.png" style="position: absolute;top: 0;right:15px;height: 30px;width: 22px">
+       </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="loop">
+    <div class="loopHead" (click)="goProducts()">
+      <div class="loopHeadP">最新产品</div>
+      <div class="loopHeadM">查看全部></div>
+    </div>
+    <div class="loopContent">
+      <ion-grid class="gird">
+        <ion-row nowrap class="ionrow">
+          <ion-col col-4 text-center *ngFor="let product of products" (click)="productionDetails(product.name,product.howHot,product.howMuch,product.id) " style="height: 100%">
+            <img src='{{product.imgPathList}}' style="height:80px;width: 100%"/>
+            <div style="width: 100%;display: flex;justify-content: center">
+              <div style="font-size: 12px;flex:1;overflow:scroll;height: 16px">{{product.name.substring(0,9)}}</div>
+              <div style="font-size: 12px;margin-left: 2px;color: white;width: 12px"  [class.hot]="product.hot === '热'" [class.cold]="product.hot==='低'">{{product.hot}}</div>
+            </div>
+            <div>{{product.currency}}{{product.price}}/{{product.unit}}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  <div class="loop">
+    <div class="loopHead" (click)="goApplys()">
+      <div class="loopHeadP">最新需求</div>
+      <div class="loopHeadM">查看全部></div>
+    </div>
+    <div class="loopContent">
+      <ion-grid class="gird">
+        <ion-row nowrap class="ionrow">
+          <ion-col col-4 text-center *ngFor="let apply of applys" (click)="appliesDetails(apply.id)" style="height: 100%">
+            <img src='{{apply.imgPathList}}' style="height: 80px;width: 100%"/>
+            <div style="font-size: 12px;text-align: left;height: 16px;width: 100%;overflow:scroll ">{{apply.name}}</div>
+            <div style="font-size: 12px ;text-align: left">需求:<span style="color: #007aff">{{apply.demandNum}}{{apply.unit}}</span></div>
+            <div style="font-size: 12px;text-align: left" >日期:<span style="color: #007aff">{{apply.requireDate}}</span></div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  <div class="loop">
+    <div class="loopHead" (click)="goPurchases()">
+      <div class="loopHeadP">最新集采</div>
+      <div class="loopHeadM">查看全部></div>
+    </div>
+    <div class="loopContent">
+      <ion-grid class="gird">
+        <ion-row nowrap class="ionrow">
+          <ion-col col-4 text-center *ngFor="let purchase of purchases" (click)="goToPurchaseDetails(purchase.id)" style="height: 100%">
+            <img src='{{purchase.imgPathList}}' style="height: 80px;width: 100%"/>
+            <div style="width: 100%;display: flex;text-align: left">
+              <div style="font-size: 12px;flex: 1;overflow: scroll;height: 16px">{{purchase.name}}</div>
+              <div style="font-size: 12px;margin-left: 2px; background-color: #007aff;color: white;width: 36px" >{{purchase.gatherStatus}}</div>
+            </div>
+            <div style="width: 100%;text-align: left" ><span style="color: #488aff">{{purchase.currency}}{{purchase.price}}</span>/{{purchase.unit}}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  <div class="loop">
+    <div class="loopHead" (click)="goInvites()">
+      <div class="loopHeadP">最新招标</div>
+      <div class="loopHeadM">查看全部></div>
+    </div>
+    <div class="loopContentBottom">
+      <div *ngFor="let invite of invites" (click)="inviteDetails(invite.id)" style="padding: 5px;width: 100%">
+        <div style="display: flex;align-items: center;width: 100%">
+          <ion-icon name="document"  style="font-size: 24px;margin-right: 10px"></ion-icon>
+          <div style="flex: 1;font-size: 15px">[{{invite.address}}]  {{invite.title}}</div></div>
+        <div style="color: #555555;font-size: 11px">{{invite.issueDate}}</div>
+      </div>
+    </div>
+  </div>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
 </ion-content>
+

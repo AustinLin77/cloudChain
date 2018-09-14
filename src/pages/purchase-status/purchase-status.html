@@ -1,0 +1,23 @@
+<!--
+  Generated template for the SubmitStatusPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary" hideBackButton="true" style="text-align: center;z-index: 9"  >
+  <ion-icon name="arrow-back" class="myIcon" (click)="ownerBack()" navPush></ion-icon>
+    <ion-title>{{status}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+  <div class="statusLogo">
+    <img src="{{logoUrl}}" class="imgLogo">
+  </div>
+  <span class="note">{{statusNote}}</span>
+  <div class="buttonGroup">
+    <button ion-button outline color="primary" (click)="goToPurchaseDetails()" style="width: 120px;text-align: center" >查看集采详情</button>
+    <button ion-button  color="primary" style="margin-left: 80px;width: 120px;text-align: center" (click)="goToPurchase()" navPush>继续逛逛</button>
+  </div>
+</ion-content>
+

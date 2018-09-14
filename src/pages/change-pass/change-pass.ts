@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpService } from '../../service/HttpService';
 
-var sha1 = require('node-sha1');
+// var sha1 = require('node-sha1');
+import sha1 from 'node-sha1'
+
 /**
  * Generated class for the ChangePassPage page.
  *
@@ -38,10 +40,10 @@ export class ChangePassPage {
   cCommit() {
     console.log('commit');
     // api/users/app/update
-    var verUrl = 'api/users/app/update';
+    var verUrl = 'http://wmsapi.sunwoda.com/api/users/app/update';
     var newPassword = sha1(this.newPassword);
     var data = {'telephone': this.tel, 'password': newPassword, 'username': this.uName};
-    this.httpService.putWithHeaders(verUrl, data).then(res => this.handleCommitSuccess(res));
+    this.httpService.putWithHeadersServes(verUrl, data).then(res => this.handleCommitSuccess(res));
   }
 
   private handleCommitSuccess(result) {
@@ -50,6 +52,6 @@ export class ChangePassPage {
       this.httpService.presentToast(result.message);
       return;
     }
-    this.navCtrl.popToRoot();
+    this.navCtrl.push('GuidPage')
   }
 }

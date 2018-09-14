@@ -1,0 +1,42 @@
+page-outbound-management-list {
+  .ready>button{
+    background: #fff;
+    border-radius: 0;
+    position:absolute;
+    height: 100%;
+    width: 20%;
+  }
+  .ready>button:first-child{
+    top:0;
+    left: 15%;
+  }
+  .ready>button:last-child{
+    top:0;
+    right: 15%;
+  }
+  .item-ios.item-block .item-inner {
+    border: none;
+  }
+  .searchLoaction ul li{
+    background: #fff;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    border-bottom: solid 1px #eee;
+    display: flex;
+    align-items: center;
+  }
+  .searchLoaction ul li .conter{
+    flex: 1;
+  }
+  .searchLoaction ul li span:first-child{
+    width: 60px;
+    text-align: center;
+    color: #aaa;
+  }
+  .searchLoaction ul li span:last-child{
+    width: 60px;
+    text-align: center;
+    color: #aaa;
+  }
+}

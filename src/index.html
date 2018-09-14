@@ -15,8 +15,26 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
+
   <!-- cordova.js required for cordova apps (remove if not needed) -->
+  <!--<script>-->
+    <!--(function (doc, win)-->
+    <!--{ var docEl = doc.documentElement,-->
+      <!--resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',-->
+      <!--recalc = function () { var clientWidth = docEl.clientWidth;-->
+        <!--if (!clientWidth) return;-->
+        <!--if(clientWidth>=640){-->
+          <!--docEl.style.fontSize = '100px';-->
+        <!--}else{-->
+          <!--docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';-->
+        <!--} };-->
+      <!--if (!doc.addEventListener)-->
+        <!--return; win.addEventListener(resizeEvt, recalc, false);-->
+      <!--doc.addEventListener('DOMContentLoaded', recalc, false);-->
+    <!--})(document, window);-->
+  <!--</script>-->
   <script src="cordova.js"></script>
+
 
   <!-- un-comment this code to enable service worker
   <script>
@@ -36,6 +54,7 @@
   <ion-app></ion-app>
 
   <!-- The polyfills js is generated during the build process -->
+
   <script src="build/polyfills.js"></script>
 
   <!-- The vendor js is generated during the build process
@@ -43,7 +62,9 @@
   <script src="build/vendor.js"></script>
 
   <!-- The main bundle js is generated during the build process -->
+  <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
 
 </body>
+
 </html>

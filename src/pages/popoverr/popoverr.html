@@ -1,0 +1,28 @@
+<!--
+  Generated template for the PopoverPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div style="height: 500px;width: 100%;position: relative">
+  <div style="font-size: 18px;width: 100%;height: 50px;padding-left: 20px;background: #00b0e8;line-height: 50px;color: white">筛选</div>
+  <div style="display: flex;width: 100%;padding: 20px;flex-wrap: wrap">
+    <button ion-button outline style="height: 40px;width: 35%;" [class.click]="all===0" (click)="allF()">已结束</button>
+    <button ion-button outline style="height: 40px;width: 35%;margin-left: 20px" [class.click]="all===1" (click)="alreadyF()">已成团</button>
+    <button ion-button outline style="height: 40px;width: 35%;margin-top: 20px" [class.click]="all===2" (click)="unreadyF()">未成团</button>
+    <button ion-button outline style="height: 40px;width: 35%;margin-left: 20px;margin-top: 20px" [class.click]="all===3" (click)="onGoingF()">进行中</button>
+    <button ion-button outline style="height: 40px;width: 35%;margin-top: 20px" [class.click]="all===4" (click)="soonF()">未开始</button>
+  </div>
+  <div style="position: absolute;bottom: 0;width: 100%;height: 50px">
+    <ion-grid style="height: 100%;padding: 0">
+      <ion-row style="height: 100%">
+        <ion-col col-6 style="padding: 0;height: 100%">
+          <div class="submitB" ><button  (click)="reset()" style="height: 100%;background-color: white;display: flex;align-items: center;justify-content: center;font-size: 15px;">重置</button></div>
+        </ion-col>
+        <ion-col col-6 style="padding: 0;height: 100%">
+          <div class="submitC" ><button  (click)="confirm()" style="height: 100%;background-color: red;display: flex;align-items: center;justify-content: center;font-size: 15px;color: white">确定</button></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>

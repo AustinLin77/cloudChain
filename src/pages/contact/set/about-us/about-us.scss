@@ -1,0 +1,36 @@
+page-about-us {
+  .loopHead{
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: white;
+    height: 50px;
+    display: flex;
+    border-bottom: solid 1px #eeeeee
+  }
+
+
+  .loopHeadP{
+    color: black;
+    font-weight: 300;
+    font-family: 微软雅黑;
+    font-size: 14px;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+  }
+  ::-webkit-scrollbar{
+    display:none;
+  }
+  .loopHeadM{
+    color: #9E9C9C;
+    font-family:  微软雅黑;
+    font-size: 14px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+  }
+}

@@ -1,0 +1,22 @@
+page-popoverr {
+  .submitB{
+    height: 100%;
+    background-color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px
+  }
+  .submitC{
+    height: 100%;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px
+  }
+  .click{
+    border: 1px solid red;
+    color: red;
+  }
+}

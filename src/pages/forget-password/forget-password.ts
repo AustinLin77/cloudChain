@@ -38,23 +38,23 @@ export class ForgetPasswordPage {
   // 下一步
   fCommit() {
 
-    var verUrl = 'api/users/valid/' + this.verifyCode1;
+    var verUrl = 'http://wmsapi.sunwoda.com/api/users/valid/' + this.verifyCode1;
     var data = {'telephone': this.tel1};
-    this.httpService.putWithHeaders(verUrl, data).then(res => this.handleCommitSuccess(res));
+    this.httpService.putWithHeadersServes(verUrl, data).then(res => this.handleCommitSuccess(res));
   }
 
   private handleCommitSuccess(result) {
+    console.log(result);
     var statusCode = result.statusCode;
     if (statusCode !== 200) {
       this.httpService.presentToast(result.message);
       return;
     }
-    this.navCtrl.push(ChangePassPage, {'tel': this.tel1, 'uName': this.fUsername});
+    this.navCtrl.push('ChangePassPage', {'tel': this.tel1, 'uName': this.fUsername});
   }
 
   fVerifyCode(): void {
     if(this.isDisabled > 0) return;
-
     if(this.tel1 === '' || (typeof(this.tel1)=="undefined")) {
       this.httpService.presentToast('手机号不能为空！');
       return;
@@ -80,8 +80,8 @@ export class ForgetPasswordPage {
           handler: () => {
             console.log('Agree clicked');
             var data = {'mobilePhone': this.tel1, 'loginName': this.fUsername};
-            var vCodeUrl = 'api/users/getValidCode'
-            this.httpService.postWithHeaders(vCodeUrl, data).then(res => this.handleCodeSuccess(res));
+            var vCodeUrl = 'http://wmsapi.sunwoda.com/api/users/getValidCode';
+            this.httpService.postWithHeadersNew(vCodeUrl, data).then(res => this.handleCodeSuccess(res));
           }
         }
       ]
@@ -90,6 +90,7 @@ export class ForgetPasswordPage {
   }
 
   private handleCodeSuccess(result) {
+    console.log(result);
     this.httpService.presentToast(result.message);
     var statusCode = result.statusCode;
     if (statusCode !== 200) {

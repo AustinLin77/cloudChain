@@ -1,0 +1,58 @@
+page-enroll-info {
+.myDiv{
+  border-bottom: solid 3px #eeeeee;
+}
+  .innerDSty{
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-bottom: solid #eeeeee 1px;
+    display: flex;
+    align-items: center;
+    font-family: 微软雅黑;
+
+  }
+  .nameSty{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    font-weight:bold;
+    font-size: 15px;
+  }
+  .priceSty{
+    margin-top: 5px;
+    color: deepskyblue
+  }
+  .loopHead{
+    background-color: white;
+    height: 40px;
+    display: flex;
+    margin-right: 15px;
+    margin-left: 15px;
+    border-bottom: solid 1px #eeeeee;
+  }
+  .loopHeadP{
+    font-family: 微软雅黑;
+    font-size: 13px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: dimgray;
+
+  }
+  ::-webkit-scrollbar{
+    display:none;
+  }
+  .loopHeadM{
+    font-family:  微软雅黑;
+    font-size: 13px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: #007aff;
+  }
+}

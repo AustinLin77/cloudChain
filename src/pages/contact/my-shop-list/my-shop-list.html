@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-navbar  color="primary">
+    <ion-title>我的订单</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+  <!--<ion-list>-->
+    <!--<ion-item-sliding *ngFor="let option of allData">-->
+    <!--<ion-item >-->
+      <!--<div class="divF" >-->
+        <!--<ion-icon name="paper" style="font-size: 24px;width: 20px"></ion-icon>-->
+        <!--<div class="divFIn">-->
+          <!--<span style="flex: 1">{{option.company}}</span>-->
+          <!--<span style="width: 60px;color: red">交易成功</span>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div *ngFor="let good of option.content" >-->
+        <!--<div class="divS" >-->
+
+          <!--<img src="{{good.imgPathList}}" class="divSPic">-->
+          <!--<div style="flex: 1;padding: 10px;height: 100%">-->
+            <!--<div style="font-family: 微软雅黑;font-size: 16px;color: #488aff">{{good.goodsName}}</div>-->
+          <!--</div>-->
+          <!--<div class="divDetails">-->
+            <!--<div style="color: red;font-size: 16px">{{good.currency}}{{good.price}}</div>-->
+            <!--<div style="color: red;font-size: 16px;margin-top: 15px">×{{good.qty}}</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="divFIn" style="height: 50px;margin-left: 0;border-bottom: solid 1px #eeeeee;padding-left: 10px">-->
+        <!--<span style="flex: 1;font-weight: 200;font-family: 微软雅黑">实付款 : <span style="color: red;font-size:15px ">{{myUnit}}{{option.total}}</span></span>-->
+        <!--<span style="flex: 1;font-weight: 200;font-family: 微软雅黑;display: flex;justify-content: flex-end;margin-right: 10px">共{{option.content.length}}件商品</span>-->
+      <!--</div>-->
+    <!--</ion-item>-->
+      <!--<ion-item-options side="right" >-->
+        <!--<button ion-button color="primary" (click)="delete(option)" >-->
+          <!--<ion-icon name="trash" style="font-size: 24px"></ion-icon>-->
+          <!--删除-->
+        <!--</button>-->
+      <!--</ion-item-options>-->
+    <!--</ion-item-sliding>-->
+  <!--</ion-list>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div *ngFor="let option of allData">
+    <div class="divF" >
+      <ion-icon name="paper" style="font-size: 24px;width: 20px"></ion-icon>
+      <div class="divFIn">
+        <span style="flex: 1;font-size: 16px;">{{option.company}}</span>
+        <span style="width: 60px;color: red">交易成功</span>
+      </div>
+    </div>
+    <div *ngFor="let good of option.content" >
+      <div class="divS" >
+        <ion-checkbox  [(ngModel)]=good.isChecked style="width: 20px;margin-left: 10px" ></ion-checkbox>
+        <img src="{{good.imgPathList}}" class="divSPic">
+        <div style="flex: 1;padding: 10px;height: 100%;width: 40%">
+          <div style="font-family: 微软雅黑;font-size: 16px;color: #488aff;height: 100%;width: 90%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">{{good.goodsName}}</div>
+        </div>
+        <div class="divDetails">
+          <div style="color: red;font-size: 16px">{{good.currency}}{{good.price}}</div>
+          <div style="color: red;font-size: 16px;margin-top: 15px">×{{good.qty}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="divFIn" style="height: 50px;margin-left: 0;border-bottom: solid 1px #eeeeee;padding-left: 10px">
+      <span style="flex: 1;font-weight: 600;font-family: 微软雅黑">实付款 : <span style="color: red;font-size:15px ">{{myUnit}}{{option.total}}</span></span>
+      <span style="flex: 1;font-weight: 200;font-family: 微软雅黑;display: flex;justify-content: flex-end;margin-right: 10px">共{{option.content.length}}件商品</span>
+    </div>
+  </div>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="加载中...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<ion-footer class="footer">
+  <button ion-button outline color="primary" (click)="cancel()" style=" width: 80px">取消</button>
+  <button ion-button  color="primary" style="margin-left: 20px;margin-right: 10px;width: 80px" (click)="deleteNum()">删除订单</button>
+</ion-footer>

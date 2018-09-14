@@ -1,0 +1,162 @@
+page-goodsdetails {
+  .footer-md::before{
+    top:0;
+  }
+  .hot{
+    color: white;
+    background-color: #f53d3d;
+  }
+  .cold{
+    color: white;
+    background-color: #488aff;
+  }
+  .loopHead{
+    background-color: white;
+    height: 40px;
+    display: flex;
+    border-bottom: solid 1px #eeeeee
+  }
+  .loopHeadP{
+    font-family: 微软雅黑;
+    font-size: 14px;
+   width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px
+  }
+  ::-webkit-scrollbar{
+    display:none;
+  }
+  .loopHeadM{
+    font-family:  微软雅黑;
+    font-size: 14px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px
+  }
+  .footer{
+    height: 50px;
+    color: white
+  }
+  .ionGird{
+    height: 100%;
+    padding: 0
+  }
+  .ionCol{
+    height: 100%;
+    display: flex;
+    color: black;
+    padding: 0
+  }
+  .colInnerO{
+    flex: 1;
+    font-size: 25px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+  .badge{
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    margin-top: -20px;
+    margin-left: -10px;
+    z-index: 99999;
+  }
+  .colInnerT{
+    height: 100%;
+    background-color: salmon;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px
+  }
+  .colInnerTH{
+    height: 100%;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px
+  }
+  .picSty{
+    width: 100%;
+    height: 200px
+  }
+  .dSty{
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    border-bottom: solid #eeeeee 1px
+  }
+  .innerDSty{
+    display: flex;
+    align-items: center;
+    font-family: 微软雅黑;
+    width: 100%;
+
+  }
+  .nameSty{
+    font-weight:bold;
+    font-size: 16px;
+    height: 100%;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+  }
+  .popSty{
+    font-size: 14px;
+    height: 100%;
+    min-width: 20px;
+  }
+  .priceSty{
+    margin-top: 5px;
+    color: deepskyblue
+  }
+  .propertySty{
+    background-color: #eeeeee;
+    height: 20px;
+    line-height: 20px;
+    text-align:center;
+    border-bottom: solid #cccccc 1px;
+    border-top: solid #cccccc 1px
+  }
+  .picGroupSty{
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center
+  }
+  .decriSty{
+   width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-top: solid #eeeeee 2px;
+    padding-top: 10px
+  }
+  .navIcon{
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    color: white;
+    font-size: 24px;
+    z-index: 99999
+  }
+  .navbarSty{
+    text-align: center;
+    z-index: 9
+  }
+  .navbarStySec{
+
+    z-index: 9
+  }
+}

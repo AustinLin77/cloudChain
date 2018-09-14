@@ -1,0 +1,74 @@
+
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title >需求详情</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+  <div style="height: 250px;margin-top: 0;width: 100%">
+    <ion-slides [pager]="numOfPic" autoplay="600" speed="800"  #sliders>
+      <ion-slide *ngFor="let slide of slides" >
+        <img src="{{slide}}" class="picSty" >
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div class="dSty">
+    <div class="innerDSty">
+      <span class="nameSty">{{data.name}}</span>
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">需求单位</div>
+    <div class="loopHeadM">{{data.companyName}}</div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">物料分类</div>
+    <div class="loopHeadM">{{data.catgName}}</div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">规格描述</div>
+    <div class="loopHeadM">{{data.specification}}</div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">单位</div>
+    <div class="loopHeadM">{{data.unit}}</div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">需求量</div>
+    <div class="loopHeadM">{{data.demandNum}}</div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">有效期</div>
+    <div class="loopHeadM">{{data.requireValidDate}}</div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">需求日期</div>
+    <div class="loopHeadM">{{data.requireDate}}</div>
+  </div>
+  <div class="propertySty">需求信息</div>
+  <div class="loopHead">
+    <div class="loopHeadP">发票要求</div>
+    <div class="loopHeadM">{{data.invoiceRequest}}</div>
+  </div>
+  <div class="loopHeadS">
+    <div class="loopHeadP" style="align-items: center">详细说明</div>
+    <div class="loopHeadN"  id="detail"></div>
+  </div>
+</ion-content>
+<ion-footer style="height: 50px;color: white">
+  <ion-grid style="height: 100%;padding: 0">
+    <ion-row style="height: 100%">
+      <ion-col col-4 style="padding: 0;height: 100%">
+        <div  class="colInnerO">
+          <ion-icon name="star" ></ion-icon>
+        </div>
+      </ion-col>
+      <ion-col col-4 style="padding: 0;height: 100%">
+        <div class="submitC" style="background-color: white"><button  style="height: 100%;background-color: white;display: flex;align-items: center;justify-content: center;font-size: 15px;color:black" (click)="contact()">联系买家</button></div>
+      </ion-col>
+      <ion-col col-4 style="padding: 0;height: 100%">
+        <div class="submitC" ><button  style="height: 100%;background-color: red;display: flex;align-items: center;justify-content: center;font-size: 15px;color: white" (click)="GoToQuotation()">我要报价</button></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

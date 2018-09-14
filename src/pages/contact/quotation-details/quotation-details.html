@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>报价单详情</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+  <div class="loopHead">
+    <div class="loopHeadP">报价单号</div>
+    <div class="loopHeadM">
+      {{data.qutationCode}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">商品</div>
+    <div class="loopHeadM">
+    {{data.goodsName}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">商品分类</div>
+    <div class="loopHeadM">
+      {{data.catgName}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">需求单位</div>
+    <div class="loopHeadM">
+      {{data.companyName}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">含税价</div>
+    <div class="loopHeadM">
+      {{data.price}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">币种</div>
+    <div class="loopHeadM">
+      {{data.currency}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">起订数量范围</div>
+    <div class="loopHeadM">
+      {{data.qtyRange}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">有效期</div>
+    <div class="loopHeadM">
+      {{data.validDate}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">报价说明</div>
+    <div class="loopHeadM">
+      {{data.description}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">联系人</div>
+    <div class="loopHeadM">
+      {{data.contactor}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">联系方式</div>
+    <div class="loopHeadM">
+      {{data.contactPhone}}
+    </div>
+  </div>
+  <div class="loopHead">
+    <div class="loopHeadP">报价日期</div>
+    <div class="loopHeadM">
+      {{data.quotationDate}}
+    </div>
+  </div>
+</ion-content>

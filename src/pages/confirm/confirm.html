@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>确认信息</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div style="height: 100%;width: 100%">
+    <div class="firstDiv">
+      <ion-icon name="paper" style="font-size: 24px;width: 20px"></ion-icon>
+      <div class="companyName">{{companyName}}</div>
+    </div>
+    <div class="secondDiv" >
+      <img src="{{url}}" class="pic">
+      <div class="innerDiv">
+        <div style="font-family: 微软雅黑;font-size: 16px; white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;">{{name}}</div>
+        <div class="price">{{currency}}{{price}}/{{unit}}</div>
+      </div>
+    </div>
+    <div class="loopHead" >
+      <div class="loopHeadP">购买数量</div>
+
+      <div class="loopHeadM">
+        <button type="button" id="minusNum" (click)="minus()" class="minus">-</button>
+        <input id="text" type="number" size="1" min="0" [(ngModel)]="amount" class="inputNum" (blur)="countTotal()" >
+        <button type="button" id="addNum" (click)="add()" class="add">+</button>
+      </div>
+    </div>
+    <div class="loopHead" style="position: relative">
+      <div class="loopHeadP">
+        <ion-label style="font-family: 微软雅黑;font-size: 16px;color: black"> 需求日期</ion-label></div>
+      <div class="loopHeadM">
+        <ion-datetime displayFormat="YYYY-MM-DD" placeholder="请选择需求日期" [(ngModel)]="myDate" cancelText="取消" doneText="确定"> </ion-datetime>
+      </div>
+    </div>
+    <div class="loopHead" style="position: relative">
+       <div class="loopHeadP">
+         <ion-label>选择收货库存组织</ion-label>
+       </div>
+       <div class="loopHeadM">
+         <ion-select [(ngModel)]="organize" style="max-width: 100%;text-align: right" cancelText="取消" okText="确定"  [selectOptions]="selectOptions" >
+          <ion-option  value="{{option.id}}" *ngFor="let option of organization">{{option.name}}</ion-option>
+         </ion-select>
+       </div>
+    </div>
+    <div class="total" >
+      <div class="totalF">共一件商品   小计 : {{currency}}{{total}}</div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer style="height: 50px;color: white">
+  <ion-grid style="height: 100%;padding: 0">
+    <ion-row style="height: 100%">
+      <ion-col col-8 class="myCol">
+      合计:¥{{total}}
+      </ion-col>
+      <ion-col col-4 style="padding: 0;height: 100%">
+        <div class="submitC" ><button [disabled]=flag (click)="confirm()" style="height: 100%;background-color: red;display: flex;align-items: center;justify-content: center;font-size: 15px;color: white">提交申请</button></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

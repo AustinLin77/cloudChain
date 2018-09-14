@@ -1,0 +1,26 @@
+<!--
+  Generated template for the ChangePassPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>修改密码</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item style="line-height: 35px;">
+    <ion-label><img src="assets/imgs/ic_verify.png" style="width: 15px;width: 20px;"/></ion-label>
+    <ion-input placeholder="输入新密码" [(ngModel)]="newPassword" id="password1" type="password"></ion-input>
+  </ion-item>
+
+  <ion-row style="padding-top: 50px;margin-left: 15px;">
+    <button (click)="cCommit()" ion-button id="change_commit"  style="color: #008ec3;border: 1px solid #008ec3;">提交</button>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,23 @@
+page-invite {
+  .navbarSty{
+    text-align: center;
+    z-index: 9
+  }
+  .navIcon{
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    color: white;
+    font-size: 24px;
+    z-index: 99999
+  }
+  .loopContentBottom{
+    margin-top: 0;
+    width: 100%;
+    overflow: scroll;
+    height: 100%;
+  }
+  .dan{
+    background-color: #eeeeee;
+  }
+}

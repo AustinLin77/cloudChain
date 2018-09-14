@@ -1,0 +1,37 @@
+<!--
+  Generated template for the StorageDocumentsDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-row>
+      <ion-title>出库单据详情</ion-title>
+      <button (click)="approval()" style="background-color: #008ec3;color: white;font-size: 16px;" *ngIf="showApproval == 0">审批</button>
+    </ion-row>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div id="placeMess">
+    <div class="palce"  *ngFor="let data of dataSource; let i = index">
+      <div class="title">明细行{{i + 1}}</div>
+      <div class="pContent">
+        <ul>
+          <li><span>物料名称</span><span>{{data.materialName}}</span></li>
+          <li><span>规格</span><span>{{data.instruction}}</span></li>
+          <li><span>类别</span><span>{{data.category}}</span></li>
+          <li><span>数量</span><span>{{data.qty}}</span></li>
+          <li><span>单位</span><span>{{data.unit}}</span></li>
+          <li><span>单价</span><span>{{data.price}}</span></li>
+          <li><span>金额</span><span>{{data.amount}}</span></li>
+          <li><span>需要日期</span><span>{{data.requiredDate}}</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ion-content>
