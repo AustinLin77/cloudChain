@@ -17,6 +17,7 @@ import { HttpService } from '../../service/HttpService';
 })
 export class MyApplyPage {
   data = [];
+  showNoContent:boolean=false;
   pageNum: number;
   pageSize =8;
   total:number;
@@ -31,7 +32,8 @@ export class MyApplyPage {
   }
 //返回
   ownerBack() {
-    this.navCtrl.setRoot(TabsPage);
+    // this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.pop()
   }
 //带参数跳转
   appliesDetails(a) {
@@ -65,7 +67,8 @@ export class MyApplyPage {
   handleSuccess(result) {
     if(result.data.length==0){
       document.getElementById("content").style.backgroundColor='white';
-      this.httpService.presentToast("您还没有发布任何需求")
+      this.showNoContent=true
+      // this.httpService.presentToast("您还没有发布任何需求")
     }
     this.pageNum++;
     this.total=result.total;

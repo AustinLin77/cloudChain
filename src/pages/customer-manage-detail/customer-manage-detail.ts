@@ -60,7 +60,7 @@ export class CustomerManageDetailPage {
       id: this.data.id
     };
     console.log(this.data);
-    var url = 'http://wmsapi.sunwoda.com/api/companys/app/detail/' + this.data.id;
+    var url = 'https://wmsapi.sunwoda.com/api/companys/app/detail/' + this.data.id;
     this.httpService.getUser(url, this.headerParameters).then(res => this.handleUserInfoSuccess(res));
   }
 

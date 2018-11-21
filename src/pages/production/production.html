@@ -1,98 +1,149 @@
-<!--
-  Generated template for the ProductionPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header >
   <ion-navbar color="primary" hideBackButton="true"  class="navbarSty" id="navbar">
     <ion-buttons start *ngIf="chain==0">
       <button ion-button icon-only (click)="ownerBack()" navPush >
-        <ion-icon name="arrow-back"></ion-icon>Back
+        <ion-icon name="arrow-back" style="font-size: 18px;color: black"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-icon name="arrow-back" class="navIcon" (click)="ownerBack()" navPush *ngIf="chain==1"></ion-icon>
+    <ion-icon name="arrow-back" class="navIcon" (click)="ownerBack()" navPush *ngIf="chain==1" style="font-size: 18px;color: black"></ion-icon>
 
-    <ion-title >产品列表</ion-title>
+    <ion-title *ngIf="!flagOne" style="font-size: 18px;font-weight: 100;color: black">产品列表</ion-title>
+
     <ion-buttons end>
-      <button ion-button icon-only (click)="search()">
-        <ion-icon name="search"></ion-icon>
+      <button ion-button icon-only (click)="search()" *ngIf="!flagOne" >
+        <ion-icon name="search" style="font-size: 22px;color: black"></ion-icon>
+      </button>
+      <button ion-button icon-only  *ngIf="flagOne" style="font-size: 14px;color: black" (click)="goSearch()">
+        确定
       </button>
     </ion-buttons>
-     <!--<ion-icon name="search"  style="position: absolute;right: 10px;font-size: 25px;top: 50%;margin-top: -12px;color: white"></ion-icon>-->
+    <ion-buttons end style="margin-left: 5px">
+      <button ion-button icon-only (click)="test()" *ngIf="!flagOne"  >
+        <ion-icon name="menu" class="ionMenu" style="font-size: 22px;color: black" ></ion-icon>
+      </button>
+      <button ion-button icon-only  *ngIf="flagOne" style="font-size: 14px;color: red;" (click)="noSearch()">
+        取消
+      </button>
+    </ion-buttons>
+    <!--<ion-searchbar>-->
+      <!--[(ngModel)]="myInput"-->
+      <!--[showCancelButton]="shouldShowCancel"-->
+      <!--(ionInput)="onInput($event)"-->
+      <!--(ionCancel)="onCancel($event)">-->
+
+    <ion-searchbar id="searchBar"
+                   placeholder="请输入产品名称"
+                   *ngIf="flagOne"
+                   [(ngModel)]="key">
+    <!--&gt;-->
+      <!--[showCancelButton]="shouldShowCancel"-->
+      <!--(ionInput)="onInput($event)"-->
+      <!--(ionCancel)="onCancel($event)"-->
+    </ion-searchbar>
   </ion-navbar>
   <ion-grid style="width: 100%;height: 50px">
   <ion-row  style="height: 100%; align-items: center">
     <ion-col col-3 text-center  (click)="normal()" >
-      <div [class.normal]="firstChoice===0"> 综合 ↓</div>
+      <div [class.normal]="firstChoice===0"> 综合 </div>
     </ion-col>
     <ion-col col-3 text-center  (click)="sortBy()" >
-      <div [class.sortBy]="secondChoice===0"> 上架时间 ↓</div>
+      <div [class.sortBy]="secondChoice===0"> 上架时间
+        <ion-icon name="arrow-down" style="font-size: 14px"></ion-icon>
+      </div>
     </ion-col>
     <ion-col col-3 text-center  (click)="price()" >
-      <div [class.price]="thirdChoice===0"> 价格 ↑</div>
+      <div [class.price]="thirdChoice===0"> 价格
+        <ion-icon name="arrow-up" style="font-size: 14px"></ion-icon>
+      </div>
     </ion-col>
     <ion-col col-3 text-center (click)="presentPopover($event)" >
-      <div [class.sort]="fourthChoice===0">筛选 ↓</div>
+      <div [class.sort]="fourthChoice===0">筛选
+        <ion-icon name="funnel" style="font-size: 14px"></ion-icon>
+      </div>
     </ion-col>
   </ion-row>
+
   </ion-grid>
 </ion-header>
 <ion-content>
-  <div *ngIf="flagOne" class="help" (click)="flagOne=false"> </div>
-  <div *ngIf="flagOne" class="try">
-    <input class="input" [(ngModel)]="key" autofocus>
-    <button ion-button clear style="height: 32px;flex: 1;" (click)="goSearch()">确定</button>
-  </div>
-  <div class="loopContentT">
-    <ion-grid class="gird">
-      <ion-row wrap class="ionrow">
-        <ion-col col-4 text-center *ngFor="let product of products" style="height: 150px" (click)="goodsDetails(product.name,product.howHot,product.howMuch,product.id) " >
-          <img src='{{product.imgPathList}}' class="picSty"/>
-          <div class="dSty">
-            <div class="nameSty">{{product.name}}</div>
-            <div class="popSty"  [class.hot]="product.hot === '热'" [class.cold]="product.hot==='低'">{{product.hot}}</div>
-          </div>
-          <div ><span style="color: #007aff">{{product.currency+product.price}}</span>/{{product.unit}}</div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <!--<div *ngIf="flagOne" class="help" (click)="flagOne=false"> </div>-->
+  <!--&lt;!&ndash;<div *ngIf="flagOne" class="try">&ndash;&gt;-->
+    <!--<div style="height: 40px;width: 90%;line-height: 40px;position: relative;border-radius: 15px;" *ngIf="flagOne" class="try">-->
+      <!--<input autofocus [(ngModel)]="key" id="myIII" style="width: 100%;height: 40px;border-radius: 50px;background-color: #eeeeee;border: none;padding-left: 45px" placeholder="搜索产品" >-->
+      <!--<ion-icon name="search" class="search" ></ion-icon>-->
+      <!--<div   style="  position: absolute;-->
+      <!--height: 100%;-->
+    <!--top: 0;-->
+    <!--right: 13px;-->
+    <!--font-size: 14px;-->
+    <!--color: #666666;-->
+    <!--margin-right:5px;-->
+    <!--padding-left: 5px;-->
+    <!--border-left: solid 1px #cccccc" (click)="goSearch()" >确定</div>-->
+    <!--</div>-->
+    <!--<input class="input" [(ngModel)]="key" autofocus>-->
+    <!--<button ion-button clear style="height: 32px;flex: 1;" (click)="goSearch()">确定</button>-->
+  <!--</div>-->
 
+  <div *ngIf="!showNoContent">
+    <div class="loopContentT">
+      <ion-grid class="gird">
+        <ion-row wrap class="ionrow">
+          <ion-col col-4  *ngFor="let product of products" style="height: 150px;text-align: left;padding:5px;margin-bottom: 20px" (click)="goodsDetails(product.name,product.howHot,product.howMuch,product.id) " >
+            <div  class="picSty">
+              <img src='{{product.imgPathList}}' style="max-height: 105px;">
+            </div>
+
+            <div class="dSty">
+              <div class="nameSty">{{product.name}}</div>
+              <div class="popSty"  [class.hot]="product.hot === '热'" [class.cold]="product.hot==='低'">{{product.hot}}</div>
+            </div>
+            <div ><span style="color: #007aff">{{product.currency+product.price}}</span>/{{product.unit}}</div>
+
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="firstChoice==0">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="secondChoice==0&&fourthChoice==1">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="thirdChoice==0&&fourthChoice==1">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="fourth==0&&secondChoice==1&&thirdChoice==1">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="shaiByPrice==0">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="shaiByTime==0">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
   </div>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="firstChoice==0">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载中...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="secondChoice==0&&fourthChoice==1">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载中...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="thirdChoice==0&&fourthChoice==1">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载中...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="fourth==0&&secondChoice==1&&thirdChoice==1">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载中...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="shaiByPrice==0">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载中...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="shaiByTime==0">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载中...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  <div *ngIf="showNoContent" style="height: 100%;width: 100%;display: flex;justify-content: center;align-items: center">
+    <img src="../../assets/imgs/noContent.png">
+  </div>
 </ion-content>

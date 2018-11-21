@@ -31,7 +31,8 @@ export class ApplyPage {
   }
 //返回
   ownerBack() {
-    this.navCtrl.setRoot(TabsPage);
+    // this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.popToRoot()
   }
 //带参数跳转
   appliesDetails(a) {
@@ -73,7 +74,5 @@ export class ApplyPage {
         }
       }
     }
-
-
   }
 }

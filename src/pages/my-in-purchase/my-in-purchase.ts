@@ -24,6 +24,7 @@ export class MyInPurchasePage {
   option=[];
   chain;
   all=5;
+  showNoContent:boolean=false;
   gatherStatus;
   flag:number=1;
   open:number=0;
@@ -38,7 +39,8 @@ export class MyInPurchasePage {
   }
   //返回
   ownerBack() {
-    this.navCtrl.setRoot(TabsPage);
+    // this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.pop()
   }
   //下滑刷新
   doInfinite(infiniteScroll) {
@@ -76,7 +78,8 @@ export class MyInPurchasePage {
   handleSuccess(result) {
     if(result.data.length==0){
       document.getElementById("content").style.backgroundColor='white';
-      this.httpService.presentToast("您还没有参与任何集采")
+      this.showNoContent=true
+      // this.httpService.presentToast("您还没有参与任何集采")
     }
     this.pageNum++;
     this.total=result.total;

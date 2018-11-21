@@ -3,7 +3,8 @@ import { IonicPage, NavController, NavParams, AlertController, ActionSheetContro
 import { HttpService } from '../../service/HttpService';
 import * as $ from "jquery";
 import { PhotoViewer } from '@ionic-native/photo-viewer';
-
+import { Component,ViewChild } from '@angular/core';
+import { Navbar } from 'ionic-angular';
 /**
  * Generated class for the OutboundManagementListDetailPage page.
  *
@@ -18,13 +19,14 @@ import { PhotoViewer } from '@ionic-native/photo-viewer';
 })
 
 export class OutboundManagementListDetailPage {
-
+  @ViewChild(Navbar) navBar: Navbar;
   headerParameters: any;
   auditStatus: string = '-1';
   pageNum: number = 1;
   pageSize: number = 18;
   nextPage: number = 1;
   pages: number;
+  unread:number=0;
   dataSource: any = [];
   data: any;
   showPage:string="baseMess";
@@ -39,6 +41,7 @@ export class OutboundManagementListDetailPage {
   }
 
   ionViewDidLoad() {
+    this.navBar.backButtonClick = this.backButtonClick;
     console.log('ionViewDidLoad CustomerManageDetailPage');
     this.obtainDatas();
     $(".top button").on('click',function (e) {
@@ -49,7 +52,11 @@ export class OutboundManagementListDetailPage {
 
     this.showApproval = this.type == '0' ? 0 : 1;
   }
-
+  backButtonClick = (e: UIEvent) => {
+    // var data= 3;
+    // this.events.publish('pop:myUnread',data, Date.now());
+    this.navCtrl.pop();
+  }
   showBigIcon(data) {
     console.log(data);
     this.photoViewer.show(data.copyPath, data.type);
@@ -64,7 +71,7 @@ export class OutboundManagementListDetailPage {
       id: this.data.id
     };
     console.log(this.data);
-    var url = 'http://wmsapi.sunwoda.com/api/outbound/bill/headers/app/detailLines/' + this.data.id;
+    var url = 'https://wmsapi.sunwoda.com/api/outbound/bill/headers/app/detailLines/' + this.data.id;
     this.httpService.getUser(url, this.headerParameters).then(res => this.handleUserInfoSuccess(res));
   }
 
@@ -173,7 +180,7 @@ export class OutboundManagementListDetailPage {
       status: type,
       approvalConments: advise
     };
-    var url = 'http://wmsapi.sunwoda.com/api/outbound/bill/headers/app/approval/' + this.data.id;
+    var url = 'https://wmsapi.sunwoda.com/api/outbound/bill/headers/app/approval/' + this.data.id;
     this.httpService.putWithHeadersServes(url, this.headerParameters).then(res => this.handleApprovalSuccess(res));
   }
 
@@ -185,8 +192,20 @@ export class OutboundManagementListDetailPage {
       return;
     }
     console.log('handleApprovalSuccess pop remove data!')
-    this.events.publish('pop:data',this.data, Date.now());
+    var headerParameters={
+      status:'0'
+    }
+    this.httpService.getUser('https://wmsapi.sunwoda.com/api/outbound/bill/headers/app/bill', headerParameters).then(res => this.handleMyInfoSuccess(res));
+    // this.events.publish('pop:myUnread',this.unread, Date.now());
+    // this.events.publish('pop:data',this.data, Date.now());
     console.log(this.data)
+    // this.navCtrl.pop();
+  }
+  handleMyInfoSuccess(res){
+    console.log(res.total)
+    this.unread=res.total
+    this.events.publish('pop:myUnread',this.unread, Date.now());
+    this.events.publish('pop:data',this.data, Date.now());
     this.navCtrl.pop();
   }
 }

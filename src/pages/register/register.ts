@@ -50,7 +50,7 @@ export class RegisterPage {
   }
 
   obtainDatas() {
-    this.httpService.getUser('http://wmsapi.sunwoda.com/reg/basicInfo', {}).then(res => this.handleDatasSuccess(res));
+    this.httpService.getUser('https://wmsapi.sunwoda.com/reg/basicInfo', {}).then(res => this.handleDatasSuccess(res));
   }
 
   private handleDatasSuccess(result) {
@@ -94,7 +94,7 @@ export class RegisterPage {
             console.log('Agree clicked');
             console.log(this.tel1)
             var data = {'phoneNum': this.tel1};
-            var vCodeUrl = 'http://wmsapi.sunwoda.com/reg/sendVerifyCode';
+            var vCodeUrl = 'https://wmsapi.sunwoda.com/reg/sendVerifyCode';
             this.httpService.getUser(vCodeUrl, data).then(res => this.handleSuccess(res));
           }
         }
@@ -158,7 +158,7 @@ export class RegisterPage {
           return;
         }
         var data = {'verifyCode': this.verifyCode1};
-        var codeUrl = 'http://wmsapi.sunwoda.com/reg/' + this.tel1 + '/' + this.verifyCode1;
+        var codeUrl = 'https://wmsapi.sunwoda.com/reg/' + this.tel1 + '/' + this.verifyCode1;
         this.httpService.getUser(codeUrl, data).then(res => this.handleCodeSuccess(res));
       }
     }
@@ -198,7 +198,7 @@ export class RegisterPage {
     var data = {'industry': industry, 'operatingYears': this.operatingYear,
                 'enterpriseScale': enterpriseScale, 'phoneNum': this.tel1, 'captcha': this.verifyCode1,
                 'userName': this.vipName, 'password': shaPass,'companyName':this.companyName};
-    var codeUrl = 'http://wmsapi.sunwoda.com/reg/saveRegInfo';
+    var codeUrl = 'https://wmsapi.sunwoda.com/reg/saveRegInfo';
     this.httpService.postWithHeadersNew(codeUrl, data).then(res => this.handleCommitSuccess(res));
   }
 

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Events } from 'ionic-angular';
 import { CustomerManagePage } from '../customer-manage/customer-manage';
-import { SupplierManagementPage } from '../supplier-management/supplier-management'
+import { SupplierManagementPage } from '../supplier-management/supplier-management';
+import { HttpService } from '../../service/HttpService';
 /**
  * Generated class for the BasicDataPage page.
  *
@@ -15,15 +16,25 @@ import { SupplierManagementPage } from '../supplier-management/supplier-manageme
   templateUrl: 'basic-data.html',
 })
 export class BasicDataPage {
-
+  chain:'';
   dataSource : Array<any> = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  unread:number=0;
+  constructor(private httpService: HttpService,public navCtrl: NavController, public navParams: NavParams, public events: Events) {
+   events.subscribe('pop:myUnread', (number)=>{
+      console.log(number);
+      this.unread = number;
+    })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BasicDataPage');
     var data1 = {'key': '客户管理', 'index': '1'};
+    this.chain=localStorage.getItem('chain')
     this.dataSource.push(data1);
+    var headerParameters = {
+      auditStatus: '1',
+    };
+    this.httpService.getUser('https://wmsapi.sunwoda.com/api/companys/app/get',headerParameters).then(res => this.handleUserInfoSuccess(res));
   }
 
   itemTapped(e, item) {
@@ -37,5 +48,8 @@ export class BasicDataPage {
 
     }
   }
-
+  handleUserInfoSuccess(res){
+    console.log(res);
+    this.unread=res.total
+  }
 }

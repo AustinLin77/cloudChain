@@ -46,7 +46,7 @@ page-my-shop-list {
       display: flex;
       align-items: center;
       padding-left:10px;
-      padding-right: 10px;
+      padding-right: 5px;
       //border-bottom: solid #cccccc 1px;
 
     }
@@ -57,7 +57,7 @@ page-my-shop-list {
       display: flex;
       align-items: center;
       font-size: 14px;
-      font-family: 微软雅黑;
+      font-family: Arial;
       margin-left: 10px;
       justify-content: flex-end;
       font-weight: bold;
@@ -67,13 +67,15 @@ page-my-shop-list {
       width: 100%;
       display: flex;
       align-items: center;
+      background-color: #F7F7F7 ;
       //border-bottom: solid #eeeeee 1px;
       //background-color: #eeeeee
     }
     .divSPic{
       height: 70px;
       width: 70px;
-      margin-left: 10px
+      margin-left: 10px;
+      border:1px solid #eeeeee;
     }
     .divDetails{
       padding: 10px;

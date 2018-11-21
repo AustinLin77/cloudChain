@@ -8,7 +8,7 @@
   <ion-navbar color="primary" hideBackButton="true"  class="navbarSty">
     <ion-buttons start *ngIf="chain==0">
       <button ion-button icon-only (click)="ownerBack()" navPush >
-        <ion-icon name="arrow-back"></ion-icon>Back
+        <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
     <ion-icon name="arrow-back" class="navIcon" (click)="ownerBack()" navPush *ngIf="chain==1"></ion-icon>
@@ -16,20 +16,27 @@
   </ion-navbar>
 </ion-header>
 <ion-content style="background-color: #eeeeee" id="content">
-  <div class="myDiv" *ngFor="let i of data" (click)="appliesDetails(i.id)">
-    <div class="myInDiv">
-      <div class="nameDiv">{{i.name}}</div>
-      <div class="otherDiv">需求数量 : {{i.demandNum+i.unit}}</div>
-      <div class="otherDiv">需求日期 : {{i.requireDate}}</div>
-      <div class="areaDiv">
-        <ion-icon name="pin" class="myLitIcon"></ion-icon>{{i.receiveAddress}}</div>
+  <div *ngIf="!showNoContent">
+    <div class="myDiv" *ngFor="let i of data" (click)="appliesDetails(i.id)">
+      <div class="myInDiv">
+        <div class="nameDiv">{{i.name}}</div>
+        <div class="otherDiv">需求数量 : {{i.demandNum+i.unit}}</div>
+        <div class="otherDiv">需求日期 : {{i.requireDate}}</div>
+        <div class="areaDiv">
+          <ion-icon name="pin" class="myLitIcon"></ion-icon>{{i.receiveAddress}}</div>
+      </div>
+      <div  style="min-height:90px; width: 90px;border-radius: 5px;border: solid 1px #eeeeee;display: flex;align-items: center;justify-content: center;margin-right: 10px">
+        <img src='{{i.imgPathList}}' style="max-height: 90px">
+      </div>
     </div>
-    <img class="myPic" src="{{i.imgPathList}}">
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
   </div>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载中...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  <div style="width: 100%;height:100%; display: flex;align-items: center;justify-content: center" *ngIf="showNoContent">
+    <img src="../../assets/imgs/noContent.png">
+  </div>
 </ion-content>

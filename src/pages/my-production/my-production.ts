@@ -18,6 +18,7 @@ export class MyProductionPage {
   products = [];
   pageNum: number;
   pageSize =8;
+  showNoContent:boolean=false;
   total:number;
   chain;
   cnt:number;
@@ -32,7 +33,8 @@ export class MyProductionPage {
   }
   //返回
   ownerBack() {
-    this.navCtrl.setRoot(TabsPage);
+    // this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.pop()
   }
   //获取数据
   ngOnInit(): void {
@@ -49,7 +51,8 @@ export class MyProductionPage {
     console.log(result);
     if(result.data.length==0){
       document.getElementById("content").style.backgroundColor='white';
-      this.httpService.presentToast("您还没有发布任何产品")
+      this.showNoContent=true
+      // this.httpService.presentToast("您还没有发布任何产品")
     }
     this.pageNum++;
     console.log(result);

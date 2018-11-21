@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../../pages/login/login';
 import { RegisterPage } from '../../pages/register/register';
-
+import { TabsPage } from "../tabs/tabs";
 
 import * as $ from "jquery";
 /**
@@ -34,8 +34,13 @@ export class GuidPage {
       e.preventDefault();
 
     })
-  }
 
+
+
+  }
+  myBack(){
+    this.navCtrl.setRoot(TabsPage,{'myindex':0});
+  }
   loginOrRegister(type) {
     if(type == 0) {
       this.navCtrl.push('LoginPage');

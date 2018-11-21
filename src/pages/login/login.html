@@ -17,8 +17,8 @@
     <ion-input placeholder="请输入登录密码" type="{{inFlag ? 'password': 'text'}}" [(ngModel)]="password" id="password"></ion-input>
     <!--<div item-content (click)="showOrHidePassw()" style="width: 50px;height: 35px;"><img src="{{flagSrc}}" style="width: 15px;width: 20px;margin-left: 15px;"/></div>-->
   </ion-item>
-  <ion-row style="padding-top: 50px;margin-left: 15px;">
-    <button (click)="login()" ion-button id="login_commit"  style="color: #008ec3;border: 1px solid #008ec3;">登录</button>
+  <ion-row style="padding-top: 50px;margin-left: 15px;display: flex;justify-content: center">
+    <button (click)="login()" ion-button round style="width: 320px;height: 45px;">登录</button>
   </ion-row>
   <ion-row style="padding-top: 20px;">
     <button  (click)="forgetPassw()" style="font-size: 13px;text-align: right;position: absolute;right: 15px;background:white;color:#dddddd;">忘记密码？</button>

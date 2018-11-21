@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Events } from 'ionic-angular';
 import { HttpService } from '../../service/HttpService';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { Component,ViewChild } from '@angular/core';
+import { Navbar } from 'ionic-angular';
 import * as $ from "jquery";
 import { StorageDocumentsDetailPage } from '../../pages/storage-documents-detail/storage-documents-detail';
 import { OutboundManagementListDetailPage } from '../../pages/outbound-management-list-detail/outbound-management-list-detail';
@@ -9,11 +11,13 @@ import { OutboundManagementListDetailPage } from '../../pages/outbound-managemen
 @IonicPage()
 @Component({
   selector: 'page-outbound-management-list',
+
   templateUrl: 'outbound-management-list.html',
 })
 
 export class OutboundManagementListPage {
-
+  @ViewChild(Navbar) navBar: Navbar;
+  unread:number=0;
   headerParameters: any;
   auditStatus: string = '1';
   pageNum: number = 1;
@@ -24,15 +28,22 @@ export class OutboundManagementListPage {
   dataSource1: any = [];
   dataSource2: any = [];
   showSearch:string='false';
+  already:string='true';
+  unready:string='false';
   flag:number=0;
   myInput: string = '';
-  showSearchLoaction="false"
+  showSearchLoaction="false";
   searchLoactionData:any=["东莞李威","小米科技有限公司","石龙仔市场"];
   cancelOrSearch: number = 1;
 
   constructor(private httpService: HttpService, public navCtrl: NavController,
               public navParams: NavParams, public alertCtrl: AlertController,
               private photoViewer: PhotoViewer, public events: Events) {
+
+    events.subscribe('pop:myUnread', (number)=>{
+      console.log(number);
+      this.unread = number;
+    })
     events.subscribe('pop:data', (data, time) => {
 
       console.log('OutboundManagementListPage pop data');
@@ -62,7 +73,6 @@ export class OutboundManagementListPage {
   onCancelOrSearch(type) {
     this.cancelOrSearch = type;
     console.log(type);
-
     if(type == 0) {
       this.showSearchLoaction="true";
       this.showSearch='true';
@@ -89,25 +99,38 @@ export class OutboundManagementListPage {
       this.headerParameters['documentCode'] = this.myInput;
     }
 
-    this.httpService.getUser('http://wmsapi.sunwoda.com/api/outbound/bill/headers/app/bill', this.headerParameters).then(res => this.handleUserInfoSuccess(res));
+    this.httpService.getUser('https://wmsapi.sunwoda.com/api/outbound/bill/headers/app/bill', this.headerParameters).then(res => this.handleUserInfoSuccess(res));
   }
 
   onPageTypeChange(type) {
     console.log(type);
     this.auditStatus = type;
+    if(type=='1'){
+      this.already='true';
+      this.unready='false';
+    }else{
+      this.already='false';
+      this.unready='true';
+    }
     this.obtainDatas();
   }
 
   ionViewDidLoad() {
+    this.navBar.backButtonClick = this.backButtonClick;
     console.log('ionViewDidLoad CustomerManagePage');
+    this.unread = this.navParams.data.unread;
     this.obtainDatas();
-    $(".ready button").on('click',function (e) {
-      console.log(e);
-      $(".ready button").attr("style","");
-      e.target.setAttribute("style","border-bottom: solid 3px #007aff;")
-    })
+    console.log(this.already)
+    // $(".ready button").on('click',function (e) {
+    //   console.log(e);
+    //
+    //   $(".ready button").attr("style","");
+    //   e.target.setAttribute("style","border-bottom: solid 3px #007aff")
+    // })
   }
-
+  backButtonClick = (e: UIEvent) => {
+    this.navCtrl.pop();
+  }
   showSe(e){
     console.log(e);
     this.flag++;

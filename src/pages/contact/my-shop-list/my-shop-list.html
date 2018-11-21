@@ -42,25 +42,12 @@
   <!--</ion-list>-->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   <div *ngFor="let option of allData">
     <div class="divF" >
-      <ion-icon name="paper" style="font-size: 24px;width: 20px"></ion-icon>
+      <img src="assets/imgs/ic_store.png" style="height:18px;width: 18px;">
       <div class="divFIn">
-        <span style="flex: 1;font-size: 16px;">{{option.company}}</span>
-        <span style="width: 60px;color: red">交易成功</span>
+        <span style="flex: 1;font-size: 14px;color: #666666 ;">{{option.company}}</span>
+        <span style="width: 60px;color: #FF525C;font-size: 12px">交易成功</span>
       </div>
     </div>
     <div *ngFor="let good of option.content" >
@@ -68,20 +55,26 @@
         <ion-checkbox  [(ngModel)]=good.isChecked style="width: 20px;margin-left: 10px" ></ion-checkbox>
         <img src="{{good.imgPathList}}" class="divSPic">
         <div style="flex: 1;padding: 10px;height: 100%;width: 40%">
-          <div style="font-family: 微软雅黑;font-size: 16px;color: #488aff;height: 100%;width: 90%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">{{good.goodsName}}</div>
+          <div style="font-family: 微软雅黑;font-size: 13px;color: #101010 ;font-weight:bold;height: 100%;width: 90%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">{{good.goodsName}}</div>
         </div>
         <div class="divDetails">
-          <div style="color: red;font-size: 16px">{{good.currency}}{{good.price}}</div>
-          <div style="color: red;font-size: 16px;margin-top: 15px">×{{good.qty}}</div>
+          <div style="color: red;font-size: 16px;color: #666666;">{{good.currency}}{{good.price}}</div>
+          <div style="color: red;font-size: 13px;margin-top: 15px;color: #8F8F8F ;">×{{good.qty}}</div>
         </div>
       </div>
+
+      <div style="height: 1px;margin-left: 10px;margin-right: 10px;background-color: #eeeeee" *ngIf="option.content.length!=1">
+
+      </div>
+
     </div>
-    <div class="divFIn" style="height: 50px;margin-left: 0;border-bottom: solid 1px #eeeeee;padding-left: 10px">
-      <span style="flex: 1;font-weight: 600;font-family: 微软雅黑">实付款 : <span style="color: red;font-size:15px ">{{myUnit}}{{option.total}}</span></span>
-      <span style="flex: 1;font-weight: 200;font-family: 微软雅黑;display: flex;justify-content: flex-end;margin-right: 10px">共{{option.content.length}}件商品</span>
+    <div class="divFIn" style="height: 50px;margin-left: 0;border-bottom: solid 5px #eeeeee;padding-left: 10px;font-weight: 100">
+      <span style="flex: 1;font-size:14px;color:#101010;font-family:Arial">实付款 : <span style="color: #101010;font-size:14px ">{{myUnit}}{{option.total}}</span></span>
+      <span style="flex: 1;font-weight: 200;font-family: Arial;display: flex;justify-content: flex-end;margin-right: 10px">共{{option.content.length}}件商品</span>
     </div>
   </div>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="flag==true">
+
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"
       loadingText="加载中...">

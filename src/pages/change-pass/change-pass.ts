@@ -40,7 +40,7 @@ export class ChangePassPage {
   cCommit() {
     console.log('commit');
     // api/users/app/update
-    var verUrl = 'http://wmsapi.sunwoda.com/api/users/app/update';
+    var verUrl = 'https://wmsapi.sunwoda.com/api/users/app/update';
     var newPassword = sha1(this.newPassword);
     var data = {'telephone': this.tel, 'password': newPassword, 'username': this.uName};
     this.httpService.putWithHeadersServes(verUrl, data).then(res => this.handleCommitSuccess(res));

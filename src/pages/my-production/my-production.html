@@ -8,7 +8,7 @@
   <ion-navbar color="primary" hideBackButton="true"  class="navbarSty">
     <ion-buttons start *ngIf="chain==0">
       <button ion-button icon-only (click)="ownerBack()" navPush >
-        <ion-icon name="arrow-back"></ion-icon>Back
+        <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
     <ion-icon name="arrow-back" class="navIcon" (click)="ownerBack()" navPush *ngIf="chain==1"></ion-icon>
@@ -16,19 +16,24 @@
   </ion-navbar>
 </ion-header>
 <ion-content style="background-color: #eeeeee" id="content">
-  <div class="myDiv" *ngFor="let i of products" >
-    <div class="myInDiv">
-      <div class="nameDiv">{{i.name}}</div>
-      <div class="otherDiv">集采状态 : {{i.gatherStatus}}</div>
-      <div class="otherDiv">单价 : {{i.currency}}{{i.price}}/{{i.unit}}</div>
-      <div class="otherDiv">发布日期 : {{i.publishDate}}</div>
+  <div *ngIf="!showNoContent">
+    <div class="myDiv" *ngFor="let i of products" >
+      <div class="myInDiv">
+        <div class="nameDiv">{{i.name}}</div>
+        <div class="otherDiv">集采状态 : {{i.gatherStatus}}</div>
+        <div class="otherDiv">单价 : {{i.currency}}{{i.price}}/{{i.unit}}</div>
+        <div class="otherDiv">发布日期 : {{i.publishDate}}</div>
+      </div>
+      <img class="myPic" src="{{i.imgPathList}}">
     </div>
-    <img class="myPic" src="{{i.imgPathList}}">
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
   </div>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载中...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  <div style="width: 100%;height:100%; display: flex;align-items: center;justify-content: center" *ngIf="showNoContent">
+    <img src="../../assets/imgs/noContent.png">
+  </div>
 </ion-content>

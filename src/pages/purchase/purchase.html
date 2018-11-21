@@ -1,22 +1,16 @@
-<!--
-  Generated template for the PurchasePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar color="primary" hideBackButton="true"  class="navbarSty">
     <ion-buttons start *ngIf="chain==0">
       <button ion-button icon-only (click)="ownerBack()" navPush >
-        <ion-icon name="arrow-back"></ion-icon>Back
+        <ion-icon name="arrow-back"></ion-icon>
+
       </button>
     </ion-buttons>
     <ion-icon name="arrow-back" class="navIcon" (click)="ownerBack()" navPush *ngIf="chain==1"></ion-icon>
-
     <ion-title>集采列表</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="presentPopover($event)">
-        <ion-icon name="share"></ion-icon>
+        <ion-icon name="funnel" style="font-size: 18px"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -31,9 +25,11 @@
         <div class="areaDiv">
           <ion-icon name="pin" class="myIcon"></ion-icon>{{option.deliveryAddress}}</div>
       </div>
-      <img class="myPic" src="{{option.imgPathList}}">
+      <div  style="min-height:90px; width: 90px;border-radius: 5px;border: solid 1px #eeeeee;display: flex;align-items: center;justify-content: center;margin-right: 10px">
+        <img src='{{option.imgPathList}}' style="max-height: 90px">
+      </div>
+      <!--<img class="myPic" src="{{}}">-->
     </div>
-
     <div class="myFootDiv">
        <div [class.myFootInDiv]="option.gatherStatus=='进行中' " [class.myFootInTDiv]="option.gatherStatus=='已结束'"
             [class.myFootInTTDiv]="option.gatherStatus=='已成团' " [class.myFootInTTTDiv]="option.gatherStatus=='未成团'"
@@ -46,7 +42,6 @@
       loadingSpinner="bubbles"
       loadingText="加载中...">
     </ion-infinite-scroll-content>
-
   </ion-infinite-scroll>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="all==0">
     <ion-infinite-scroll-content

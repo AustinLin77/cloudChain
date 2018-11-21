@@ -221,7 +221,8 @@ export class PurchaseDetailsPage {
     }
   }
   ownerBack(){
-     this.navCtrl.push('PurchasePage')
+     // this.navCtrl.push('PurchasePage')
+    this.navCtrl.pop()
    }
   handleSecondSuccess(result){
     this.url2='/app/goods/sign/up/';

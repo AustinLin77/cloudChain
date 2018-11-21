@@ -3,7 +3,8 @@ import { IonicPage, NavController, NavParams, AlertController, ActionSheetContro
 import { HttpService } from '../../service/HttpService';
 import * as $ from "jquery";
 import { PhotoViewer } from '@ionic-native/photo-viewer';
-
+import { Component,ViewChild } from '@angular/core';
+import { Navbar } from 'ionic-angular';
 /**
  * Generated class for the StorageDocumentsDetailPage page.
  *
@@ -18,7 +19,7 @@ import { PhotoViewer } from '@ionic-native/photo-viewer';
 })
 
 export class StorageDocumentsDetailPage {
-
+  @ViewChild(Navbar) navBar: Navbar;
   headerParameters: any; // 请求 body
   auditStatus: string = '-1';
   pageNum: number = 1; // 每页的数量
@@ -41,6 +42,7 @@ export class StorageDocumentsDetailPage {
 
   // 初始化
   ionViewDidLoad() {
+    this.navBar.backButtonClick = this.backButtonClick;
     console.log('ionViewDidLoad CustomerManageDetailPage');
     this.obtainDatas();
     $(".top button").on('click',function (e) {
@@ -51,7 +53,11 @@ export class StorageDocumentsDetailPage {
 
     this.showApproval = this.type == '0' ? 0 : 1;
   }
-
+  backButtonClick = (e: UIEvent) => {
+    // var data= 3;
+    // this.events.publish('pop:myUnread',data, Date.now());
+    this.navCtrl.pop();
+  }
   showBigIcon(data) {
     console.log(data);
     this.photoViewer.show(data.copyPath, data.type);
@@ -66,7 +72,7 @@ export class StorageDocumentsDetailPage {
       id: this.data.id
     };
     console.log(this.data);
-    var url = 'http://wmsapi.sunwoda.com/api/inbound/bill/headers/app/detailLines/' + this.data.id;
+    var url = 'https://wmsapi.sunwoda.com/api/inbound/bill/headers/app/detailLines/' + this.data.id;
     this.httpService.getUser(url, this.headerParameters).then(res => this.handleUserInfoSuccess(res));
   }
 
@@ -162,7 +168,7 @@ export class StorageDocumentsDetailPage {
           text: '确定',
           handler: data => {
             console.log('Saved clicked');
-            this.passOrRefuse(type, data['输简要说明驳回原因']);
+            this.passOrRefuse(type, data['请简要说明驳回原因']);
           }
         }
       ]
@@ -175,7 +181,7 @@ export class StorageDocumentsDetailPage {
       status: type,
       approvalConments: advise
     };
-    var url = 'http://wmsapi.sunwoda.com/api/inbound/bill/headers/app/approval/' + this.data.id;
+    var url = 'https://wmsapi.sunwoda.com/api/inbound/bill/headers/app/approval/' + this.data.id;
     this.httpService.putWithHeadersServes(url, this.headerParameters).then(res => this.handleApprovalSuccess(res));
   }
 
@@ -187,9 +193,20 @@ export class StorageDocumentsDetailPage {
       return;
     }
 
-    console.log('handleApprovalSuccess pop remove data!')
+    console.log('handleApprovalSuccess pop remove data!');
+    var headerParameters={
+      status:'0'
+    }
+    this.httpService.getUser('https://wmsapi.sunwoda.com/api/inbound/bill/headers/app/bill', headerParameters).then(res => this.handleMyInfoSuccess(res));
+    // this.events.publish('pop:data',this.data, Date.now());
+    console.log(this.data);
+    // this.navCtrl.pop();
+  }
+  handleMyInfoSuccess(res){
+    console.log(res.total)
+    this.unread=res.total
+    this.events.publish('pop:myUnread',this.unread, Date.now());
     this.events.publish('pop:data',this.data, Date.now());
-    console.log(this.data)
     this.navCtrl.pop();
   }
 }

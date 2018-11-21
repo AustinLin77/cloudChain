@@ -11,8 +11,7 @@
     </div>
     <div *ngFor="let good of option.content">
        <div class="divS" >
-
-           <img src="{{good.imgPathList}}" class="divSPic">
+         <img src="{{good.imgPathList}}" class="divSPic">
         <div style="width: 180px;padding: 10px;height: 100%">
           <div style="font-family: 微软雅黑;font-size: 16px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
             {{good.goodsName}}
@@ -42,6 +41,5 @@
   </div>
 </ion-content>
 <ion-footer class="footer">
-
   <button ion-button  color="primary" style="margin-left: 20px;margin-right: 10px" (click)="buyAgain()">再次购买</button>
 </ion-footer>

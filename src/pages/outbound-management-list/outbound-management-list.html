@@ -14,9 +14,10 @@
     >
 
     </ion-searchbar>
-    <ion-buttons end>
+    <ion-buttons end >
       <button ion-button icon-only  (click)="onCancelOrSearch(0)" *ngIf="cancelOrSearch == 1">
-        <ion-icon  name="search"></ion-icon>
+        <ion-icon  name="search" ></ion-icon>
+
       </button>
       <button ion-button icon-only  (click)="onCancelOrSearch(1)" *ngIf="cancelOrSearch == 0">
         取消
@@ -24,12 +25,16 @@
     </ion-buttons>
   </ion-navbar>
 
-  <div style="height: 40px; position: relative" class="ready" *ngIf="showSearchLoaction == 'false'">
-    <button  style="border-bottom: solid 3px #0071ff" (click)="onPageTypeChange('1')">
+  <div style="height: 40px; position: relative" class="ready" *ngIf="showSearchLoaction == 'false'" id="mynavaaa">
+    <button  style="
+    /*border-bottom: solid 3px #0071ff*/
+    /*;*/
+    font-size: 14px" (click)="onPageTypeChange('1')" [class.already]="already == 'true'">
       已审批
     </button>
-    <button style="" (click)="onPageTypeChange('0')">
+    <button style="font-size: 14px;" (click)="onPageTypeChange('0')" [class.unready]="unready == 'true'">
       未审批
+      <ion-badge color="secondary" style="position: absolute;top: 0;right: 0" *ngIf="unread!=0">{{unread}}</ion-badge>
     </button>
   </div>
   <div class="searchLoaction" *ngIf="showSearchLoaction == 'true'">
@@ -44,15 +49,21 @@
 </ion-header>
 
 <ion-content>
-  <div style="background-color: #eee;" *ngIf="showSearchLoaction == 'false'" >
+  <div style="background-color: #eee;height: 100%" *ngIf="showSearchLoaction == 'false'" >
     <button ion-item *ngFor="let data of dataSource1" (click)="itemTapped($event, data)" style="border-top: solid 10px #eee ">
-      <div style="color: #555;">单据编号：{{data.documentCode}}</div>
-      <div style="position: absolute;top: 9%;right: 5%;color: #e51c23;">{{data.status}}</div>
-      <div>
-        <div style="padding-top: 10px;color: #aaa;">库存组织:{{data.orgName}}</div>
-        <div style="color: #aaa">单据类型:{{data.documentType}}</div>
-        <div style="color: #aaa">单据日期:{{data.documentDate}}</div>
-        <div style="color: #aaa">备注:{{data.docRemark}}</div>
+      <div style="color: #333;
+    font-size: 15px;
+    font-weight: bold;
+    width:80%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;">单据编号：{{data.documentCode}}</div>
+      <div style="position: absolute;top: 9%;right: 3%;color: #e51c23;font-size: 14px">{{data.status}}</div>
+      <div style="margin-left: 5px">
+        <div style="padding-top: 10px;color: #666;font-size: 14px;">库存组织:{{data.orgName}}</div>
+        <div style="color: #666;font-size: 14px;margin-top: 3px">单据类型:{{data.documentType}}</div>
+        <div style="color: #666;font-size: 14px;margin-top: 3px">单据日期:{{data.documentDate}}</div>
+        <div style="color: #666;font-size: 14px;margin-top: 3px">备注:{{data.docRemark}}</div>
       </div>
 
       <div style="position: absolute;top: 0;right: 0;height: 100%;display: flex;justify-content: center;align-items: center">

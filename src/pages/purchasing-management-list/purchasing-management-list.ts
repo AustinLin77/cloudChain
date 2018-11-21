@@ -4,7 +4,8 @@ import { HttpService } from '../../service/HttpService';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 import * as $ from "jquery";
 import { PurchasingManagementListDetailPage } from '../../pages/purchasing-management-list-detail/purchasing-management-list-detail';
-
+import { Component,ViewChild } from '@angular/core';
+import { Navbar } from 'ionic-angular';
 
 /**
  * Generated class for the PurchasingManagementListPage page.
@@ -20,7 +21,8 @@ import { PurchasingManagementListDetailPage } from '../../pages/purchasing-manag
 })
 
 export class PurchasingManagementListPage {
-
+  @ViewChild(Navbar) navBar: Navbar;
+  unread:number=0;
   headerParameters: any;
   auditStatus: string = '1';
   pageNum: number = 1;
@@ -29,22 +31,29 @@ export class PurchasingManagementListPage {
   pages: number;
   dataSource: any = [];
   dataSource1: any = [];
+  already:string='true';
+  unready:string='false';
   dataSource2: any = [];
   showSearch:string='false';
   flag:number=0;
   myInput: string = '';
-  showSearchLoaction="false"
+  showSearchLoaction="false";
   searchLoactionData:any=["东莞李威","小米科技有限公司","石龙仔市场"];
   cancelOrSearch: number = 1;
 
   constructor(private httpService: HttpService, public navCtrl: NavController,
               public navParams: NavParams, public alertCtrl: AlertController,
               private photoViewer: PhotoViewer, public events: Events) {
+    events.subscribe('pop:myUnread', (number)=>{
+      console.log(number);
+      this.unread = number;
+    })
     events.subscribe('pop:data:pml', (data, time) => {
 
       console.log('OutboundManagementListPage pop data');
       console.log(data);
       // this.obtainDatas();
+      console.log(this.dataSource1.length);
       this.removeDatas(data);
     });
   }
@@ -96,23 +105,35 @@ export class PurchasingManagementListPage {
       this.headerParameters['orderNumber'] = this.myInput;
     }
 
-    this.httpService.getUser('http://wmsapi.sunwoda.com/api/purchase/reqPurchase/app/bill', this.headerParameters).then(res => this.handleUserInfoSuccess(res));
+    this.httpService.getUser('https://wmsapi.sunwoda.com/api/purchase/reqPurchase/app/bill', this.headerParameters).then(res => this.handleUserInfoSuccess(res));
   }
 
   onPageTypeChange(type) {
     console.log(type);
+    if(type=='1'){
+      this.already='true';
+      this.unready='false';
+    }else{
+      this.already='false';
+      this.unready='true';
+    }
     this.auditStatus = type;
     this.obtainDatas();
   }
+  backButtonClick = (e: UIEvent) => {
 
+    this.navCtrl.pop();
+  }
   ionViewDidLoad() {
+    this.navBar.backButtonClick = this.backButtonClick;
     console.log('ionViewDidLoad CustomerManagePage');
+    this.unread = this.navParams.data.unread;
     this.obtainDatas();
-    $(".ready button").on('click',function (e) {
-      console.log(e);
-      $(".ready button").attr("style","");
-      e.target.setAttribute("style","border-bottom: solid 3px #007aff;")
-    })
+    // $(".ready button").on('click',function (e) {
+    //   console.log(e);
+    //   $(".ready button").attr("style","");
+    //   e.target.setAttribute("style","border-bottom: solid 3px #007aff;")
+    // })
   }
 
   showSe(e){

@@ -15,11 +15,12 @@ page-shopList {
     z-index: 99999
   }
   .firstDiv{
-    height: 40px;
+    height: 51px;
     width: 100%;
     display: flex;
     align-items: center;
-    padding-left: 10px;
+    border-bottom: 1px solid #eeeeee;
+    padding-left: 23px;
     padding-right: 10px
   }
   .companyName{
@@ -27,35 +28,39 @@ page-shopList {
     flex: 1;
     display: flex;
     align-items: center;
-    font-size: 16px;
+    font-size: 12px;
     font-family: 微软雅黑;
-    margin-left: 10px
+    margin-left: 8px;
+    color: #757575;
   }
   .secondDiv{
-    padding-left: 10px;
+    margin-left: 23px;
+    margin-right: 10px;
     height: 90px;
-    width: 100%;
     display: flex;
     align-items: center;
-    border-top: solid #eeeeee 1px;
+    border-bottom: 1px solid #eeeeee;
+    //border-top: solid #eeeeee 1px;
 
   }
   .pic{
-    height: 70px;
-    width: 70px;
-    margin-left: 10px
+    height: 60px;
+    width: 60px;
+    margin-left: 10px;
+    border:1px solid #eee ;
+    border-radius: 3px;
   }
   .innerDiv{
-    padding: 10px;
+    padding: 15px 0 15px 6px;
     height: 100%;
-    width: 70%;
+    width: 100%;
     position: relative;
   }
   .price{
-    font-size: 12px;
+    font-size: 14px;
     font-family: 宋体;
-    color: #488aff;
-    margin-top: 10px
+    color: #FF525C;
+
   }
   .myCol{
     display: flex;
@@ -63,11 +68,11 @@ page-shopList {
     padding: 10px;
     align-items: center;
     justify-content: flex-end;
-    font-size: 14px
+    font-size: 15px
   }
   .submitC{
     height: 100%;
-    background-color: red;
+    background-color: #FF525C;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,32 +81,43 @@ page-shopList {
   .myColT{
     display: flex;
     color: black;
-    padding: 10px;
+    padding-left: 23px;
     align-items: center;
     justify-content: flex-start;
     font-size: 14px
   }
   .minus{
-    height: 30px;
-    width:30px;
+    height: 22px;
+    width:22px;
     margin-right: 1px;
-    background-color: #488aff;
-    border: solid 1px #488aff;
-    color: white
+    background-color: white;
+    border: solid 1px #cccccc;
+    border-radius: 50%;
+    color: #cccccc
   }
+  input{outline:medium;}
   .inputNum{
-    width: 70px;
-    border: solid 1px;
-    height: 30px;
-    padding-left: 5px;
-    margin-right: 1px
+    background-color: white;
+    //
+    width: 35px;
+    line-height: 22px;
+    border:none;
+    height: 22px;
+    margin-right: 1px;
+    color: #FF525C;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .add{
-    height: 30px;
-    width:30px;
-    border: solid 1px #488aff;
-    background-color: #488aff;
-    color: white
+    height: 22px;
+    width:22px;
+    margin-right: 1px;
+    background-color: white;
+    border: solid 1px #cccccc;
+    border-radius: 50%;
+    color: #cccccc
   }
   .myFootInDiv{
     height: 20px;
@@ -147,5 +163,17 @@ page-shopList {
     color: #9E9C9C;
     border: solid #9E9C9C 1px;
     text-align: center;
+  }
+  .checkbox-ios .checkbox-checked{
+    border-color: #FF525C;
+    background-color: #FF525C;
+  }
+  .checkbox-md .checkbox-checked{
+    border-color: #FF525C;
+    background-color: #FF525C;
+  }
+  .checkbox-md .checkbox-icon{
+    border-color: #c8c7cc;
+
   }
 }

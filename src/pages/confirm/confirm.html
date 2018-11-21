@@ -20,7 +20,6 @@
     </div>
     <div class="loopHead" >
       <div class="loopHeadP">购买数量</div>
-
       <div class="loopHeadM">
         <button type="button" id="minusNum" (click)="minus()" class="minus">-</button>
         <input id="text" type="number" size="1" min="0" [(ngModel)]="amount" class="inputNum" (blur)="countTotal()" >
@@ -45,7 +44,7 @@
        </div>
     </div>
     <div class="total" >
-      <div class="totalF">共一件商品   小计 : {{currency}}{{total}}</div>
+      <div class="totalF">共一件商品   小计 : {{currency}}<span style="color: #FF525C">{{total}}</span></div>
     </div>
   </div>
 </ion-content>
@@ -56,7 +55,7 @@
       合计:¥{{total}}
       </ion-col>
       <ion-col col-4 style="padding: 0;height: 100%">
-        <div class="submitC" ><button [disabled]=flag (click)="confirm()" style="height: 100%;background-color: red;display: flex;align-items: center;justify-content: center;font-size: 15px;color: white">提交申请</button></div>
+        <div class="submitC" ><button [disabled]=flag (click)="confirm()" style="height: 100%;background-color:#FF525C;display: flex;align-items: center;justify-content: center;font-size: 15px;color: white">提交申请</button></div>
       </ion-col>
     </ion-row>
   </ion-grid>

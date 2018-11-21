@@ -25,10 +25,10 @@
   </ion-navbar>
 
   <div style="height: 40px; position: relative" class="ready" *ngIf="showSearchLoaction == 'false'">
-    <button  style="border-bottom: solid 3px #0071ff" (click)="onPageTypeChange('-1')">
+    <button  style="border-bottom: solid 3px #0071ff;font-size: 14px" (click)="onPageTypeChange('-1')">
       已审批
     </button>
-    <button style="" (click)="onPageTypeChange('1')">
+    <button style="font-size: 14px" (click)="onPageTypeChange('1')">
       未审批
     </button>
   </div>
@@ -47,10 +47,16 @@
 <ion-content>
   <div style="background-color: #eee;" *ngIf="showSearchLoaction == 'false'" >
     <button ion-item *ngFor="let data of dataSource1" (click)="itemTapped($event, data)" style="border-top: solid 10px #eee ">
-      <div style="color: #555;">{{data.name}}</div>
+      <div style="color: #333;
+     font-size: 15px;
+    font-weight: bold;
+    width:80%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;">{{data.name}}</div>
       <div>
-        <div style="padding-top: 10px;color: #aaa;">社会信用代码:{{data.codeCredit}}</div>
-        <div style="color: #aaa">客户分类:{{data.ratings}}</div>
+        <div style="padding-top: 10px;color: #666;font-size: 14px;padding-left: 5px">社会信用代码:{{data.codeCredit}}</div>
+        <div style="color: #666;font-size: 14px;padding-left: 5px;margin-top: 3px">客户分类:{{data.ratings}}</div>
       </div>
       <div style="position: absolute;top: 0;right: 0;height: 100%;display: flex;justify-content: center;align-items: center">
         <!--<ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>-->

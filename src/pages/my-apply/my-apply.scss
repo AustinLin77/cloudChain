@@ -7,8 +7,8 @@ page-my-apply {
     position: absolute;
     top: 16px;
     left: 20px;
-    color: white;
-    font-size: 24px;
+    color: black;
+    font-size: 18px;
     z-index: 99999
   }
   .myDiv{
@@ -34,15 +34,16 @@ page-my-apply {
     height: 25px;
     font-family: 微软雅黑;
     font-weight: 200;
-    font-size: 16px;
-
+    font-size: 15px;
+    color: black;
     text-overflow:ellipsis;
     overflow:hidden;
+    margin-bottom: 5px;
   }
   .otherDiv{
     color:#9E9C9C;
     font-family: 宋体;
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 5px;
   }
 
@@ -53,13 +54,15 @@ page-my-apply {
   }
   .areaDiv{
     line-height: 20px;
-    margin-bottom: 5px;
-    color:#9E9C9C;
+    color:#666666;
     height:20px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     width: 200px;
     padding-right: 10px;
+    margin-top: 8px;
+    font-size: 14px;
   }
+
 }

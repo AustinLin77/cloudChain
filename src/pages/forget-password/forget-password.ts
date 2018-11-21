@@ -38,7 +38,7 @@ export class ForgetPasswordPage {
   // 下一步
   fCommit() {
 
-    var verUrl = 'http://wmsapi.sunwoda.com/api/users/valid/' + this.verifyCode1;
+    var verUrl = 'https://wmsapi.sunwoda.com/api/users/valid/' + this.verifyCode1;
     var data = {'telephone': this.tel1};
     this.httpService.putWithHeadersServes(verUrl, data).then(res => this.handleCommitSuccess(res));
   }
@@ -80,7 +80,7 @@ export class ForgetPasswordPage {
           handler: () => {
             console.log('Agree clicked');
             var data = {'mobilePhone': this.tel1, 'loginName': this.fUsername};
-            var vCodeUrl = 'http://wmsapi.sunwoda.com/api/users/getValidCode';
+            var vCodeUrl = 'https://wmsapi.sunwoda.com/api/users/getValidCode';
             this.httpService.postWithHeadersNew(vCodeUrl, data).then(res => this.handleCodeSuccess(res));
           }
         }

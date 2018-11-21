@@ -26,8 +26,12 @@ export class MyShopListPage {
   flag:boolean=true;
   constructor(public navCtrl: NavController, public navParams: NavParams,private httpService: HttpService) {
   }
+
+
+
   //初始化获得数据
   ngOnInit():void{
+
     this.pageNum = 1;
       this.httpService.getOrganizea('/app/order/list', {'pageNum': this.pageNum, 'pageSize': this.pageSize}
       ).then(
@@ -36,6 +40,43 @@ export class MyShopListPage {
   }
   handleError(error){
     console.log(error)
+  }
+  handleReSuccess(result){
+    if(result.data.length==0){
+      this.httpService.presentToast("无更多订单")
+    }
+    console.log(this.pageNum);
+    this.pageNum++;
+    this.cnt=result.pageNum*result.pageSize;
+    console.log(this.cnt);
+    if(this.cnt>result.total){
+      this.flag=false;
+    }
+    console.log(result);
+    for(var i=0;i< result.data.length;i++){
+      result.data[i].total=0;
+      for(var a=0;a< result.data[i].content.length;a++){
+        result.data[i].total=Number((result.data[i].total+parseFloat(result.data[i].content[a].price)*result.data[i].content[a].qty).toFixed(2));
+        result.data[i].content[a].isChecked=0;
+        if(!result.data[i].content[a].currency){
+          result.data[i].content[a].currency='￥';
+        }
+        if(result.data[i].content[a].imgPathList.length>1){
+          result.data[i].content[a].imgPathList= result.data[i].content[a].imgPathList[0]
+        }
+        switch (result.data[i].content[a].currency){
+          case 'CNY':
+            result.data[i].content[a].currency='￥';
+            break;
+          case 'USD':
+            result.data[i].content[a].currency='$';
+            break;
+        }
+      }}
+    for(var e=0;e<result.data.length;e++){
+      this.allData.push(result.data[e])
+    }
+
   }
   handleSuccess(result){
     if(result.data.length==0){
@@ -121,7 +162,7 @@ export class MyShopListPage {
         infiniteScroll.complete();
         this.httpService.getOrganize('/app/order/list', {'pageNum':this.pageNum,'pageSize':this.pageSize }
         ).then(
-          res => this.handleSuccess(res));
+          res => this.handleReSuccess(res));
       }, 2000);
     }
   }

@@ -38,7 +38,8 @@ export class PurchasePage {
   }
   //返回
   ownerBack() {
-    this.navCtrl.setRoot(TabsPage);
+    // this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.popToRoot()
   }
   //下滑刷新
   doInfinite(infiniteScroll) {
@@ -91,8 +92,6 @@ export class PurchasePage {
             result.data[i].currency = '￥';
             break;
           case 'USD':
-
-
             result.data[i].currency = '$';
             break;
         }
@@ -115,10 +114,7 @@ export class PurchasePage {
         }
       }
     }
- // for (var i = 0; i < result.data.length; i++) {
-
-
-    }
+  }
   //跳转到集采详情界面，携带参数
   goToPurchaseDetails(n){
     console.log(n);

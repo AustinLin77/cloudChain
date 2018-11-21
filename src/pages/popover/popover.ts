@@ -13,6 +13,7 @@ import { HttpService} from '../../service/HttpService';
   selector: 'page-popover',
   templateUrl: 'popover.html',
 })
+
 export class PopoverPage {
    minPrice:number;
    maxPrice:number;
@@ -20,6 +21,13 @@ export class PopoverPage {
    max;
   constructor(public navCtrl: NavController, public navParams: NavParams,private httpService:HttpService,private viewCtrl:ViewController) {
   }
+  // ngOnInit(){
+  //    document.querySelector(".popover-content").offsetLeft="88px";
+  //
+  // }
+
+
+
    //填写完区间低价后检查
   adjustMin(){
     if(this.minPrice<0){

@@ -8,73 +8,80 @@
   <ion-navbar color="primary" hideBackButton="true"  class="navbarSty">
     <ion-buttons start *ngIf="chain==0">
       <button ion-button icon-only (click)="ownerBack()" navPush >
-        <ion-icon name="arrow-back"></ion-icon>Back
+        <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
     <ion-icon name="arrow-back" class="navIcon" (click)="ownerBack()" navPush *ngIf="chain==1"></ion-icon>
-
     <ion-title>我参与的集采</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="presentPopover($event)">
-        <ion-icon name="share"></ion-icon>
+        <ion-icon name="funnel" style="font-size: 18px"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content style="background-color: #eeeeee;padding-bottom: 10px" id="content">
-  <div *ngFor="let option of data" style="height: 150px" >
-    <div class="myDiv"  >
-      <div class="myInDiv">
-        <div class="nameDiv">{{option.name}}</div>
-        <div class="otherDiv">预期价格 : {{option.currency}}{{option.price}}/{{option.unit}}</div>
-        <div class="otherDiv">成团数量 : {{option.clustersNum}}{{option.unit}}</div>
-        <div class="areaDiv">
-          <ion-icon name="pin" class="myIcon"></ion-icon>{{option.deliveryAddress}}</div>
-      </div>
-      <img class="myPic" src="{{option.imgPathList}}">
-    </div>
-    <div class="myFootDiv">
-      <div [class.myFootInDiv]="option.gatherStatus=='进行中' " [class.myFootInTDiv]="option.gatherStatus=='已结束'"
-           [class.myFootInTTDiv]="option.gatherStatus=='已成团' " [class.myFootInTTTDiv]="option.gatherStatus=='未成团'"
-           [class.myFootInTTTTDiv]="option.gatherStatus=='未开始'">{{option.gatherStatus}}</div>
-    </div>
-  </div>
-  <div style="height: 10px;width: 100%;background: #eeeeee" *ngIf="flag===0"></div>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="twoflag===0" >
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载中...">
-    </ion-infinite-scroll-content>
+  <div *ngIf="!showNoContent">
+    <div *ngFor="let option of data" style="height: 150px" >
+      <div class="myDiv"  >
+        <div class="myInDiv">
+          <div class="nameDiv">{{option.name}}</div>
+          <div class="otherDiv">预期价格 : {{option.currency}}{{option.price}}/{{option.unit}}</div>
+          <div class="otherDiv">成团数量 : {{option.clustersNum}}{{option.unit}}</div>
+          <div class="areaDiv">
+            <ion-icon name="pin" class="myIcon"></ion-icon>{{option.deliveryAddress}}</div>
+        </div>
+        <div  style="min-height:90px; width: 90px;border-radius: 5px;border: solid 1px #eeeeee;display: flex;align-items: center;justify-content: center;margin-right: 10px">
+          <img src='{{option.imgPathList}}' style="max-height: 90px">
+        </div>
 
-  </ion-infinite-scroll>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="all==0">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载中...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="all==1">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载中...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="all==2">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载中...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="all==3">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载中...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="all==4">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载中...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+      </div>
+      <div class="myFootDiv">
+        <div [class.myFootInDiv]="option.gatherStatus=='进行中' " [class.myFootInTDiv]="option.gatherStatus=='已结束'"
+             [class.myFootInTTDiv]="option.gatherStatus=='已成团' " [class.myFootInTTTDiv]="option.gatherStatus=='未成团'"
+             [class.myFootInTTTTDiv]="option.gatherStatus=='未开始'">{{option.gatherStatus}}</div>
+      </div>
+    </div>
+    <div style="height: 10px;width: 100%;background: #eeeeee" *ngIf="flag===0"></div>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="twoflag===0" >
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载中...">
+      </ion-infinite-scroll-content>
+
+    </ion-infinite-scroll>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="all==0">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="all==1">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="all==2">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="all==3">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="all==4">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+  <div style="width: 100%;height:100%; display: flex;align-items: center;justify-content: center" *ngIf="showNoContent">
+    <img src="../../assets/imgs/noContent.png">
+  </div>
 </ion-content>

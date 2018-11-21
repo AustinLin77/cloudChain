@@ -5,7 +5,6 @@ import {ShopListComfirmPage} from "../shop-list-comfirm/shop-list-comfirm";
 import { App } from 'ionic-angular';
 import {ProductionPage} from "../production/production"
 import { GlobalVariable} from '../../globalVariable/globalVariable';
-import { LoginPage} from '../../pages/login/login'
 @Component({
   selector: 'page-shopList',
   templateUrl: 'shopList.html'
@@ -29,8 +28,8 @@ export class ShopListPage {
   }
   //点击跳转到登录界面
   login(){
-    this.app.getRootNav().push('GuidPage')
 
+    this.app.getRootNav().push('GuidPage')
   }
   //初始化获得数据，只渲染一次
   ngOnInit(): void {
@@ -51,8 +50,7 @@ export class ShopListPage {
   handleErrora(error){
     console.log(error)
   }
-
-  //弹窗函数z
+  //弹窗函数
   fShowConfirm(title, message, disagreeText, agreeText) {
     let confirm = this.alertCtrl.create({
       title: title,
@@ -165,8 +163,6 @@ export class ShopListPage {
                this.data[t].content[z].buyNum=0
         }
       }
-
-
       this.checked=false;
       for(var c = 0; c < this.data.length; c++){
          this.data[c].ifChecked=0;
@@ -180,7 +176,6 @@ export class ShopListPage {
   minus(option){
     if(option.isChecked==1&&option.buyNum>0){
       this.total=Number((this.total-parseFloat(option.goodPrice)).toFixed(2))
-
     }
     if( option.buyNum<=0){
       option.buyNum=0;
@@ -254,7 +249,7 @@ export class ShopListPage {
             this.httpService.presentToast("请选择您要删除的条目")
           }
         }else if(this.action=="提交申请"){
-      this.subFlag='1';
+                this.subFlag='1';
                 this.submitData=[];
            for(var a = 0; a < this.data.length; a++) {
               for (var b = 0; b < this.data[a].content.length; b++) {

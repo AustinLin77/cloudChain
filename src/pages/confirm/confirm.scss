@@ -81,24 +81,37 @@ page-confirm {
     margin-top: 10px
   }
   .minus{
-    height: 30px;
-    width:30px;
-    margin-right: 3px;
-    background-color: #488aff;
-    color: white
+    height: 22px;
+    width:22px;
+    margin-right: 1px;
+    background-color: white;
+    border: solid 1px #cccccc;
+    border-radius: 50%;
+    color: #cccccc
   }
+  input{outline:medium;}
   .inputNum{
-    width: 70px;
-    border: solid 1px;
-    height: 30px;
-    padding-left: 5px;
-    margin-right: 3px
+    background-color: white;
+    //
+    width: 35px;
+    line-height: 22px;
+    border:none;
+    height: 22px;
+    margin-right: 1px;
+    color: #FF525C;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .add{
-    height: 30px;
-    width:30px;
-    background-color: #488aff;
-    color: white
+    height: 22px;
+    width:22px;
+    margin-right: 1px;
+    background-color: white;
+    border: solid 1px #cccccc;
+    border-radius: 50%;
+    color: #cccccc
   }
   .totalF{
     height: 30px;
@@ -115,7 +128,7 @@ page-confirm {
   }
   .submitC{
     height: 100%;
-    background-color: red;
+    background-color: #FF525C;
     display: flex;
     align-items: center;
     justify-content: center;

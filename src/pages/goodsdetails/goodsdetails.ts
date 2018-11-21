@@ -59,6 +59,7 @@ export class GoodsdetailsPage {
   ownerBack(){
     console.log(this.what);
     this.navCtrl.push('ProductionPage',{id:this.idss,whatSend:this.what})
+    // this.navCtrl.pop({id:this.idss,whatSend:this.what})
   }
   ionViewWillLeave(){
     this.sliders.stopAutoplay();

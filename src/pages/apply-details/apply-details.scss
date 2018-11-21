@@ -68,12 +68,11 @@ page-apply-details {
     display: block;
   }
   .propertySty{
-    background-color: #eeeeee;
-    height: 20px;
-    line-height: 20px;
+    background-color: #F0F0F0;
+    height: 25px;
+    line-height: 25px;
     text-align:center;
-    border-bottom: solid #cccccc 1px;
-    border-top: solid #cccccc 1px
+    color: #9E9C9C;
   }
   .loopHeadS{
     background-color: white;
@@ -92,7 +91,7 @@ page-apply-details {
   }
   .submitC{
     height: 100%;
-    background-color: red;
+    background-color: #FF525C ;
     display: flex;
     align-items: center;
     justify-content: center;

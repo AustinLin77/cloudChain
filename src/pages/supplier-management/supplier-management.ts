@@ -84,7 +84,7 @@ export class SupplierManagementPage {
       this.headerParameters['name'] = this.myInput;
     }
 
-    this.httpService.getUser('http://wmsapi.sunwoda.com/api/companys/app/get', this.headerParameters).then(res => this.handleUserInfoSuccess(res));
+    this.httpService.getUser('https://wmsapi.sunwoda.com/api/companys/app/get', this.headerParameters).then(res => this.handleUserInfoSuccess(res));
   }
 
   onPageTypeChange(type) {

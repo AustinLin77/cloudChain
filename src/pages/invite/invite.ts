@@ -31,7 +31,8 @@ export class InvitePage {
     console.log(this.chain)
   }
   ownerBack(){
-    this.navCtrl.setRoot(TabsPage);
+    // this.navCtrl.setRoot(TabsPage);
+    this.navCtrl.popToRoot()
   }
   //跳转到招标详情界面
   inviteDetails(id){

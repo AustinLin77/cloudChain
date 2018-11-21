@@ -1,6 +1,6 @@
 page-storage-documents {
   .ready>button{
-    background: #fff;
+    //background: #fff;
     border-radius: 0;
     position:absolute;
     height: 100%;
@@ -38,5 +38,14 @@ page-storage-documents {
     width: 60px;
     text-align: center;
     color: #aaa;
+  }
+  .already{
+    background-color: antiquewhite;
+  }
+  .unready{
+    background-color: antiquewhite;
+  }
+  button{
+    background-color: white;
   }
 }

@@ -13,7 +13,7 @@ export class HttpService {
   }
   loadingStart(){
     this.myloading = this.loadCtrl.create({
-      content:'loading'
+      content:'正在加载...'
     });
     this.myloading.present();
     setTimeout(() => {
@@ -28,7 +28,7 @@ export class HttpService {
     url = APP_SERVE_URL_TEST+ url;
     console.log(url);
     console.log(paramObj);
-    this.loadingStart();
+    // this.loadingStart();
     return this.http.get(url + this.toQueryString(paramObj))
       .toPromise( )
       .then(res => this.handleSuccess(res.json()))
@@ -68,7 +68,8 @@ export class HttpService {
     url =url + this.toQueryString(paramObj);
     var authorization = 'Bearer ' + localStorage.getItem("token");
     var teamId = localStorage.getItem("teamId");
-    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': authorization, 'X-TenantId':teamId, "Prefer-Lang":"zh-CN","Accept": "application/json", "X-Logined-Sign": "","X-UserId": "", });
+    var userName= localStorage.getItem("userName");
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': authorization, 'X-TenantId':teamId, "Prefer-Lang":"zh-CN","Accept": "application/json", "X-Logined-Sign": userName,"X-UserId": "", });
     console.log(headers);
     console.log(url);
     console.log(paramObj);
@@ -123,9 +124,19 @@ export class HttpService {
   }
 
   public postBody(url: string, paramObj: any) {
-    this.showLoading();
+    // this.showLoading();
     url = APP_SERVE_URL_TEST + url;
     let headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.post(url, paramObj, new RequestOptions({headers: headers}))
+      .toPromise()
+      .then(res => this.handleSuccess(res.json()))
+      .catch(error => this.handleError(error));
+  }
+
+  public postBodyOne(url: string, paramObj: any) {
+    // this.showLoading();
+    url = 'https://wmsapi.sunwoda.com' + url;
+    let headers = new Headers({'Content-Type': 'x-wwww-form-urlencoded'});
     return this.http.post(url, paramObj, new RequestOptions({headers: headers}))
       .toPromise()
       .then(res => this.handleSuccess(res.json()))
@@ -193,7 +204,7 @@ export class HttpService {
 
     var authorization = 'Bearer ' + localStorage.getItem("token");
     var teamId = localStorage.getItem("teamId");
-    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': authorization, 'X-TenantId':teamId, "Prefer-Lang":"zh-CN"});
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': authorization, 'X-TenantId':teamId, "Prefer-Lang":"zh-CN",'X-Logined-Sign': userName});
     // let headers = new Headers({'Content-Type': 'application/json', 'X-TenantId':teamId, 'X-Logined-Sign': userName});
     return this.http.put(url, paramObj, new RequestOptions({headers: headers}))
       .toPromise()
@@ -229,9 +240,10 @@ export class HttpService {
   }
 
   private handleSuccess(result) {
-    this.dismissLoading();
+    // this.dismissLoading();
     if(this.loading) this.loading.dismiss();
-    if (result['status'] === 401) {
+    if (result['error'] === 'invalid_token') {
+      console.log("sxj")
       this.showAlert();
     }
     return result;
@@ -291,7 +303,7 @@ export class HttpService {
       console.error(msg+'，请检查路径是否正确');
     }
     if (error.status == 403) {
-      this.showAlert()
+      // this.showAlert()
       console.error("403");
     }
     console.log(error);

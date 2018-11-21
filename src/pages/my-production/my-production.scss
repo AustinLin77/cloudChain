@@ -7,46 +7,48 @@ page-my-production {
       position: absolute;
       top: 16px;
       left: 20px;
-      color: white;
-      font-size: 24px;
+      color: black;
+      font-size: 18px;
       z-index: 99999
     }
-    .myDiv{
-      height: 120px;
-      background-color: white;
-      margin: 10px;
-      display: flex;
-      align-items: center;
-    }
-    .myPic{
-      width: 90px;
-      height: 90px;
-      justify-content: flex-end;
-      margin-right: 15px;
-    }
-    .myInDiv{
-      flex: 1;
-      height: 90px;
-      margin-left: 15px;
-      margin-right: 10px;
-    }
-    .nameDiv{
-      height: 25px;
-      font-family: 微软雅黑;
-      font-weight: 200;
-      font-size: 16px;
-      margin-bottom: 5px;
-      text-overflow:ellipsis;
-      overflow:hidden;
-    }
-    .otherDiv{
-      color:#9E9C9C;
-      font-family: 宋体;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
+  .myDiv{
+    height: 120px;
+    background-color: white;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .myPic{
+    width: 90px;
+    height: 90px;
+    justify-content: flex-end;
+    margin-right: 15px;
+  }
+  .myInDiv{
+    flex: 1;
+    height: 90px;
+    margin-left: 15px;
+    margin-right: 10px;
+  }
+  .nameDiv{
+    height: 25px;
+    font-family: 微软雅黑;
+    font-weight: 200;
+    font-size: 15px;
+    color: black;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    margin-bottom: 5px;
+  }
+  .otherDiv{
+    color:#9E9C9C;
+    font-family: 宋体;
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
 
-    .myLitIcon{
+
+  .myLitIcon{
       width: 14px;
       height:14px;
 

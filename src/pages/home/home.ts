@@ -12,7 +12,6 @@ import { GoodsdetailsPage} from "../goodsdetails/goodsdetails";
 import {ApplyDetailsPage} from "../apply-details/apply-details";
 import {PurchaseDetailsPage} from "../purchase-details/purchase-details";
 import {InviteDetailsPage} from "../invite-details/invite-details";
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -34,9 +33,9 @@ export class HomePage {
   url='/app/shopping/car/list';
   products=[];
   applys=[];
+  showCancel=false;
   purchases=[];
   invites=[];
-
   constructor(public navCtrl: NavController, public navParams: NavParams,private httpService: HttpService,
               private app : App,private platform:Platform,public popoverCtrl: PopoverController) {
   }
@@ -46,6 +45,20 @@ export class HomePage {
     this.httpService.get(this.firstUrl, { }
     ).then(
       res => this.handleSuccess(res));
+  }
+  myShowCancel(){
+    this.showCancel=true;
+    document.body.addEventListener('touchmove', function (e) {
+      e.preventDefault(); //阻止默认的处理方式(阻止下拉滑动的效果)
+    }, {passive: false});
+
+  }
+  hiddenCan(){
+    this.showCancel=false;
+    this.searchKey="";
+    // console.log( document.getElementById("myIII").innerHTML
+    // )
+    // document.getElementById("myIII").innerHTML=""
   }
    handleSuccess( result) {
      console.log(result);
@@ -152,16 +165,15 @@ export class HomePage {
       console.log(this.carListNum);
       GlobalVariable.shopCount=this.carListNum;
     }
-    //跳转到分类界面
-   test(){
-    this.app.getRootNav().push( 'SortPage' );
-  }
+  //   //跳转到分类界面
+  //  test(){
+  //   this.app.getRootNav().push( 'SortPage' );
+  // }
    //判断跳转到那个模块
    optionDetails(opT){
     switch(opT.name){
       case '产品':
         this.app.getRootNav().push( 'ProductionPage',  { whatSend:0 } );
-
         break;
       case '需求':
         this.app.getRootNav().push( 'ApplyPage' );
@@ -173,15 +185,13 @@ export class HomePage {
         this.app.getRootNav().push(  'InvitePage' );
         break;
       case '云平台':
-
-        console.log("yunpingtai")
+        console.log("yunpingtai");
         this.app.getRootNav().push(  'CloudPage' );
         break;
       case '金融中心':
-        alert('金融中心还在完善中,敬请期待!')
+        alert('金融中心还在完善中,敬请期待!');
         break;
       case '物流中心':
-
         break;
     }
   }
@@ -226,9 +236,8 @@ export class HomePage {
        ev: myEvent
      });
   }
-
-   goSearch(){
-     window.localStorage.setItem("searchKey",this.searchKey);
-     this.app.getRootNav().push('ProductionPage',{whatSend:2});
-   }
+  goSearch(){
+    window.localStorage.setItem("searchKey",this.searchKey);
+    this.app.getRootNav().push('ProductionPage',{whatSend:2});
+  }
 }

@@ -45,3 +45,141 @@
   //background:url("../assets/icon_nolook.png") no-repeat center;
 }
 
+.myPopovers{
+  left:-20px !important;
+  width: 400px !important;
+  opacity: 0.8;
+  $popover-ios-width:300px
+}
+.ion-backdrop{
+  background-color: white;
+}
+.bar-button-ios[icon-only] ion-icon{
+  font-size: 18px;
+}
+.toolbar-title-ios {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 100;
+  color: #000;
+  pointer-events: auto;
+}
+.toolbar-ios{
+  min-height: 52px;
+}
+.toolbar-ios-primary .toolbar-background-ios {
+  background-color: #ffffff;
+}
+//.tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
+//  color: deepskyblue;
+//}
+.toolbar-md-primary .toolbar-background-md{
+  background-color: #ffffff;
+}
+.toolbar-ios-primary .toolbar-title-ios, .toolbar-ios-primary .bar-button-clear-ios, .toolbar-ios-primary .bar-button-default-ios{
+   color: black;
+}
+.toolbar-ios-primary .searchbar-ios .searchbar-input{
+  color: black;
+  background-color: #eeeeee;
+}
+.toolbar-md-primary .bar-button-clear-md, .toolbar-md-primary .bar-button-default-md, .toolbar-md-primary .bar-button-outline-md, .toolbar-md-primary .toolbar-title-md{
+  color: black;
+}
+ion-searchbar{
+  margin-left: 30px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 95%;
+}
+.searchbar-input{
+  width: 90%;
+}
+.searchbar-md .searchbar-input {
+  padding: 0 35px;
+  border-radius: 5px;
+  background-position: left 8px center;
+  height: auto;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 3rem;
+  color: black;
+  background-color: #eeeeee;
+  border:1px solid #eeeeee;
+  box-shadow: none;
+}
+.searchbar-md .searchbar-search-icon{
+  left: 10px;
+  top: 9px;
+}
+.searchbar-md .searchbar-clear-icon{
+  right:28px;
+}
+.searchbar-ios{
+  padding:0;
+}
+.toolbar-ios-primary .searchbar-ios .searchbar-input ::placeholder{
+  color: black;
+}
+.back-button-text{
+  color: white;
+}
+.back-button-icon-ios{
+  font-size: 18px;
+  color: black;
+  padding-left: 5px;
+}
+.back-button-icon-md{
+  font-size: 18px;
+}
+.toolbar-title-md{
+  padding:0 70px;
+}
+.toolbar-background-ios{
+  background: white;
+}
+.toolbar-background-md{
+  background: white;
+}
+.bar-button-default-md{
+  font-size: 18px;
+  color: black;
+}
+.toolbar-title{
+  color: black;
+}
+.app-root .myPopovers{
+  opacity: 1;
+}
+.checkbox-md .checkbox-icon{
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+.checkbox-md .checkbox-checked .checkbox-inner{
+  left: 5px;
+  top:2px;
+}
+page-shopList .checkbox-md .checkbox-icon {
+  border-color: #FF525C;
+}
+.checkbox-ios .checkbox-checked{
+  border-color: #FF525C;
+  background-color: #FF525C;
+}
+.bar-button-md[icon-only] ion-icon{
+  font-size: 24px;
+}
+#mynavaaa  ion-badge{
+  padding:2px 5px;
+  background-color:red;
+  border-radius: 50%;
+}
+

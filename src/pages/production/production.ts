@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { GoodsdetailsPage} from '../goodsdetails/goodsdetails';
 import { HttpService } from '../../service/HttpService';
+import { App } from 'ionic-angular';
 import { TabsPage } from "../tabs/tabs";
 import { PopoverController } from 'ionic-angular';
 /**
@@ -28,6 +29,8 @@ export class ProductionPage {
   what;
   idss=111;
   key:string;
+  showNoContent:boolean=false;
+
   firstChoice:number=0;
   secondChoice:number=1;
   thirdChoice:number=1;
@@ -38,10 +41,10 @@ export class ProductionPage {
   shaiByPrice:number=1;
   shaiByTime:number=1;
   constructor(public navCtrl: NavController, public navParams: NavParams,private httpService:HttpService,
-              public popoverCtrl: PopoverController) {
+              public popoverCtrl: PopoverController, private app : App) {
   }
   ownerBack(){
-    this.navCtrl.setRoot(TabsPage,{'myindex':0});
+    this.navCtrl.popToRoot()
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductionPage');
@@ -102,11 +105,15 @@ export class ProductionPage {
       }
      }
     }
+  noSearch(){
+    this.flagOne=!this.flagOne;
+  }
 
   //初始化获取数据成功后函数
   handleSuccess(result) {
     if(result.data.length==0){
-      this.httpService.presentToast("无更多产品")
+      // this.httpService.presentToast("无更多产品")
+      this.showNoContent=true;
     }
     this.pageNum++;
     console.log(result);
@@ -1332,7 +1339,7 @@ export class ProductionPage {
         this.thirdChoice=1;
         this.fourthChoice=0;
         this.fourth=0;
-        let popover = this.popoverCtrl.create('PopoverPage');
+        let popover = this.popoverCtrl.create('PopoverPage',{},{cssClass:"myPopovers"});
         popover.present({
           ev: myEvent
         });
@@ -1383,7 +1390,7 @@ export class ProductionPage {
         this.thirdChoice=1;
         this.fourthChoice=0;
         this.fourth=0;
-        let popover = this.popoverCtrl.create('PopoverPage');
+        let popover = this.popoverCtrl.create('PopoverPage',{},{cssClass:"myPopovers"});
         popover.present({
           ev: myEvent
         });
@@ -1433,7 +1440,7 @@ export class ProductionPage {
          this.thirdChoice=1;
          this.fourthChoice=0;
          this.fourth=0;
-         let popover = this.popoverCtrl.create('PopoverPage');
+         let popover = this.popoverCtrl.create('PopoverPage',{},{cssClass:"myPopovers"});
          popover.present({
            ev: myEvent
          });
@@ -1481,7 +1488,7 @@ export class ProductionPage {
          this.thirdChoice=1;
          this.fourthChoice=0;
          this.fourth=0;
-         let popover = this.popoverCtrl.create('PopoverPage');
+         let popover = this.popoverCtrl.create('PopoverPage',{},{cssClass:"myPopovers"});
          popover.present({
            ev: myEvent
          });
@@ -1563,7 +1570,8 @@ export class ProductionPage {
     console.log(this.pageNum);
     this.pageNum++;
     if(result.data.length==0){
-      this.httpService.presentToast("没有该产品")
+      // this.httpService.presentToast("没有该产品")
+      this.showNoContent=true;
     }
     for(var i=0;i<result.data.length;i++){
       if(!result.data[i].imgPathList){
@@ -1592,5 +1600,9 @@ export class ProductionPage {
       }
     }
     this.products=result.data
+  }
+  //跳转到分类界面
+   test(){
+    this.app.getRootNav().push( 'SortPage' );
   }
 }

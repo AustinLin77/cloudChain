@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Events } from 'ionic-angular';
 import { HttpService } from '../../service/HttpService';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
+import {ViewChild } from '@angular/core';
+import { Navbar } from 'ionic-angular';
 import * as $ from "jquery";
 import { CustomerManageDetailPage } from '../../pages/customer-manage-detail/customer-manage-detail';
 import { StorageDocumentsDetailPage } from '../../pages/storage-documents-detail/storage-documents-detail';
@@ -20,7 +22,8 @@ import { StorageDocumentsDetailPage } from '../../pages/storage-documents-detail
 })
 
 export class StorageDocumentsPage {
-
+  @ViewChild(Navbar) navBar: Navbar;
+  unread:number=0;
   headerParameters: any;
   auditStatus: string = '1';
   pageNum: number = 1;
@@ -29,6 +32,8 @@ export class StorageDocumentsPage {
   pages: number;
   dataSource: any = [];
   dataSource1: any = [];
+  already:string='true';
+  unready:string='false';
   dataSource2: any = [];
   showSearch:string='false';
   flag:number=0;
@@ -40,7 +45,10 @@ export class StorageDocumentsPage {
   constructor(private httpService: HttpService, public navCtrl: NavController,
               public navParams: NavParams, public alertCtrl: AlertController,
               private photoViewer: PhotoViewer, public events: Events) {
-
+    events.subscribe('pop:myUnread', (number)=>{
+      console.log(number);
+      this.unread = number;
+    })
     events.subscribe('pop:data', (data, time) => {
 
       console.log('StorageDocumentsPage pop data');
@@ -49,7 +57,10 @@ export class StorageDocumentsPage {
       this.removeDatas(data);
     });
   }
+  backButtonClick = (e: UIEvent) => {
 
+    this.navCtrl.pop();
+  }
   removeDatas(data) {
     for (var i = 0; i < this.dataSource1.length; i++) {
       if(this.dataSource1[i].id === data.id) {
@@ -97,23 +108,37 @@ export class StorageDocumentsPage {
       this.headerParameters['billCode'] = this.myInput;
     }
 
-    this.httpService.getUser('http://wmsapi.sunwoda.com/api/inbound/bill/headers/app/bill', this.headerParameters).then(res => this.handleUserInfoSuccess(res));
+    this.httpService.getUser('https://wmsapi.sunwoda.com/api/inbound/bill/headers/app/bill', this.headerParameters).then(res => this.handleUserInfoSuccess(res));
   }
 
   onPageTypeChange(type) {
     console.log(type);
     this.auditStatus = type;
+    if(type=='1'){
+      this.already='true';
+      this.unready='false';
+    }else{
+      this.already='false';
+      this.unready='true';
+    }
     this.obtainDatas();
   }
 
   ionViewDidLoad() {
+    this.navBar.backButtonClick = this.backButtonClick;
     console.log('ionViewDidLoad CustomerManagePage');
+    this.unread = this.navParams.data.unread;
     this.obtainDatas();
-    $(".ready button").on('click',function (e) {
-      console.log(e);
-      $(".ready button").attr("style","");
-      e.target.setAttribute("style","border-bottom: solid 3px #007aff;")
-    })
+
+    // $(".ready button").on('click',function (e) {
+    //   e=e||window.event;
+    //   e.stopPropagation();
+    //   console.log(e);
+    //   $(".ready button").attr("style","");
+    //   e.target.setAttribute("style","border-bottom: solid 3px #007aff;")
+    //
+    //
+    // })
   }
 
   showSe(e){

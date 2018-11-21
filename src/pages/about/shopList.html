@@ -1,36 +1,39 @@
 <ion-header>
   <ion-navbar hideBackButton="true" class="navbarSty"  color="primary">
     <ion-buttons end>
-      <button ion-button icon-only (click)="doAction()">
+      <button ion-button icon-only (click)="doAction()" style="font-size: 15px;margin-right: 5px">
       {{myDo}}
       </button>
     </ion-buttons>
-    <ion-title>
+    <ion-title style="font-size: 18px">
      进货单
     </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content >
   <div *ngIf="showWhat===1">
-  <div style="border-bottom: solid 2px #eeeeee" *ngFor="let comp of data" >
+    <div style="height: 5px;background-color: #eeeeee;width: 100%"></div>
+  <div style="border-bottom: solid 5px #eeeeee" *ngFor="let comp of data" >
     <div class="firstDiv">
       <ion-checkbox  [(ngModel)]=comp.ifChecked style="width: 20px" (click)="updateGroupCheck(comp)" ></ion-checkbox>
-      <ion-icon name="home" style="font-size:20px;width: 20px;margin-left: 10px"></ion-icon>
+      <img src="assets/imgs/ic_store.png" style="height:18px;width: 18px;margin-left: 15px">
       <div class="companyName">{{comp.company}}</div>
+      <!--<div style="width: 60px;font-size: 12px" *ngIf="comp.gatherStatus!=''">集采未成团</div>-->
     </div>
     <div class="secondDiv" *ngFor="let option of comp.content">
       <ion-checkbox  [(ngModel)]=option.isChecked style="width: 30px;height: 30px" (click)="updateCucumber(comp,option)" ></ion-checkbox>
       <img src="{{option.imgPathList}}" class="pic">
       <div class="innerDiv">
-        <div style="font-family: 微软雅黑;font-size: 14px;overflow: hidden;white-space:normal;width: 100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap">{{option.goodName}}</div>
+        <div style="font-family: 微软雅黑;font-size: 14px;overflow: hidden;white-space:normal;width: 100%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;color: #333;font-weight: bold;height: 40px">{{option.goodName}}</div>
         <div class="price">{{option.currency}}{{option.goodPrice}}/{{option.unit}}</div>
-        <div style="position: absolute;bottom: 10px;left: 10px"  [class.myFootInDiv]="option.gatherStatus=='进行中' " [class.myFootInTDiv]="option.gatherStatus=='已结束'"
-             [class.myFootInTTDiv]="option.gatherStatus=='已成团' " [class.myFootInTTTDiv]="option.gatherStatus=='未成团'"
-             [class.myFootInTTTTDiv]="option.gatherStatus=='未开始'">{{option.gatherStatus}}</div>
-        <div style="position: absolute;bottom: 10px;right: 10px;height:30px;width: 140px">
-          <button type="button" id="minusNum" (click)="minus(option)" class="minus" [disabled]=option.gatherStatus>-</button>
-          <input id="text" type="number" size="1" min="0" [(ngModel)]="option.buyNum" class="inputNum" [disabled]=option.gatherStatus  placeholder="{{option.quantity}}">
-          <button type="button" id="addNum" (click)="add(option)" class="add" [disabled]=option.gatherStatus>+</button>
+        <!--<div style="position: absolute;bottom: 10px;left: 10px"  [class.myFootInDiv]="option.gatherStatus=='进行中' " [class.myFootInTDiv]="option.gatherStatus=='已结束'"-->
+             <!--[class.myFootInTTDiv]="option.gatherStatus=='已成团' " [class.myFootInTTTDiv]="option.gatherStatus=='未成团'"-->
+             <!--[class.myFootInTTTTDiv]="option.gatherStatus=='未开始'">{{option.gatherStatus}}</div>-->
+        <div style="position: absolute;bottom: 15px;right: 0;height:22px;width: 90px;">
+          <!--<img src="../../assets/imgs/decrease.png">-->
+          <button type="button" id="minusNum" (click)="minus(option)" class="minus" [disabled]='option.gatherStatus!=""'>—</button>
+          <input id="text" type="number" size="1" min="0" max="9999" [(ngModel)]="option.buyNum" class="inputNum" [disabled]='option.gatherStatus!=""'  placeholder="{{option.quantity}}">
+          <button type="button" id="addNum" (click)="add(option)" class="add" [disabled]='option.gatherStatus!=""'>+</button>
         </div>
       </div>
     </div>
@@ -40,18 +43,18 @@
     <a (click)="login()">您还没有登录，请登录/注册进行查看</a>
   </div>
 </ion-content>
-<ion-footer style="height: 50px;color: white">
+<ion-footer style="height: 50px;color: white;border-top: 1px solid #eeeeee">
   <ion-grid style="height: 100%;padding: 0">
     <ion-row style="height: 100%">
       <ion-col col-3 class="myColT">
         <ion-checkbox  [(ngModel)]=checked style="width: 20px" (click)="allSelect()" ></ion-checkbox>
-        <span style="margin-left: 5px">全选</span>
+        <span style="margin-left: 12px">全选</span>
       </ion-col>
       <ion-col col-6 class="myCol">
-        合计 : ¥<span style="color: red;font-weight: bold;margin-left: 10px;font-size: 16px">{{total}}</span>
+        合计 : <span style="color: #FF525C;margin-left: 3px">¥</span><span style="color: #FF525C;font-weight: bold;margin-left: 7px;font-size: 16px">{{total}}</span>
       </ion-col>
       <ion-col col-3 style="padding: 0;height: 100%">
-        <div class="submitC" ><button  (click)="confirm()" style="height: 100%;background-color: red;display: flex;align-items: center;justify-content: center;font-size: 15px;color: white">{{action}}</button></div>
+        <div class="submitC" ><button  (click)="confirm()" style="height: 100%;background-color: #FF525C;display: flex;align-items: center;justify-content: center;font-size: 15px;color: white">{{action}}</button></div>
       </ion-col>
     </ion-row>
   </ion-grid>

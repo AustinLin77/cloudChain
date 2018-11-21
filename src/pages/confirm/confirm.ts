@@ -8,7 +8,6 @@ import { HttpService } from '../../service/HttpService';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
 @IonicPage()
 @Component({
   selector: 'page-confirm',
@@ -66,7 +65,6 @@ export class ConfirmPage {
    }else {
      this.total = this.amount * this.price;
    }
-
   }
   //确认提交
   confirm(){

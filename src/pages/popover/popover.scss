@@ -1,26 +1,30 @@
 page-popover {
   .inputNum{
-    width: 30%;
-    border: solid 1px;
+    width: 50%;
+    border: solid 1px #eee;
     height: 30px;
-    padding-left: 5px;
-    margin-right: 3px;
-    background: #F9F0DA;
+    border-radius: 3px;
+    background-color: #f3f3f3;
+    color: #999999;
+    text-align: center;
   }
   .submitB{
+    border-radius: 5px;
     height: 100%;
-    background-color:white;
+    background-color:deepskyblue;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 15px
   }
   .submitC{
+    border-radius: 5px;
     height: 100%;
-    background-color: red;
+    background-color:deepskyblue;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 15px
   }
+
 }

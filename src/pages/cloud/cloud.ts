@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import { HttpService } from '../../service/HttpService';
 import { App } from 'ionic-angular';
 import { LoginPage } from '../login/login';
@@ -19,7 +19,7 @@ export class CloudPage {
   showWhat;
   dataSource : Array <any> = [];
   divHeight : string = screen.width / 3 + 'px';
-  constructor(public navCtrl: NavController, public navParams: NavParams,private app: App,private httpService: HttpService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private app: App,private httpService: HttpService,public alertCtrl: AlertController) {
     var data11 = {'title':'基础数据', 'icon':'assets/ic_search.png', 'model': 0};
     var data12 = {'title':'采购管理', 'icon':'assets/ic_form.png', 'model': 1};
     // var data13 = {'title':'销售管理', 'icon':'assets/ic_approve.png', 'model': 2};
@@ -67,9 +67,32 @@ export class CloudPage {
       }
 
   }
+  fShowConfirm(title, message, disagreeText, agreeText) {
+    let confirm = this.alertCtrl.create({
+      title: title,
+      message: message,
+      buttons: [
+        {
+          text: disagreeText,
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: agreeText,
+          handler: () => {
+            this.app.getRootNav().push('GuidPage')
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
   itemTapped(model) {
     if(this.showWhat==0){
-      this.httpService.presentToast("请登录/注册后再操作")
+      var codeMessage="请登录/注册后再操作";
+      this.fShowConfirm('Tips', codeMessage, '取消', '确定');
+      // this.httpService.presentToast("请登录/注册后再操作")
     }else if(this.showWhat==1){
       if (model === 0) {
       this.app.getRootNav().push('BasicDataPage');

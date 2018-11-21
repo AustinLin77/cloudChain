@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, AlertController, ActionSheetContro
 import { HttpService } from '../../service/HttpService';
 import * as $ from "jquery";
 import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { Component,ViewChild } from '@angular/core';
+import { Navbar } from 'ionic-angular';
 /**
  * Generated class for the PurchasingManagementListDetailPage page.
  *
@@ -17,7 +19,7 @@ import { PhotoViewer } from '@ionic-native/photo-viewer';
 })
 
 export class PurchasingManagementListDetailPage {
-
+  @ViewChild(Navbar) navBar: Navbar;
   headerParameters: any; // 请求头
   auditStatus: string = '-1';
   pageNum: number = 1;
@@ -38,6 +40,7 @@ export class PurchasingManagementListDetailPage {
   }
 
   ionViewDidLoad() {
+    this.navBar.backButtonClick = this.backButtonClick;
     console.log('ionViewDidLoad CustomerManageDetailPage');
     this.obtainDatas();
     $(".top button").on('click',function (e) {
@@ -63,7 +66,7 @@ export class PurchasingManagementListDetailPage {
       id: this.data.id
     };
     console.log(this.data);
-    var url = 'http://wmsapi.sunwoda.com/api/purchase/reqPurchase/app/detailLines/' + this.data.id;
+    var url = 'https://wmsapi.sunwoda.com/api/purchase/reqPurchase/app/detailLines/' + this.data.id;
     this.httpService.getUser(url, this.headerParameters).then(res => this.handleUserInfoSuccess(res));
   }
 
@@ -82,7 +85,11 @@ export class PurchasingManagementListDetailPage {
       this.showApproval = 1;
     }
   }
-
+  backButtonClick = (e: UIEvent) => {
+    // var data= 3;
+    // this.events.publish('pop:myUnread',data, Date.now());
+    this.navCtrl.pop();
+  }
   showConfirm(msg) {
     let confirm = this.alertCtrl.create({
       title: '确定查看',
@@ -172,7 +179,7 @@ export class PurchasingManagementListDetailPage {
       status: type,
       approvalConments: advise
     };
-    var url = 'api/purchase/reqPurchase/app/approval/' + this.data.id;
+    var url = 'https://wmsapi.sunwoda.com/api/purchase/reqPurchase/app/approval/' + this.data.id;
     this.httpService.putWithHeadersServes(url, this.headerParameters).then(res => this.handleApprovalSuccess(res));
   }
 
@@ -184,8 +191,19 @@ export class PurchasingManagementListDetailPage {
       return;
     }
     console.log('handleApprovalSuccess pop remove data!');
-    this.events.publish('pop:data:pml',this.data, Date.now());
+    var headerParameters={
+      status:'0'
+    }
+    this.httpService.getUser('https://wmsapi.sunwoda.com/api/purchase/reqPurchase/app/bill', headerParameters).then(res => this.handleMyInfoSuccess(res));
+
     console.log(this.data)
+
+  }
+  handleMyInfoSuccess(res){
+    console.log(res.total)
+    this.unread=res.total
+    this.events.publish('pop:myUnread',this.unread, Date.now());
+    this.events.publish('pop:data:pml',this.data, Date.now());
     this.navCtrl.pop();
   }
 }

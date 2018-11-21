@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Component  } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController,Events  } from 'ionic-angular';
 import { HttpService } from '../../service/HttpService';
 import { ChangePassPage } from '../change-pass/change-pass';
 import { ForgetPasswordPage } from '../forget-password/forget-password';
+import { ViewChild } from '@angular/core';
+import { Navbar } from 'ionic-angular';
  import { CustomerManageDetailPage } from '../../pages/customer-manage-detail/customer-manage-detail';
 // import { PhotoViewer } from '@ionic-native/photo-viewer';
 import * as $ from 'jquery/dist/jquery.js';
@@ -19,7 +21,7 @@ import * as $ from 'jquery/dist/jquery.js';
   templateUrl: 'customer-manage.html',
 })
 export class CustomerManagePage {
-
+  @ViewChild(Navbar) navBar: Navbar;
   headerParameters: any;
   auditStatus: string = '-1';
   pageNum: number = 1;
@@ -27,18 +29,21 @@ export class CustomerManagePage {
   nextPage: number = 1;
   pages: number;
   dataSource: any = [];
+  already:string='true';
+  unready:string='false';
   tab1: any = ChangePassPage;
   tab2: any = ForgetPasswordPage;
   dataSource1: any = [];
   dataSource2: any = [];
   showSearch:string='false';
   flag:number=0;
+  unread:number=0;
   myInput: string = '';
   showSearchLoaction="false";
   searchLoactionData:any=["东莞李威","小米科技有限公司","石龙仔市场"];
   cancelOrSearch: number = 1;
 
-  constructor(private httpService: HttpService, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
+  constructor( public events: Events,private httpService: HttpService, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
               // private photoViewer: PhotoViewer
   ) {
 
@@ -83,23 +88,39 @@ export class CustomerManagePage {
       this.headerParameters['name'] = this.myInput;
     }
 
-    this.httpService.getUser('http://wmsapi.sunwoda.com/api/companys/app/get', this.headerParameters).then(res => this.handleUserInfoSuccess(res));
+    this.httpService.getUser('https://wmsapi.sunwoda.com/api/companys/app/get', this.headerParameters).then(res => this.handleUserInfoSuccess(res));
   }
 
   onPageTypeChange(type) {
     console.log(type);
     this.auditStatus = type;
+    if(type=='-1'){
+      this.already='true';
+      this.unready='false';
+    }else{
+      this.already='false';
+      this.unready='true';
+    }
     this.obtainDatas();
   }
-
+  backButtonClick = (e: UIEvent) => {
+    var data= 3;
+    this.events.publish('pop:myUnread',data, Date.now());
+    this.navCtrl.pop();
+  }
   ionViewDidLoad() {
+    this.navBar.backButtonClick = this.backButtonClick;
     console.log('ionViewDidLoad CustomerManagePage');
     this.obtainDatas();
-    $(".ready button").on('click',function (e) {
-      console.log(e);
-      $(".ready button").attr("style","");
-      e.target.setAttribute("style","border-bottom: solid 3px #007aff;")
-    })
+    var headerParameters = {
+      auditStatus: '1',
+    };
+    this.httpService.getUser('https://wmsapi.sunwoda.com/api/companys/app/get',headerParameters).then(res => this.handleMyInfoSuccess(res));
+    // $(".ready button").on('click',function (e) {
+    //   console.log(e);
+    //   $(".ready button").attr("style","");
+    //   e.target.setAttribute("style","border-bottom: solid 3px #007aff;")
+    // })
   }
 
   // onQueryChange() {
@@ -129,6 +150,9 @@ showSe(e){
     }
 
 }
+  handleMyInfoSuccess(res){
+  this.unread=res.total
+  }
   onCancel(){
   console.log("aaa");
   this.showSearchLoaction="true";
@@ -139,7 +163,7 @@ showSe(e){
   this.showSearchLoaction="false"
   }
   removeSearch (index){
-console.log(index);
+    console.log(index);
     this.searchLoactionData.splice(index,1)
   }
   handleUserInfoSuccess(result) {

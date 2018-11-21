@@ -32,10 +32,10 @@ export class LoginPage {
   }
 
   ngOnInit(): void {
-    var commit = document.getElementById('login_commit');
-    var commitWith = screen.width - 30 + 'px';
-    var text = "width:" + commitWith + ";background-color: white;color: #008ec3;border: 1px solid #008ec3;";
-    commit.style.cssText = text;
+    // var commit = document.getElementById('login_commit');
+    // var commitWith = screen.width - 30 + 'px';
+    // var text = "width:" + commitWith + ";background-color: white;color: #008ec3;border: 1px solid #008ec3;";
+    // commit.style.cssText = text;
   }
 
   ionViewDidLoad() {
@@ -61,15 +61,18 @@ export class LoginPage {
     }
 
     var passw = sha1(this.password);
-    var data = {'username': this.userName, 'password': passw , "challenge":"",
-      "validate" : "", "seccode" : ""};
+    var data = {
+      // 'username': this.userName, 'password': passw , "client_id":"lCuDj9Vmjo8eRQgX",
+      // "grant_type" : "password", "scope" : "app","client_secret":"XRU4z4vcx1JcD5ZUyuccgdGiZle0xlfgmAVgDp8n98o="
+    };
     console.log(data);
-    this.httpService.postBody('/login', data).then(res => this.handleSuccess(res));
+    this.httpService.postBodyOne('/uaa/oauth/token?username='+this.userName+'&password='+passw+'&client_id=lCuDj9Vmjo8eRQgX&grant_type=password&' +
+      'scope=app&client_secret=XRU4z4vcx1JcD5ZUyuccgdGiZle0xlfgmAVgDp8n98o=', data).then(res => this.handleSuccess(res));
   }
 
   private handleSuccess(result) {
     console.log(result);
-    var token = result.result.token;
+    var token = result.access_token;
     console.log(token);
     if (typeof(token)=="undefined") {
       this.httpService.presentToast("用户名或密码错误！");
@@ -78,7 +81,7 @@ export class LoginPage {
     localStorage.setItem("token", token);
     localStorage.setItem("userName", this.userName);
 
-    this.httpService.getUser('http://wmsapi.sunwoda.com/user', {}).then(res => this.handleUserInfoSuccess(res));
+    this.httpService.getUser('https://wmsapi.sunwoda.com/user', {}).then(res => this.handleUserInfoSuccess(res));
   }
 
   private handleUserInfoSuccess(result) {

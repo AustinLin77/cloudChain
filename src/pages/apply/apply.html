@@ -8,10 +8,10 @@
   <ion-navbar color="primary" hideBackButton="true"  class="navbarSty">
     <ion-buttons start *ngIf="chain==0">
       <button ion-button icon-only (click)="ownerBack()" navPush >
-        <ion-icon name="arrow-back"></ion-icon>Back
+        <ion-icon name="arrow-back" style="font-size: 18px;color: black"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-icon name="arrow-back" class="navIcon" (click)="ownerBack()" navPush *ngIf="chain==1"></ion-icon>
+    <ion-icon name="arrow-back" class="navIcon" (click)="ownerBack()" navPush *ngIf="chain==1" style="font-size: 18px;color: black"></ion-icon>
     <ion-title>需求列表</ion-title>
   </ion-navbar>
 </ion-header>
@@ -24,7 +24,10 @@
       <div class="areaDiv">
         <ion-icon name="pin" class="myLitIcon"></ion-icon>{{i.receiveAddress}}</div>
     </div>
-    <img class="myPic" src="{{i.imgPathList}}">
+    <div  style="min-height:90px; width: 90px;border-radius: 5px;border: solid 1px #eeeeee;display: flex;align-items: center;justify-content: center;margin-right: 10px">
+      <img src='{{i.imgPathList}}' style="max-height: 90px">
+    </div>
+    <!--<img class="myPic" src="{{i.imgPathList}}">-->
   </div>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
     <ion-infinite-scroll-content
