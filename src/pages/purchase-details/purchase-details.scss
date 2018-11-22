@@ -1,4 +1,34 @@
 page-purchase-details {
+  .myButtonTwo{
+    height: 100%;
+    background-color: #FF525C ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: white
+  }
+  .myButtonOne{
+    height: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color:black
+  }
+  .myFooter{
+    height: 50px;
+    color: white;
+    border-top: 1px solid #cccccc
+  }
+  .loopHeadStart{
+    color: red;
+    margin-right: 5px;
+    height: 100%;
+    display:flex;
+    align-items: center
+  }
     .picSty{
       width: 100%;
       height: 250px;

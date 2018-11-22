@@ -11,7 +11,6 @@
         <div class="picSty">
           <img src="{{slide}}" style="height: auto;width: auto">
         </div>
-
       </ion-slide>
     </ion-slides>
   </div>
@@ -61,16 +60,16 @@
 <ion-footer style="height: 50px;color: white">
   <ion-grid style="height: 100%;padding: 0">
     <ion-row style="height: 100%">
-      <ion-col col-4 style="padding: 0;height: 100%">
+      <ion-col col-4 class="myFootCol">
         <div  class="colInnerO">
           <ion-icon name="star" ></ion-icon>
         </div>
       </ion-col>
-      <ion-col col-4 style="padding: 0;height: 100%">
-        <div class="submitC" style="background-color: white"><button  style="height: 100%;background-color: white;display: flex;align-items: center;justify-content: center;font-size: 15px;color:black" (click)="contact()">联系买家</button></div>
+      <ion-col col-4 class="myFootCol">
+        <div class="submitC" style="background-color: white"><button  class="mySubmitButtonOne" (click)="contact()">联系买家</button></div>
       </ion-col>
-      <ion-col col-4 style="padding: 0;height: 100%">
-        <div class="submitC" ><button  style="height: 100%;background-color: #FF525C ;display: flex;align-items: center;justify-content: center;font-size: 15px;color: white" (click)="GoToQuotation()">我要报价</button></div>
+      <ion-col col-4 class="myFootCol">
+        <div class="submitC" ><button  class="mySubmitButtonTwo" (click)="GoToQuotation()">我要报价</button></div>
       </ion-col>
     </ion-row>
   </ion-grid>

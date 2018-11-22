@@ -8,20 +8,10 @@
 <ion-content id="guid_main">
   <ion-img src="assets/imgs/myBack.png" class="myBack" (click)="myBack()"></ion-img>
   <ion-img src="assets/imgs/pic_loading.png" [width]="logoWidth" [height]="logoHeight"></ion-img>
-  <button (click)="loginOrRegister(0)" style="background: white;
-    position: absolute;
-    right: 53%;
-    width: 40%;
-    height: 30px;
-    bottom: 30px;">
+  <button (click)="loginOrRegister(0)" class="loginButton">
     登录
   </button>
-  <button (click)="loginOrRegister(1)"  style="background: #008ec3;;
-    position: absolute;
-    left: 53%;
-    width: 40%;
-    height: 30px;
-    bottom: 30px;color: white;">
+  <button (click)="loginOrRegister(1)"  class="registerButton">
     注册
   </button>
 </ion-content>

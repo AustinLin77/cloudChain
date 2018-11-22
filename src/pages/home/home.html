@@ -1,63 +1,39 @@
 <ion-header >
   <ion-navbar color="primary" hideBackButton="true"  class="navbarSty">
     <div class="head">
-      <!--<form class="form">-->
-      <div style="height: 35px;width: 100%;line-height: 40px;position: relative;">
-        <input [(ngModel)]="searchKey" id="myIII" style="width: 100%;height: 35px;border-radius: 15px;background-color: #eeeeee;border: none;padding-left: 45px" placeholder="搜索产品的品类/名称" (focus)="myShowCancel()">
+      <div class="searchBorder">
+        <input [(ngModel)]="searchKey" id="myIII" class="myInput" placeholder="搜索产品的品类/名称" (focus)="myShowCancel()">
         <ion-icon name="search" class="search" (click)="goSearch()"></ion-icon>
       </div>
-      <!--<input [(ngModel)]="searchKey"  placeholder="搜索从这里开始..." class="input"  name="search" >-->
-      <!--<ion-icon name="search" class="search" (click)="goSearch()"></ion-icon>-->
-      <!--</form>-->
       <span class="myCan" *ngIf="showCancel==true" (click)="hiddenCan()">取消</span>
-      <!--<ion-icon name="menu" class="ionMenu" (click)="test()" *ngIf="!showCancel"></ion-icon>-->
     </div>
-
   </ion-navbar>
 </ion-header>
 <ion-content >
-  <!--<div style="overflow: hidden">-->
-    <!--<div style="position: absolute;top: 0;left: 0;width: 100%">-->
-      <!--<div class="head">-->
-        <!--&lt;!&ndash;<form class="form">&ndash;&gt;-->
-        <!--<div style="height: 35px;width: 100%;line-height: 40px;position: relative;">-->
-          <!--<input [(ngModel)]="searchKey" id="myIII" style="width: 100%;height: 35px;border-radius: 15px;background-color: #eeeeee;border: none;padding-left: 45px" placeholder="搜索产品的品类/名称" (focus)="myShowCancel()">-->
-          <!--<ion-icon name="search" class="search" (click)="goSearch()"></ion-icon>-->
-        <!--</div>-->
-        <!--&lt;!&ndash;<input [(ngModel)]="searchKey"  placeholder="搜索从这里开始..." class="input"  name="search" >&ndash;&gt;-->
-        <!--&lt;!&ndash;<ion-icon name="search" class="search" (click)="goSearch()"></ion-icon>&ndash;&gt;-->
-        <!--&lt;!&ndash;</form>&ndash;&gt;-->
-        <!--<span class="myCan" *ngIf="showCancel==true" (click)="hiddenCan()">取消</span>-->
-        <!--&lt;!&ndash;<ion-icon name="menu" class="ionMenu" (click)="test()" *ngIf="!showCancel"></ion-icon>&ndash;&gt;-->
-      <!--</div>-->
-    <!--</div>-->
-
-    <div style="position: absolute;left: 0;top: 0;width: 100%;height: 100%;z-index: 999;
-    background: rgba(0, 0, 0, 0.7);" *ngIf="showCancel"></div>
-    <div >
-      <div style="height: 39.466vw;margin-top: 0;">
+    <div class="myCancel" *ngIf="showCancel"></div>
+    <div>
+      <div class="slidesBorder">
         <ion-slides pager autoplay="600" speed="800"  #sliders  >
           <ion-slide *ngFor="let slide of slides">
-            <img src="{{slide.imgPath}}" style="width: 100%;height: 39.466vw;border-radius: 0">
+            <img src="{{slide.imgPath}}" class="mySlidesPic">
           </ion-slide>
         </ion-slides>
       </div>
-      <div class="loopContent" style="height: 166px;box-sizing: border-box;margin-top: 10px;">
-        <ion-grid style="width: 100%;height: 100%;padding: 0">
+      <div class="loopContent loopContentFirst" >
+        <ion-grid class="myGrid">
           <ion-row wrap style="height: 100%;">
-            <ion-col col-3 text-center *ngFor="let option of options" (click)="optionDetails(option)" style="padding: 0;display: flex;align-items: center;justify-content: center">
+            <ion-col col-3 text-center *ngFor="let option of options" (click)="optionDetails(option)" class="myCol">
               <div>
                 <img src="{{option.src}}" style="width: 30px;height: 30px">
                 <div >{{option.name}}</div>
               </div>
             </ion-col>
-            <ion-col col-3 text-center style="position: relative" (click)="optionDetail()" style="padding: 0;display: flex;align-items: center;justify-content: center">
+            <ion-col col-3 text-center style="position: relative" (click)="optionDetail()" class="myCol">
               <div>
                 <img src="assets/imgs/物流.png" style="width: 30px;height: 30px">
                 <div >物流中心</div>
-                <img src="assets/imgs/敬请期待.png" style="position: absolute;top: 0;right:15px;height: 30px;width: 22px">
+                <img src="assets/imgs/敬请期待.png" class="unLoad">
               </div>
-
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -71,20 +47,14 @@
           <ion-grid class="gird" style="padding-right: 23px;padding-left: 23px;height: 170px">
             <ion-row nowrap class="ionrow">
               <ion-col col-4  *ngFor="let product of products" (click)="productionDetails(product.name,product.howHot,product.howMuch,product.id) " style="height: 100%;padding: 5px;">
-                <div  style="height:auto;min-height:99px; width: 100%;border-radius: 5px;border: solid 1px #eeeeee;display: flex;align-items: center;justify-content: center">
+                <div class="imgBorder">
                   <img src='{{product.imgPathList}}' style="max-height: 99px">
                 </div>
-                <!--<div style="width: 100%;display: flex;justify-content: center">-->
-                <!--<div style="font-size: 12px;flex:1;overflow:scroll;height: 16px">{{product.name.substring(0,9)}}</div>-->
-                <!--<div style="font-size: 12px;margin-left: 2px;color: white;width: 12px"  [class.hot]="product.hot === '热'" [class.cold]="product.hot==='低'">{{product.hot}}</div>-->
-                <!--</div>-->
-                <!--<div>{{product.currency}}{{product.price}}/{{product.unit}}</div>-->
                 <div class="dSty" >
                   <div class="nameSty">{{product.name.substring(0,9)}}</div>
                   <div class="popSty"  [class.hot]="product.hot === '热'" [class.cold]="product.hot==='低'">{{product.hot}}</div>
                 </div>
-                <div style="text-align: left;overflow: hidden;    white-space: nowrap;margin-top: 5px;
-    text-overflow: ellipsis;" ><span style="color: #007aff;">{{product.currency+product.price}}</span>/{{product.unit}}</div>
+                <div class="productionInfo" ><span style="color: #007aff;">{{product.currency+product.price}}</span>/{{product.unit}}</div>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -99,12 +69,20 @@
           <ion-grid class="gird" style="padding-right: 23px;padding-left: 23px;height: 190px">
             <ion-row nowrap class="ionrow">
               <ion-col col-4 text-center *ngFor="let apply of applys" (click)="appliesDetails(apply.id)" style="height: 100%">
-                <div  style="height:auto;min-height:99px; width: 100%;border-radius: 5px;border: solid 1px #eeeeee;display: flex;align-items: center;justify-content: center">
+                <div  class="imgBorder">
                   <img src='{{apply.imgPathList}}' style="max-height: 99px">
                 </div>
-                <div style="font-size: 14px;font-weight:bold;text-align: left;height: 16px;width: 100%;overflow:scroll;margin-top: 10px">{{apply.name}}</div>
-                <div style="font-size: 12px ;text-align: left;margin-top: 10px">需求:<span style="color: #007aff">{{apply.demandNum}}{{apply.unit}}</span></div>
-                <div style="font-size: 12px;text-align: left;margin-top: 5px" >日期:<span style="color: #007aff">{{apply.requireDate}}</span></div>
+                <div class="applyName">{{apply.name}}</div>
+                <div class="applyInfo">
+                  需求:
+                  <span style="color: #007aff">{{apply.demandNum}}{{apply.unit}}</span>
+                </div>
+                <div class="applyDate" >
+                  日期:
+                  <span style="color: #007aff">
+                    {{apply.requireDate}}
+                  </span>
+                </div>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -119,14 +97,14 @@
           <ion-grid class="gird" style="padding-right: 23px;padding-left: 23px;height: 170px">
             <ion-row nowrap class="ionrow">
               <ion-col col-4 text-center *ngFor="let purchase of purchases" (click)="goToPurchaseDetails(purchase.id)" style="height: 100%">
-                <div  style="min-height:99px; width: 100%;border-radius: 5px;border: solid 1px #eeeeee;display: flex;align-items: center;justify-content: center">
+                <div  class="imgBorder">
                   <img src='{{purchase.imgPathList}}' style="max-height: 99px">
                 </div>
-                <div style="width: 100%;display: flex;text-align: left;margin-top: 10px">
-                  <div style="font-size: 14px;flex: 1;overflow: scroll;height: 16px;white-space: nowrap;text-overflow: ellipsis;font-weight: bold">{{purchase.name}}</div>
-                  <div style="font-size: 12px;margin-left: 2px; background-color: #007aff;color: white;width: 40px;padding: 1px;" >{{purchase.gatherStatus}}</div>
+                <div class="purchaseInclude">
+                  <div class="purchaseName">{{purchase.name}}</div>
+                  <div class="purchaseStatus" >{{purchase.gatherStatus}}</div>
                 </div>
-                <div style="width: 100%;text-align: left;margin-top: 5px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis" ><span style="color: #488aff">{{purchase.currency}}{{purchase.price}}</span>/{{purchase.unit}}</div>
+                <div class="purchaseInfo" ><span style="color: #488aff">{{purchase.currency}}{{purchase.price}}</span>/{{purchase.unit}}</div>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -139,121 +117,13 @@
         </div>
         <div class="loopContentBottom" *ngIf="invites.length>0">
           <div *ngFor="let invite of invites" (click)="inviteDetails(invite.id)" style="padding: 5px;width: 100%">
-            <div style="display: flex;align-items: center;width: 100%;padding-left: 23px">
-              <div style="width: 10px;height: 18px;line-height: 18px;font-weight: bold">·</div>
-              <!--<ion-icon name="document"  style="font-size: 24px;margin-right: 10px"></ion-icon>-->
-              <div style="flex: 1;font-size: 15px">[{{invite.address}}]  {{invite.title}}</div></div>
-            <div style="color: #555555;font-size: 11px;padding-left: 23px;padding-right: 23px;text-align: left;margin-top: 3px">{{invite.issueDate}}</div>
+            <div class="inviteInclude">
+              <div class="inviteStart">·</div>
+              <div class="inviteInfo">[{{invite.address}}]  {{invite.title}}</div></div>
+            <div class="inviteDate">{{invite.issueDate}}</div>
           </div>
         </div>
       </div>
     </div>
-  <!--</div>-->
-
-  <!--<div style="height: 192px;margin-top: 0;padding-left: 23px;padding-right: 23px">-->
-    <!--<ion-slides pager autoplay="600" speed="800"  #sliders  >-->
-      <!--<ion-slide *ngFor="let slide of slides">-->
-        <!--<img src="{{slide.imgPath}}" style="width: 100%;height: 192px;border-radius: 15px">-->
-      <!--</ion-slide>-->
-    <!--</ion-slides>-->
-  <!--</div>-->
-  <!--<div class="loopContent" style="height: 166px;box-sizing: border-box;margin-top: 10px;">-->
-    <!--<ion-grid style="width: 100%;height: 100%;padding: 0">-->
-      <!--<ion-row wrap style="height: 100%;">-->
-        <!--<ion-col col-3 text-center *ngFor="let option of options" (click)="optionDetails(option)" style="padding: 0;display: flex;align-items: center;justify-content: center">-->
-          <!--<div>-->
-            <!--<img src="{{option.src}}" style="width: 30px;height: 30px">-->
-            <!--<div >{{option.name}}</div>-->
-          <!--</div>-->
-        <!--</ion-col>-->
-       <!--<ion-col col-3 text-center style="position: relative" (click)="optionDetail()" style="padding: 0;display: flex;align-items: center;justify-content: center">-->
-         <!--<div>-->
-           <!--<img src="assets/imgs/物流.png" style="width: 30px;height: 30px">-->
-           <!--<div >物流中心</div>-->
-           <!--<img src="assets/imgs/敬请期待.png" style="position: absolute;top: 0;right:15px;height: 30px;width: 22px">-->
-         <!--</div>-->
-
-       <!--</ion-col>-->
-      <!--</ion-row>-->
-    <!--</ion-grid>-->
-  <!--</div>-->
-  <!--<div class="loop">-->
-    <!--<div class="loopHead" (click)="goProducts()">-->
-      <!--<div class="loopHeadP"><img src="../../assets/imgs/line.png" style="height: 20px;margin-right: 5px">最新产品</div>-->
-      <!--<div class="loopHeadM">查看全部></div>-->
-    <!--</div>-->
-    <!--<div class="loopContent">-->
-      <!--<ion-grid class="gird" style="padding-right: 23px;padding-left: 23px;">-->
-        <!--<ion-row nowrap class="ionrow">-->
-          <!--<ion-col col-4  *ngFor="let product of products" (click)="productionDetails(product.name,product.howHot,product.howMuch,product.id) " style="height: 100%;padding: 0;">-->
-            <!--<img src='{{product.imgPathList}}' style="height:110px;width: 110px;border-radius: 5px;border: solid 1px #eeeeee"/>-->
-            <!--&lt;!&ndash;<div style="width: 100%;display: flex;justify-content: center">&ndash;&gt;-->
-              <!--&lt;!&ndash;<div style="font-size: 12px;flex:1;overflow:scroll;height: 16px">{{product.name.substring(0,9)}}</div>&ndash;&gt;-->
-              <!--&lt;!&ndash;<div style="font-size: 12px;margin-left: 2px;color: white;width: 12px"  [class.hot]="product.hot === '热'" [class.cold]="product.hot==='低'">{{product.hot}}</div>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--&lt;!&ndash;<div>{{product.currency}}{{product.price}}/{{product.unit}}</div>&ndash;&gt;-->
-            <!--<div class="dSty" >-->
-              <!--<div class="nameSty">{{product.name.substring(0,9)}}</div>-->
-              <!--<div class="popSty"  [class.hot]="product.hot === '热'" [class.cold]="product.hot==='低'">{{product.hot}}</div>-->
-            <!--</div>-->
-            <!--<div style="padding-left: 12px;text-align: left;overflow: hidden;    white-space: nowrap;margin-top: 5px;-->
-    <!--text-overflow: ellipsis;" ><span style="color: #007aff;">{{product.currency+product.price}}</span>/{{product.unit}}</div>-->
-          <!--</ion-col>-->
-        <!--</ion-row>-->
-      <!--</ion-grid>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--<div class="loop">-->
-    <!--<div class="loopHead" (click)="goApplys()">-->
-      <!--<div class="loopHeadP"><img src="../../assets/imgs/line.png" style="height: 20px;margin-right: 5px">最新需求</div>-->
-      <!--<div class="loopHeadM">查看全部></div>-->
-    <!--</div>-->
-    <!--<div class="loopContent" style="height: 200px">-->
-      <!--<ion-grid class="gird" style="padding-right: 23px;padding-left: 23px;">-->
-        <!--<ion-row nowrap class="ionrow">-->
-          <!--<ion-col col-4 text-center *ngFor="let apply of applys" (click)="appliesDetails(apply.id)" style="height: 100%">-->
-            <!--<img src='{{apply.imgPathList}}' style="height:110px;width: 110px;border-radius: 5px;border: solid 1px #eeeeee"/>-->
-            <!--<div style="font-size: 14px;font-weight:bold;text-align: left;height: 16px;width: 100%;overflow:scroll;padding-left: 12px">{{apply.name}}</div>-->
-            <!--<div style="font-size: 12px ;text-align: left;padding-left: 12px;margin-top: 10px">需求:<span style="color: #007aff">{{apply.demandNum}}{{apply.unit}}</span></div>-->
-            <!--<div style="font-size: 12px;text-align: left;padding-left: 12px;margin-top: 5px" >日期:<span style="color: #007aff">{{apply.requireDate}}</span></div>-->
-          <!--</ion-col>-->
-        <!--</ion-row>-->
-      <!--</ion-grid>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--<div class="loop">-->
-    <!--<div class="loopHead" (click)="goPurchases()">-->
-      <!--<div class="loopHeadP"><img src="../../assets/imgs/line.png" style="height: 20px;margin-right: 5px">最新集采</div>-->
-      <!--<div class="loopHeadM">查看全部></div>-->
-    <!--</div>-->
-    <!--<div class="loopContent">-->
-      <!--<ion-grid class="gird" style="padding-right: 23px;padding-left: 23px;">-->
-        <!--<ion-row nowrap class="ionrow">-->
-          <!--<ion-col col-4 text-center *ngFor="let purchase of purchases" (click)="goToPurchaseDetails(purchase.id)" style="height: 100%">-->
-            <!--<img src='{{purchase.imgPathList}}' style="height:110px;width: 110px;border-radius: 5px;border: solid 1px #eeeeee"/>-->
-            <!--<div style="width: 100%;display: flex;text-align: left;padding-left: 12px">-->
-              <!--<div style="font-size: 14px;flex: 1;overflow: scroll;height: 16px;white-space: nowrap;text-overflow: ellipsis;font-weight: bold">{{purchase.name}}</div>-->
-              <!--<div style="font-size: 12px;margin-left: 2px; background-color: #007aff;color: white;width: 40px;padding: 1px;" >{{purchase.gatherStatus}}</div>-->
-            <!--</div>-->
-            <!--<div style="width: 100%;text-align: left;padding-left: 12px;margin-top: 5px" ><span style="color: #488aff">{{purchase.currency}}{{purchase.price}}</span>/{{purchase.unit}}</div>-->
-          <!--</ion-col>-->
-        <!--</ion-row>-->
-      <!--</ion-grid>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--<div class="loop" style="height: 220px">-->
-    <!--<div class="loopHead" (click)="goInvites()">-->
-      <!--<div class="loopHeadP"><img src="../../assets/imgs/line.png" style="height: 20px;margin-right: 5px">最新招标</div>-->
-      <!--<div class="loopHeadM">查看全部></div>-->
-    <!--</div>-->
-    <!--<div class="loopContentBottom">-->
-      <!--<div *ngFor="let invite of invites" (click)="inviteDetails(invite.id)" style="padding: 5px;width: 100%">-->
-        <!--<div style="display: flex;align-items: center;width: 100%;padding-left: 23px">-->
-          <!--<ion-icon name="document"  style="font-size: 24px;margin-right: 10px"></ion-icon>-->
-          <!--<div style="flex: 1;font-size: 15px">[{{invite.address}}]  {{invite.title}}</div></div>-->
-        <!--<div style="color: #555555;font-size: 11px;padding-left: 23px;padding-right: 23px;text-align: right;margin-top: 3px">{{invite.issueDate}}</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
 </ion-content>
 

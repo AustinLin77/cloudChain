@@ -12,9 +12,7 @@
     <div class="secondDiv" >
       <img src="{{url}}" class="pic">
       <div class="innerDiv">
-        <div style="font-family: 微软雅黑;font-size: 16px; white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;">{{name}}</div>
+        <div class="name">{{name}}</div>
         <div class="price">{{currency}}{{price}}/{{unit}}</div>
       </div>
     </div>
@@ -28,7 +26,7 @@
     </div>
     <div class="loopHead" style="position: relative">
       <div class="loopHeadP">
-        <ion-label style="font-family: 微软雅黑;font-size: 16px;color: black"> 需求日期</ion-label></div>
+        <ion-label class="applyDate"> 需求日期</ion-label></div>
       <div class="loopHeadM">
         <ion-datetime displayFormat="YYYY-MM-DD" placeholder="请选择需求日期" [(ngModel)]="myDate" cancelText="取消" doneText="确定"> </ion-datetime>
       </div>
@@ -55,7 +53,7 @@
       合计:¥{{total}}
       </ion-col>
       <ion-col col-4 style="padding: 0;height: 100%">
-        <div class="submitC" ><button [disabled]=flag (click)="confirm()" style="height: 100%;background-color:#FF525C;display: flex;align-items: center;justify-content: center;font-size: 15px;color: white">提交申请</button></div>
+        <div class="submitC" ><button [disabled]=flag (click)="confirm()" class="mySubmitButton">提交申请</button></div>
       </ion-col>
     </ion-row>
   </ion-grid>

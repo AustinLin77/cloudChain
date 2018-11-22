@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+
 import { IonicPage, NavController, NavParams, AlertController, ActionSheetController, Events } from 'ionic-angular';
 import { HttpService } from '../../service/HttpService';
 import * as $ from "jquery";
 import { PhotoViewer } from '@ionic-native/photo-viewer';
+
 import { Component,ViewChild } from '@angular/core';
+
 import { Navbar } from 'ionic-angular';
 /**
  * Generated class for the OutboundManagementListDetailPage page.

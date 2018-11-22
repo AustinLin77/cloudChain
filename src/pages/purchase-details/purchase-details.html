@@ -14,7 +14,10 @@
     <div *ngIf="flag" class="try">
       <div class="ddSty">填写以下报名信息,提交后将发送至买家</div>
       <div class="loopHeadr">
-        <div class="loopHeadu"><span style="color: red;margin-right: 5px;height: 100%;display:flex; align-items: center">*</span>机构: </div>
+        <div class="loopHeadu">
+          <span class="loopHeadStart">*</span>
+          机构:
+        </div>
         <div class="loopHeady" style="position: relative">
           <ion-select [(ngModel)]="organization" placeholder="请选择机构" cancelText="取消" okText="确定" [selectOptions]="selectOptionsOne" class="mySelect">
             <ion-option *ngFor="let option of organizations" value='{{option.id}}'>{{option.name}}</ion-option>
@@ -22,19 +25,28 @@
         </div>
       </div>
       <div class="loopHeadr">
-        <div class="loopHeadu"><span style="color: red;margin-right: 5px;height: 100%;display:flex; align-items: center">*</span>收货地址: </div>
+        <div class="loopHeadu">
+          <span class="loopHeadStart">*</span>
+          收货地址:
+        </div>
         <div class="loopHeady">
           <input placeholder="请填写收货地址" class="myInput"  [(ngModel)]="area">
         </div>
       </div>
       <div class="loopHeadr">
-        <div class="loopHeadu"><span style="color: red;margin-right: 5px;height: 100%;display:flex; align-items: center">*</span>申请数量: </div>
+        <div class="loopHeadu">
+          <span style="color: red;margin-right: 5px;height: 100%;display:flex; align-items: center">*</span>
+          申请数量:
+        </div>
         <div class="loopHeady">
           <input placeholder="请填写申请数量" class="myInput" type="number" min="0"  [(ngModel)]="num">
         </div>
       </div>
       <div class="loopHeadr">
-        <div class="loopHeadu"><span style="color: red;margin-right: 5px;height: 100%;display:flex; align-items: center">*</span>单位: </div>
+        <div class="loopHeadu">
+          <span class="loopHeadStart">*</span>
+          单位:
+        </div>
         <div class="loopHeady">
           <input  class="myInput"  [(ngModel)]="unit">
         </div>
@@ -57,7 +69,6 @@
         <div class="picSty">
           <img src="{{slide}}" style="width: auto;height: auto">
         </div>
-
       </ion-slide>
     </ion-slides>
   </div>
@@ -111,7 +122,7 @@
   </div>
   </div>
 </ion-content>
-<ion-footer style="height: 50px;color: white;border-top: 1px solid #cccccc">
+<ion-footer class="myFooter">
   <ion-grid style="height: 100%;padding: 0">
     <ion-row style="height: 100%">
       <ion-col col-4 style="padding: 0;height: 100%">
@@ -120,10 +131,18 @@
         </div>
       </ion-col>
       <ion-col col-4 style="padding: 0;height: 100%">
-        <div class="submitC" style="background-color: white"><button  style="height: 100%;background-color: white;display: flex;align-items: center;justify-content: center;font-size: 15px;color:black" (click)="goToEnrollInfo() ">查看已报名信息</button></div>
+        <div class="submitC" style="background-color: white">
+          <button  class="myButtonOne" (click)="goToEnrollInfo() ">
+            查看已报名信息
+          </button>
+        </div>
       </ion-col>
       <ion-col col-4 style="padding: 0;height: 100%">
-        <div class="submitC" ><button  style="height: 100%;background-color: #FF525C ;display: flex;align-items: center;justify-content: center;font-size: 15px;color: white" (click)="myCheck()  ">马上报名</button></div>
+        <div class="submitC" >
+          <button  class="myButtonTwo" (click)="myCheck()">
+            马上报名
+          </button>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

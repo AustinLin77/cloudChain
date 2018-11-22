@@ -2,4 +2,110 @@ page-contact {
   ::-webkit-scrollbar{
     display:none;
   }
+  .myBorder{
+    height:5px;
+    background-color: #eeeeee;
+    width: 100%
+  }
+  .contentTop{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    padding: 20px;
+    justify-content: flex-end
+  }
+  .contentTopBor{
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center
+  }
+  .myLogo{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    overflow:hidden;
+  }
+  .name{
+    margin-left: 13px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+  }
+  .login{
+    margin-left: 15px;
+    font-size: 16px;
+    font-weight: bold
+  }
+  .contentBorderOne{
+    width: 100%;
+    height: 160px;
+    border-top: solid 5px #eeeeee;
+    border-bottom: solid 2px #eeeeee;
+  }
+  .contentBorderTwo{
+    width: 100%;
+    height: 160px;
+    border-top: solid 3px #eeeeee
+  ;border-bottom: solid 5px #eeeeee;
+  }
+  .orderBorder{
+    width: 100%;
+    height: 51px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: solid 1px #eeeeee;
+  }
+  .imgContent{
+    width: 20px;
+    height: 51px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    margin-left: 20px
+  }
+  .orderContent{
+    flex: 1;
+    height: 51px;
+    display: flex;
+    align-items: center;
+    margin-left: 13px;
+    padding: 10px;
+    padding-left: 0;
+  }
+  .orderTitle{
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 15px
+  }
+  .myPic{
+    width: 20px;
+    height: 20px
+  }
+  .myTitle{
+    margin-left: 25px;
+    font-size: 15px
+  }
+  .bottomContent{
+    width: 100%;
+    height: 51px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    padding-left: 0;
+    border-bottom: solid 1px #eeeeee;
+  }
+  .bottomOrder{
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 20px
+  }
 }

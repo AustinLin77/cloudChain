@@ -12,11 +12,11 @@
 <ion-content >
   <div class="loopContentBottom">
     <div *ngFor="let invite of invites" (click)="inviteDetails(invite.id)" style="padding: 5px;width: 100%;min-height: 60px;line-height: " [class.dan]="invite.flag=='单数'" >
-      <div style="display: flex;align-items: center;width: 100%;padding-left: 23px;margin-top: 10px">
-        <div style="width: 10px;height: 18px;line-height: 18px;font-weight: bold">·</div>
-        <!--<ion-icon name="document"  style="font-size: 24px;margin-right: 10px"></ion-icon>-->
-        <div style="flex: 1;font-size: 15px">[{{invite.address}}]  {{invite.title}}</div></div>
-      <div style="color: #555555;font-size: 11px;padding-left: 23px;padding-right: 23px;text-align: left;margin-top: 3px">{{invite.issueDate}}</div>
+      <div class="inviteInclude">
+        <div class="inviteStart">·</div>
+        <div class="inviteTitle">[{{invite.address}}]  {{invite.title}}</div>
+      </div>
+      <div class="inviteDate">{{invite.issueDate}}</div>
 
     </div>
   </div>

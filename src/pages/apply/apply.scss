@@ -1,4 +1,14 @@
 page-apply {
+  .imgContent{
+    min-height:90px;
+    width: 90px;
+    border-radius: 5px;
+    border: solid 1px #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px
+  }
   .navbarSty{
     text-align: center;
     z-index: 9

@@ -28,7 +28,6 @@ export class ShopListPage {
   }
   //点击跳转到登录界面
   login(){
-
     this.app.getRootNav().push('GuidPage')
   }
   //初始化获得数据，只渲染一次
@@ -78,7 +77,7 @@ export class ShopListPage {
      var codeMessage='当前购物车无商品，请到商品页挑选您喜欢的商品吧！';
      this.fShowConfirm('Tips', codeMessage, '取消', '确定');
    }
- }
+  }
   handleSuccess(result) {
     console.log(result);
     // this.checkValue(result.data.length);

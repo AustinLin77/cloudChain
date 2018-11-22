@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+
 import { IonicPage, NavController, NavParams, AlertController, ActionSheetController, Events } from 'ionic-angular';
 import { HttpService } from '../../service/HttpService';
 import * as $ from "jquery";
@@ -201,8 +201,8 @@ export class PurchasingManagementListDetailPage {
   }
   handleMyInfoSuccess(res){
     console.log(res.total)
-    this.unread=res.total
-    this.events.publish('pop:myUnread',this.unread, Date.now());
+    var unread=res.total
+    this.events.publish('pop:myUnread',unread, Date.now());
     this.events.publish('pop:data:pml',this.data, Date.now());
     this.navCtrl.pop();
   }

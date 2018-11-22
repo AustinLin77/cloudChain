@@ -4,125 +4,93 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <div style="height:5px;background-color: #eeeeee;width: 100%"></div>
-  <div style="width: 100%;height: 80px;display: flex;padding: 20px;justify-content: flex-end" (click)="myInformation()" *ngIf="showWhat==1">
-
-    <div style="flex: 1;height: 100%;display: flex;justify-content: flex-start;align-items: center">
-      <img src="{{data.logo}}" style="width:50px; height:50px; border-radius:50%; overflow:hidden;">
-      <span style="margin-left: 13px;font-size: 16px;font-weight: bold;color: #333333;">{{data.name}}</span>
+  <div class="myBorder"></div>
+  <div class="contentTop" (click)="myInformation()" *ngIf="showWhat==1">
+    <div class="contentTopBor">
+      <img src="{{data.logo}}" class="myLogo">
+      <span class="name">{{data.name}}</span>
     </div>
-    <!--<div style="width: 20px;height: 100%;display:flex;justify-content:center;align-items: center">-->
-     <!--<img src="assets/imgs/ic_right.png" style="height: 17px;width: 15px">-->
-    <!--</div>-->
   </div>
-  <div style="width: 100%;height: 80px;display: flex;padding: 20px;justify-content: flex-end" (click)="login()" *ngIf="showWhat==0">
-    <div style="flex: 1;height: 100%;display: flex;justify-content: flex-start;align-items: center">
+  <div class="contentTop" (click)="login()" *ngIf="showWhat==0">
+    <div class="contentTopBor">
       <img src="assets/imgs/ic_personal_nor.png" style="width: 30px;height: 30px">
-      <span style="margin-left: 15px;font-size: 16px;font-weight: bold"><a>登录/注册</a></span>
+      <span class="login"><a>登录/注册</a></span>
     </div>
-    <!--<div style="width: 20px;height: 100%;display:flex;justify-content:center;align-items: center">-->
-      <!--<img src="assets/imgs/ic_right.png" style="height: 17px;width: 15px">-->
-    <!--</div>-->
   </div>
-  <div style="width: 100%;height: 160px;border-top: solid 5px #eeeeee;border-bottom: solid 2px #eeeeee; ">
-    <div style="width: 100%;height: 51px;display: flex;justify-content: flex-start;align-items: center;border-bottom: solid 1px #eeeeee;" (click)="myShopList()" >
-      <div style="width: 20px;height: 51px;display:flex;justify-content:center;align-items: center;margin-left: 20px" >
+  <div  class="contentBorderOne">
+    <div class="orderBorder" (click)="myShopList()" >
+      <div class="imgContent" >
         <img src="assets/imgs/我的订单.png">
       </div>
-      <div style="flex: 1;height: 51px;display: flex;align-items: center;margin-left: 13px;padding: 10px;padding-left: 0;">
-        <div style="flex: 1;height: 100%;display: flex;justify-content: flex-start;align-items: center;font-size: 15px">
+      <div class="orderContent">
+        <div class="orderTitle">
          我的订单
         </div>
-        <!--<div style="width: 20px;height: 100%;display:flex;justify-content:center;align-items: center;margin-right: 10px">-->
-          <!--<img src="assets/imgs/ic_right.png" style="height: 14px;width: 12px">-->
-        <!--</div>-->
       </div>
     </div>
-    <div style="width: 100%;height: 51px;display: flex;justify-content: flex-start;align-items: center;border-bottom: solid 1px #eeeeee;" >
-      <div style="width: 20px;height: 51px;display:flex;justify-content:center;align-items: center;margin-left: 20px" >
+    <div class="orderBorder" >
+      <div class="imgContent" >
         <img src="assets/imgs/我的报价.png">
       </div>
-      <div style="flex: 1;height: 51px;display: flex;align-items: center;margin-left: 13px;padding: 10px;padding-left: 0" (click)="myPurchase()" >
-        <div style="flex: 1;height: 100%;display: flex;justify-content: flex-start;align-items: center;font-size: 15px">
+      <div class="orderContent" (click)="myPurchase()" >
+        <div class="orderTitle">
           我的报价
         </div>
-        <!--<div style="width: 20px;height: 100%;display:flex;justify-content:center;align-items: center;margin-right: 10px">-->
-          <!--<img src="assets/imgs/ic_right.png" style="height: 14px;width: 12px">-->
-        <!--</div>-->
       </div>
     </div>
-    <div style="width: 100%;height: 51px;display: flex;justify-content: flex-start;align-items: center" >
-      <div style="width: 20px;height: 51px;display:flex;justify-content:center;align-items: center;margin-left: 20px" >
+    <div class="orderBorder" >
+      <div class="imgContent" >
         <img src="assets/imgs/我收到的报价.png">
       </div>
-      <div style="flex: 1;height: 51px;display: flex;align-items: center;margin-left: 13px;padding: 10px;padding-left: 0;" (click)="myRecPurchase()">
-        <div style="flex: 1;height: 100%;display: flex;justify-content: flex-start;align-items: center;font-size: 15px">
+      <div class="orderContent" (click)="myRecPurchase()">
+        <div class="orderTitle">
           我收到的报价
         </div>
-        <!--<div style="width: 20px;height: 100%;display:flex;justify-content:center;align-items: center;margin-right: 10px">-->
-          <!--<img src="assets/imgs/ic_right.png" style="height: 14px;width: 12px">-->
-        <!--</div>-->
       </div>
     </div>
   </div>
-  <div style="width: 100%;height: 160px;border-top: solid 3px #eeeeee;border-bottom: solid 5px #eeeeee; ">
-    <div style="width: 100%;height: 51px;display: flex;justify-content: flex-start;align-items: center;border-bottom: solid 1px #eeeeee;" >
-      <div style="width: 20px;height: 51px;display:flex;justify-content:center;align-items: center;margin-left: 20px" >
+  <div class="contentBorderTwo">
+    <div class="orderBorder" >
+      <div class="imgContent" >
         <img src="assets/imgs/我发布的商品.png">
       </div>
-      <div style="flex: 1;height: 51px;display: flex;align-items: center;margin-left: 13px;padding: 10px;padding-left: 0" (click)="myProduction()" >
-        <div style="flex: 1;height: 100%;display: flex;justify-content: flex-start;align-items: center;font-size: 15px">
+      <div class="orderContent" (click)="myProduction()" >
+        <div class="orderTitle">
           我发布的商品
         </div>
-        <!--<div style="width: 20px;height: 100%;display:flex;justify-content:center;align-items: center;margin-right: 10px">-->
-          <!--<img src="assets/imgs/ic_right.png" style="height: 14px;width: 12px">-->
-        <!--</div>-->
       </div>
     </div>
-    <div style="width: 100%;height: 51px;display: flex;justify-content: flex-start;align-items: center;border-bottom: solid 1px #eeeeee;" >
-      <div style="width: 20px;height: 51px;display:flex;justify-content:center;align-items: center;margin-left:20px" >
+    <div class="orderBorder" >
+      <div class="imgContent" >
         <img src="assets/imgs/我发布的需求.png">
       </div>
-      <div style="flex: 1;height: 51px;display: flex;align-items: center;margin-left: 13px;padding: 10px;padding-left: 0" (click)="myApply()" >
-        <div style="flex: 1;height: 100%;display: flex;justify-content: flex-start;align-items: center;font-size: 15px">
+      <div class="orderContent" (click)="myApply()" >
+        <div class="orderTitle">
           我发布的需求
         </div>
-        <!--<div style="width: 20px;height: 100%;display:flex;justify-content:center;align-items: center;margin-right: 10px">-->
-          <!--<img src="assets/imgs/ic_right.png" style="height: 14px;width: 12px">-->
-        <!--</div>-->
       </div>
     </div>
-    <div style="width: 100%;height: 51px;display: flex;justify-content: flex-start;align-items: center" >
-      <div style="width: 20px;height: 51px;display:flex;justify-content:center;align-items: center;margin-left: 20px" >
+    <div class="orderBorder" >
+      <div class="imgContent" >
         <img src="assets/imgs/我参加的集采.png">
       </div>
-      <div style="flex: 1;height: 51px;display: flex;align-items: center;margin-left: 13px;padding: 10px;padding-left: 0" (click)="myInPurchase()" >
-        <div style="flex: 1;height: 100%;display: flex;justify-content: flex-start;align-items: center;font-size: 15px">
+      <div class="orderContent" (click)="myInPurchase()" >
+        <div class="orderTitle">
           我参与的集采
         </div>
-        <!--<div style="width: 20px;height: 100%;display:flex;justify-content:center;align-items: center;margin-right: 10px">-->
-          <!--<img src="assets/imgs/ic_right.png" style="height: 14px;width: 12px">-->
-        <!--</div>-->
       </div>
     </div>
   </div>
-  <div style="width: 100%;height: 51px;display: flex;justify-content: flex-end;padding: 10px;padding-left: 0;border-bottom: solid 1px #eeeeee;" (click)="download()">
-    <div style="flex: 1;height: 100%;display: flex;justify-content: flex-start;align-items: center;margin-left: 20px">
-      <img src="assets/imgs/ic_download.png" style="width: 20px;height: 20px">
-      <span style="margin-left: 25px;font-size: 15px">下载地址</span>
+  <div class="bottomContent" (click)="download()">
+    <div class="bottomOrder">
+      <img src="assets/imgs/ic_download.png" class="myPic">
+      <span class="myTitle">下载地址</span>
     </div>
-    <!--<div style="width: 20px;height: 100%;display:flex;justify-content:center;align-items: center;margin-right: 10px">-->
-      <!--<img src="assets/imgs/ic_right.png" style="height: 14px;width: 12px">-->
-    <!--</div>-->
-
   </div>
-  <div style="width: 100%;height: 51px;display: flex;justify-content: flex-end;padding: 10px;padding-left: 0;border-bottom: solid 1px #eeeeee;">
-    <div style="flex: 1;height: 100%;display: flex;justify-content: flex-start;align-items: center;padding-left: 20px" (click)="set()">
-      <img src="assets/imgs/ic_setting.png" style="width: 20px;height: 20px">
-      <span style="margin-left: 25px;font-size: 15px">设置</span>
+  <div class="bottomContent">
+    <div class="bottomOrder" (click)="set()">
+      <img src="assets/imgs/ic_setting.png" class="myPic">
+      <span class="myTitle">设置</span>
     </div>
-    <!--<div style="width: 20px;height: 100%;display:flex;justify-content:center;align-items: center;margin-right: 10px">-->
-      <!--<img src="assets/imgs/ic_right.png" style="height: 14px;width: 12px">-->
-    <!--</div>-->
   </div>
 </ion-content>

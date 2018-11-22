@@ -5,21 +5,21 @@
   Ionic pages and navigation.
 -->
 <div style="height: 300px;position: relative">
-  <div style="font-size: 18px;width: 100%;height: 50px;padding-left: 20px;background: #00b0e8;line-height: 50px;color: white">筛选</div>
-  <div style="font-size: 16px;width: 100%;height: 50px;color: #999999;padding-top: 25px;padding-left: 15px">价格区间 (元)</div>
-  <div style="display: flex;margin-left: 15px;margin-top: 25px;align-items: center;margin-right: 15px;">
+  <div class="title">筛选</div>
+  <div class="condition">价格区间 (元)</div>
+  <div class="userInput;">
     <input class="inputNum" type="number" placeholder="最低价" [(ngModel)]="minPrice" (blur)="adjustMin()">
     <span style="margin-left: 5px;margin-right: 5px">—</span>
     <input class="inputNum" type="number" placeholder="最高价" [(ngModel)]="maxPrice" (blur)="adjustMax()">
   </div>
-  <div style="position: absolute;bottom: 0;width: 100%;height:60px">
+  <div class="footer">
     <ion-grid style="height: 100%;padding: 0">
       <ion-row style="height: 100%">
-        <ion-col col-6 style="padding: 0;height: 100%;border-right: 5px solid white;border-left: 15px solid white;border-bottom: 25px solid white; ">
-          <div class="submitB" ><button  (click)="reset()" style="height: 100%;background-color:deepskyblue;display: flex;align-items: center;justify-content: center;font-size: 15px;color: white">重置</button></div>
+        <ion-col col-6 class="myCol">
+          <div class="submitB" ><button  (click)="reset()" class="myButton">重置</button></div>
         </ion-col>
-        <ion-col col-6 style="padding: 0;height: 100%;border-left: 5px solid white;border-right: 15px solid white;border-bottom: 25px solid white;">
-          <div class="submitC" ><button  (click)="confirm()" style="height: 100%;background-color: deepskyblue;display: flex;align-items: center;justify-content: center;font-size: 15px;color: white">确定</button></div>
+        <ion-col col-6 class="myCol">
+          <div class="submitC" ><button  (click)="confirm()" class="myButton">确定</button></div>
         </ion-col>
       </ion-row>
     </ion-grid>

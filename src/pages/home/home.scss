@@ -1,4 +1,150 @@
 page-home {
+  .inviteDate{
+    color: #555555;
+    font-size: 11px;
+    padding-left: 23px;
+    padding-right: 23px;
+    text-align: left;
+    margin-top: 3px
+  }
+  .inviteInfo{
+    flex: 1;
+    font-size: 15px
+  }
+  .inviteStart{
+    width: 10px;
+    height: 18px;
+    line-height: 18px;
+    font-weight: bold
+  }
+  .inviteInclude{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-left: 23px
+  }
+  .purchaseInfo{
+    width: 100%;
+    text-align: left;
+    margin-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+  }
+  .purchaseStatus{
+    font-size: 12px;
+    margin-left: 2px;
+    background-color: #007aff;
+    color: white;
+    width: 40px;
+    padding: 1px;
+  }
+  .purchaseName{
+    font-size: 14px;
+    flex: 1;
+    overflow: scroll;
+    height: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: bold
+  }
+  .purchaseInclude{
+    width: 100%;
+    display: flex;
+    text-align: left;
+    margin-top: 10px
+  }
+  .applyDate{
+    font-size: 12px;
+    text-align: left;
+    margin-top: 5px
+  }
+  .applyInfo{
+    font-size: 12px ;
+    text-align: left;
+    margin-top: 10px
+  }
+  .applyName{
+    font-size: 14px;
+    font-weight:bold;
+    text-align: left;
+    height: 16px;
+    width: 100%;
+    overflow:scroll;
+    margin-top: 10px
+  }
+  .productionInfo{
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: 5px;
+    text-overflow: ellipsis;
+  }
+  .imgBorder{
+    height:auto;
+    min-height:99px;
+    width: 100%;
+    border-radius: 5px;
+    border: solid 1px #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+  .unLoad{
+    position: absolute;
+    top: 0;
+    right:15px;
+    height: 30px;
+    width: 22px
+  }
+  .myCol{
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+  .myGrid{
+    width: 100%;
+    height: 100%;
+    padding: 0
+  }
+  .loopContentFirst{
+    height: 166px;
+    box-sizing: border-box;
+    margin-top: 10px;
+  }
+  .mySlidesPic{
+    width: 100%;
+    height: 39.466vw;
+    border-radius: 0
+  }
+  .slidesBorder{
+    height: 39.466vw;
+    margin-top: 0;
+  }
+  .myCancel{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.7);
+  }
+  .myInput{
+    width: 100%;
+    height: 35px;
+    border-radius: 15px;
+    background-color: #eeeeee;
+    border: none;
+    padding-left: 45px
+  }
+  .searchBorder{
+    height: 35px;
+    width: 100%;
+    line-height: 40px;
+    position: relative;
+  }
   body{
     overflow: hidden;
   }

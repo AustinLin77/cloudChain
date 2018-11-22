@@ -12,11 +12,6 @@ export class ContactPage {
 
   constructor(public navCtrl: NavController, private app: App,private httpService:HttpService,public navParams: NavParams,) {
   }
-  ionViewWillEnter(){
-    // this.httpService.getOrganizea('/user/app/get/company', {}
-    //    ).then(
-    //       res => this.handleSuccess(res));
-  }
   ngOnInit(): void {
     var show=localStorage.getItem("token");
     if(show){

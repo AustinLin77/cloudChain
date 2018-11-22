@@ -1,5 +1,40 @@
 page-sort {
-.left{
+  .optionName{
+    border-bottom:solid 1px #eeeeee;
+    height:50px;
+    display:flex;
+    background-color:white;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px;
+  }
+  .secondContent{
+    background-color: white;
+    height:100%;
+    width:60%;
+    float: left;
+    overflow: scroll;
+    border-left: solid 1px #eeeeee;
+    padding: 10px
+  }
+  .left{
   background-color: #eeeeee;
-}
+  }
+  .firstContent{
+    height: 100%;
+    width: 40%;
+    border-right: solid 8px #eeeeee;
+    float: left;
+    overflow: hidden;
+    background-color: white
+  }
+  .name{
+    border-bottom: solid 1px #eeeeee;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px
+  }
+
 }

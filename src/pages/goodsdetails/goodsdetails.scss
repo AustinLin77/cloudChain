@@ -1,4 +1,9 @@
 page-goodsdetails {
+  .slidesBorder{
+    height: 200px;
+    margin-top: 0;
+    width: 100%
+  }
   .footer-md::before{
     top:0;
   }
@@ -161,7 +166,26 @@ page-goodsdetails {
     z-index: 9
   }
   .navbarStySec{
-
     z-index: 9
+  }
+  .picBorder{
+    height: auto;
+    width: 90%;
+    max-height: 180px;
+    border: 1px solid #eeeeee
+  }
+  .myPic{
+    height: auto;
+    width: 100%;
+    max-height: 180px
+  }
+  .myCol{
+    padding: 0;
+    height: 100%
+  }
+  .decriInfo{
+    width: 90%;
+    height: 90%;
+    text-align: center
   }
 }

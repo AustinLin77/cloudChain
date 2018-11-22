@@ -1,4 +1,26 @@
 page-apply-details {
+  .mySubmitButtonOne{
+    height: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color:black
+  }
+  .mySubmitButtonTwo{
+    height: 100%;
+    background-color: #FF525C ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: white
+  }
+  .myFootCol{
+    padding: 0;
+    height: 100%
+  }
   .picSty{
     width: 100%;
     height: 250px

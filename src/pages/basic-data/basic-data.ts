@@ -16,7 +16,7 @@ import { HttpService } from '../../service/HttpService';
   templateUrl: 'basic-data.html',
 })
 export class BasicDataPage {
-  chain:'';
+  chain;
   dataSource : Array<any> = [];
   unread:number=0;
   constructor(private httpService: HttpService,public navCtrl: NavController, public navParams: NavParams, public events: Events) {
@@ -29,6 +29,7 @@ export class BasicDataPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad BasicDataPage');
     var data1 = {'key': '客户管理', 'index': '1'};
+
     this.chain=localStorage.getItem('chain')
     this.dataSource.push(data1);
     var headerParameters = {

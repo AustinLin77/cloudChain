@@ -8,4 +8,20 @@ page-guid {
     width: 30px;
     height: 30px;
   }
+  .loginButton{
+    background: white;
+    position: absolute;
+    right: 53%;
+    width: 40%;
+    height: 30px;
+    bottom: 30px;
+  }
+  .registerButton{
+    background: #008ec3;
+    position: absolute;
+    left: 53%;
+    width: 40%;
+    height: 30px;
+    bottom: 30px;color: white;
+  }
 }

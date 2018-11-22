@@ -2,7 +2,7 @@
   <ion-navbar color="primary"  [hideBackButton]="canGo==false" [class.navbarSty]="canGo==false" [class.navbarStySec]="canGo==true">
     <ion-buttons start *ngIf="chain==0&&canGo==false">
       <button ion-button icon-only (click)="ownerBack()" navPush >
-        <ion-icon name="arrow-back"></ion-icon>Back
+        <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
     <ion-icon name="arrow-back" class="navIcon" (click)="ownerBack()" navPush *ngIf="chain==1&&canGo==false"></ion-icon>
@@ -10,7 +10,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content >
-  <div style="height: 200px;margin-top: 0;width: 100%">
+  <div class="slidesBorder">
     <ion-slides [pager]="numOfPic" autoplay="600" speed="800"  #sliders>
       <ion-slide *ngFor="let slide of slides" >
         <div class="picSty" (click)="openBigImg()">
@@ -46,12 +46,12 @@
   <div class="loopHead" *ngIf="haveValue" style="display: flex;align-items: center;justify-content: center">无规格信息</div>
   <div class="propertySty">商品信息</div>
   <div class="picGroupSty">
-    <div style="height: auto;width: 90%;max-height: 180px;border: 1px solid #eeeeee">
-      <img  src="{{slides[0]}}" style="height: auto;width: 100%;max-height: 180px">
+    <div class="picBorder">
+      <img  src="{{slides[0]}}" class="myPic">
     </div>
   </div>
   <div class="decriSty">
-    <span style="width: 90%;height: 90%;text-align: center" id="description"></span>
+    <span class="decriInfo" id="description"></span>
   </div>
 </ion-content>
 <ion-footer class="footer">
@@ -66,10 +66,10 @@
          <ion-badge class="badge">{{shopNum}}</ion-badge>
        </div>
       </ion-col>
-      <ion-col col-4 style="padding: 0;height: 100%">
+      <ion-col col-4 class="myCol">
         <div class="colInnerT" ><button class="colInnerT" (click)="addShopNum()" style="color: white"  [disabled]="flag">加入进货单</button></div>
       </ion-col>
-      <ion-col col-4 style="padding: 0;height: 100%">
+      <ion-col col-4 class="myCol">
         <div class="colInnerTH" (click)="confirm()">提交申请</div>
       </ion-col>
     </ion-row>

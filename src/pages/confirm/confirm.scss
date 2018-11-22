@@ -54,7 +54,27 @@ page-confirm {
     font-size: 14px;
     font-family: 宋体;
     margin-left: 10px;
-
+  }
+  .applyDate{
+    font-family: 微软雅黑;
+    font-size: 16px;
+    color: black
+  }
+  .mySubmitButton{
+    height: 100%;
+    background-color:#FF525C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: white
+  }
+  .name{
+    font-family: 微软雅黑;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .secondDiv{
     height: 90px;

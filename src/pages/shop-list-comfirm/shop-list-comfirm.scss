@@ -1,4 +1,44 @@
 page-shop-list-comfirm {
+  .myButton{
+    height: 100%;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: white
+  }
+  .organization{
+    font-size: 14px;
+    font-weight: 200;
+    font-family: 宋体;
+    color: #456f9a
+  }
+  .myTotal{
+    color: red;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 微软雅黑
+  }
+  .neededDate{
+    font-family: 微软雅黑;
+    font-size: 16px;
+    color: black
+  }
+  .buyNum{
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 微软雅黑;
+    margin-right: 5px
+  }
+  .goodName{
+    font-family: 微软雅黑;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .loopHead {
     background-color: white;
     height: 50px;

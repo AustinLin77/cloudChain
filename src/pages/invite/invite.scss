@@ -1,4 +1,29 @@
 page-invite {
+  .inviteDate{
+    color: #555555;
+    font-size: 11px;
+    padding-left: 23px;
+    padding-right: 23px;
+    text-align: left;
+    margin-top: 3px
+  }
+  .inviteTitle{
+    flex: 1;
+    font-size: 15px
+  }
+  .inviteStart{
+    width: 10px;
+    height: 18px;
+    line-height: 18px;
+    font-weight: bold
+  }
+  .inviteInclude{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-left: 23px;
+    margin-top: 10px
+  }
   .navbarSty{
     text-align: center;
     z-index: 9

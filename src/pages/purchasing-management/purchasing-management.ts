@@ -17,7 +17,7 @@ import { HttpService } from '../../service/HttpService';
 })
 
 export class PurchasingManagementPage {
-  chain:'';
+  chain;
   unread:number=0;
   dataSource : Array<any> = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events,private httpService: HttpService,) {
