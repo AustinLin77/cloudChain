@@ -6,7 +6,7 @@
 <ion-content >
   <div  *ngFor="let option of myRealData">
     <div class="firstDiv">
-      <ion-icon name="paper" style="font-size: 24px;width: 20px"></ion-icon>
+      <img src="assets/imgs/ic_store.png" style="width: 18px">
       <div class="companyName">{{option.companyName}}</div>
     </div>
     <div  *ngFor="let good of option.data">
@@ -14,7 +14,8 @@
       <img src="{{good.imgPathList}}" class="pic">
       <div class="innerDiv">
         <div class="goodName">{{good.goodName}}</div>
-        <div class="price">{{good.currency}}{{good.goodPrice}}/{{good.unit}}</div>
+
+        <div class="price"><span>{{good.currency}}{{good.goodPrice}}</span><span style="color: #101010 ">/{{good.unit}}</span></div>
       </div>
     </div>
     <div class="loopHead" >

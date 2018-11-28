@@ -30,6 +30,7 @@ export class StorageDocumentsPage {
   pageSize: number = 18;
   nextPage: number = 1;
   pages: number;
+  showNoContent:boolean=false;
   dataSource: any = [];
   dataSource1: any = [];
   already:string='true';
@@ -48,6 +49,9 @@ export class StorageDocumentsPage {
     events.subscribe('pop:myUnread', (number)=>{
       console.log(number);
       this.unread = number;
+      if(this.unread==0){
+        this.showNoContent=true
+      }
     })
     events.subscribe('pop:data', (data, time) => {
 
@@ -58,7 +62,6 @@ export class StorageDocumentsPage {
     });
   }
   backButtonClick = (e: UIEvent) => {
-
     this.navCtrl.pop();
   }
   removeDatas(data) {
@@ -100,7 +103,7 @@ export class StorageDocumentsPage {
 
   obtainDatas(){
     this.headerParameters = {
-      status: this. auditStatus,
+      status: this.auditStatus,
       pageNum:this.nextPage,
       pageSize: this.pageSize
     };
@@ -112,6 +115,7 @@ export class StorageDocumentsPage {
   }
 
   onPageTypeChange(type) {
+    this.showNoContent=false
     console.log(type);
     this.auditStatus = type;
     if(type=='1'){
@@ -171,6 +175,9 @@ export class StorageDocumentsPage {
     this.searchLoactionData.splice(index,1)
   }
   handleUserInfoSuccess(result) {
+    if(result.data.length==0){
+      this.showNoContent=true
+    }
     console.log(result);
     if(this.auditStatus === '1') {
       this.dataSource1 = result.data;

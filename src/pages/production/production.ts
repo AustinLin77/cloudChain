@@ -18,6 +18,10 @@ import { PopoverController } from 'ionic-angular';
   templateUrl: 'production.html',
 })
 export class ProductionPage {
+  myMinPrice:number;
+  myMaxPrice:number;
+  min;
+  max;
   pageNum:number;
   pageSize:number=18;
   cnt:number;
@@ -30,7 +34,7 @@ export class ProductionPage {
   idss=111;
   key:string;
   showNoContent:boolean=false;
-
+  showSift:boolean=false;
   firstChoice:number=0;
   secondChoice:number=1;
   thirdChoice:number=1;
@@ -62,6 +66,13 @@ export class ProductionPage {
       idss:this.idss,
       canGo:false
     });
+  }
+  myShowSift(){
+    this.showSift=true
+  }
+
+  closeSift(){
+    this.showSift=!this.showSift
   }
   //初始化得到数据
   ngOnInit():void {
@@ -108,7 +119,6 @@ export class ProductionPage {
   noSearch(){
     this.flagOne=!this.flagOne;
   }
-
   //初始化获取数据成功后函数
   handleSuccess(result) {
     if(result.data.length==0){
@@ -1331,205 +1341,206 @@ export class ProductionPage {
     }
   }
   //根据筛选区间搜索
-  presentPopover(myEvent) {
-    if(this.what==1){
-      if(this.key){
-        this.firstChoice=1;
-        this.secondChoice=1;
-        this.thirdChoice=1;
-        this.fourthChoice=0;
-        this.fourth=0;
-        let popover = this.popoverCtrl.create('PopoverPage',{},{cssClass:"myPopovers"});
-        popover.present({
-          ev: myEvent
-        });
-        popover.onDidDismiss((minPrice,maxPrice) =>{
-          if(minPrice==null&&maxPrice=='backdrop'){
-            this.httpService.presentToast("请正确填写筛选区间");
-            return
-          }
-          this.pageNum=1;
-          this.maxPrice=parseFloat(maxPrice);
-          this.minPrice=parseFloat(minPrice);
-          if(this.minPrice==839555555){
-            this.httpService.get(this.url, {
-              'catgId':this.idss,
-              'search':this.key,
-              'maxPrice':this.maxPrice,
-              'pageNum':this.pageNum,
-              'pageSize':this.pageSize
-            }
-            ).then(
-              res => this.handleSortSuccess(res));
-          }else if(this.maxPrice==839666666){
-            this.httpService.get(this.url, {
-              'catgId':this.idss,
-              'search':this.key,
-              'minPrice':this.minPrice,
-              'pageNum':this.pageNum,
-              'pageSize':this.pageSize
-            }
-            ).then(
-              res => this.handleSortSuccess(res));
-          }else{
-            this.httpService.get(this.url, {
-              'catgId':this.idss,
-              'search':this.key,
-              'minPrice':this.minPrice,
-              'maxPrice':this.maxPrice,
-              'pageNum':this.pageNum,
-              'pageSize':this.pageSize
-            }
-            ).then(
-              res => this.handleSortSuccess(res));
-          }
-        })
-      }else if(!this.key){
-        this.firstChoice=1;
-        this.secondChoice=1;
-        this.thirdChoice=1;
-        this.fourthChoice=0;
-        this.fourth=0;
-        let popover = this.popoverCtrl.create('PopoverPage',{},{cssClass:"myPopovers"});
-        popover.present({
-          ev: myEvent
-        });
-        popover.onDidDismiss((minPrice,maxPrice) =>{
-          if(minPrice==null&&maxPrice=='backdrop'){
-            this.httpService.presentToast("请正确填写筛选区间");
-            return
-          }
-          this.pageNum=1;
-          this.maxPrice=parseFloat(maxPrice);
-          this.minPrice=parseFloat(minPrice);
-          if(this.minPrice==839555555){
-            this.httpService.get(this.url, {
-              'catgId':this.idss,
-              'maxPrice':this.maxPrice,
-              'pageNum':this.pageNum,
-              'pageSize':this.pageSize
-            }
-            ).then(
-              res => this.handleSortSuccess(res));
-          }else if(this.maxPrice==839666666){
-            this.httpService.get(this.url, {
-              'catgId':this.idss,
-              'minPrice':this.minPrice,
-              'pageNum':this.pageNum,
-              'pageSize':this.pageSize
-            }
-            ).then(
-              res => this.handleSortSuccess(res));
-          }else{
-            this.httpService.get(this.url, {
-              'catgId':this.idss,
-              'minPrice':this.minPrice,
-              'maxPrice':this.maxPrice,
-              'pageNum':this.pageNum,
-              'pageSize':this.pageSize
-            }
-            ).then(
-              res => this.handleSortSuccess(res));
-          }
-        })
-      }
-    }else if(this.what==0||this.what==2){
-       if(this.key){
-         this.firstChoice=1;
-         this.secondChoice=1;
-         this.thirdChoice=1;
-         this.fourthChoice=0;
-         this.fourth=0;
-         let popover = this.popoverCtrl.create('PopoverPage',{},{cssClass:"myPopovers"});
-         popover.present({
-           ev: myEvent
-         });
-         popover.onDidDismiss((minPrice,maxPrice) =>{
-           if(minPrice==null&&maxPrice=='backdrop'){
-             this.httpService.presentToast("请正确填写筛选区间");
-             return
-          }
-          this.pageNum=1;
-          this.maxPrice=parseFloat(maxPrice);
-          this.minPrice=parseFloat(minPrice);
-          if(this.minPrice==839555555){
-            this.httpService.get(this.url, {
-              'search':this.key,
-              'maxPrice':this.maxPrice,
-              'pageNum':this.pageNum,
-              'pageSize':this.pageSize
-            }
-            ).then(
-              res => this.handleSortSuccess(res));
-          }else if(this.maxPrice==839666666){
-            this.httpService.get(this.url, {
-              'search':this.key,
-              'minPrice':this.minPrice,
-              'pageNum':this.pageNum,
-              'pageSize':this.pageSize
-            }
-            ).then(
-              res => this.handleSortSuccess(res));
-          }else{
-            this.httpService.get(this.url, {
-              'search':this.key,
-              'minPrice':this.minPrice,
-              'maxPrice':this.maxPrice,
-              'pageNum':this.pageNum,
-              'pageSize':this.pageSize
-            }
-            ).then(
-              res => this.handleSortSuccess(res));
-          }
-        })
-       }else if(!this.key){
-         this.firstChoice=1;
-         this.secondChoice=1;
-         this.thirdChoice=1;
-         this.fourthChoice=0;
-         this.fourth=0;
-         let popover = this.popoverCtrl.create('PopoverPage',{},{cssClass:"myPopovers"});
-         popover.present({
-           ev: myEvent
-         });
-         popover.onDidDismiss((minPrice,maxPrice) =>{
-           if(minPrice==null&&maxPrice=='backdrop'){
-              this.httpService.presentToast("请正确填写筛选区间");
-              return
-           }
-           this.pageNum=1;
-           this.maxPrice=parseFloat(maxPrice);
-           this.minPrice=parseFloat(minPrice);
-           if(this.minPrice==839555555){
-              this.httpService.get(this.url, {
-                'maxPrice':this.maxPrice,
-                'pageNum':this.pageNum,
-                'pageSize':this.pageSize
-              }
-             ).then(
-               res => this.handleSortSuccess(res));
-           }else if(this.maxPrice==839666666){
-             this.httpService.get(this.url, {
-               'minPrice':this.minPrice,
-               'pageNum':this.pageNum,
-               'pageSize':this.pageSize
-             }
-             ).then(
-               res => this.handleSortSuccess(res));
-           }else{
-             this.httpService.get(this.url, {
-               'minPrice':this.minPrice,
-               'maxPrice':this.maxPrice,
-               'pageNum':this.pageNum,
-               'pageSize':this.pageSize
-             }
-           ).then(
-             res => this.handleSortSuccess(res));
-           }
-        })
-       }
-    }
-  }
+  // presentPopover(myEvent) {
+  //   if(this.what==1){
+  //     if(this.key){
+  //       this.firstChoice=1;
+  //       this.secondChoice=1;
+  //       this.thirdChoice=1;
+  //       this.fourthChoice=0;
+  //       this.fourth=0;
+  //       let popover = this.popoverCtrl.create('PopoverPage',{},{cssClass:"myPopovers"});
+  //       popover.present({
+  //         ev: myEvent
+  //       });
+  //       popover.onDidDismiss((minPrice,maxPrice) =>{
+  //         if(minPrice==null&&maxPrice=='backdrop'){
+  //           this.httpService.presentToast("请正确填写筛选区间");
+  //           return
+  //         }
+  //         this.pageNum=1;
+  //         this.maxPrice=parseFloat(maxPrice);
+  //         this.minPrice=parseFloat(minPrice);
+  //         if(this.minPrice==839555555){
+  //           this.httpService.get(this.url, {
+  //             'catgId':this.idss,
+  //             'search':this.key,
+  //             'maxPrice':this.maxPrice,
+  //             'pageNum':this.pageNum,
+  //             'pageSize':this.pageSize
+  //           }
+  //           ).then(
+  //             res => this.handleSortSuccess(res));
+  //         }else if(this.maxPrice==839666666){
+  //           this.httpService.get(this.url, {
+  //             'catgId':this.idss,
+  //             'search':this.key,
+  //             'minPrice':this.minPrice,
+  //             'pageNum':this.pageNum,
+  //             'pageSize':this.pageSize
+  //           }
+  //           ).then(
+  //             res => this.handleSortSuccess(res));
+  //         }else{
+  //           this.httpService.get(this.url, {
+  //             'catgId':this.idss,
+  //             'search':this.key,
+  //             'minPrice':this.minPrice,
+  //             'maxPrice':this.maxPrice,
+  //             'pageNum':this.pageNum,
+  //             'pageSize':this.pageSize
+  //           }
+  //           ).then(
+  //             res => this.handleSortSuccess(res));
+  //         }
+  //       })
+  //     }else if(!this.key){
+  //       this.firstChoice=1;
+  //       this.secondChoice=1;
+  //       this.thirdChoice=1;
+  //       this.fourthChoice=0;
+  //       this.fourth=0;
+  //       let popover = this.popoverCtrl.create('PopoverPage',{},{cssClass:"myPopovers"});
+  //       popover.present({
+  //         ev: myEvent
+  //       });
+  //       popover.onDidDismiss((minPrice,maxPrice) =>{
+  //         if(minPrice==null&&maxPrice=='backdrop'){
+  //           this.httpService.presentToast("请正确填写筛选区间");
+  //           return
+  //         }
+  //         this.pageNum=1;
+  //         this.maxPrice=parseFloat(maxPrice);
+  //         this.minPrice=parseFloat(minPrice);
+  //         if(this.minPrice==839555555){
+  //           this.httpService.get(this.url, {
+  //             'catgId':this.idss,
+  //             'maxPrice':this.maxPrice,
+  //             'pageNum':this.pageNum,
+  //             'pageSize':this.pageSize
+  //           }
+  //           ).then(
+  //             res => this.handleSortSuccess(res));
+  //         }else if(this.maxPrice==839666666){
+  //           this.httpService.get(this.url, {
+  //             'catgId':this.idss,
+  //             'minPrice':this.minPrice,
+  //             'pageNum':this.pageNum,
+  //             'pageSize':this.pageSize
+  //           }
+  //           ).then(
+  //             res => this.handleSortSuccess(res));
+  //         }else{
+  //           this.httpService.get(this.url, {
+  //             'catgId':this.idss,
+  //             'minPrice':this.minPrice,
+  //             'maxPrice':this.maxPrice,
+  //             'pageNum':this.pageNum,
+  //             'pageSize':this.pageSize
+  //           }
+  //           ).then(
+  //             res => this.handleSortSuccess(res));
+  //         }
+  //       })
+  //     }
+  //   }
+  //    else if(this.what==0||this.what==2){
+  //      if(this.key){
+  //        this.firstChoice=1;
+  //        this.secondChoice=1;
+  //        this.thirdChoice=1;
+  //        this.fourthChoice=0;
+  //        this.fourth=0;
+  //        let popover = this.popoverCtrl.create('PopoverPage',{},{cssClass:"myPopovers"});
+  //        popover.present({
+  //          ev: myEvent
+  //        });
+  //        popover.onDidDismiss((minPrice,maxPrice) =>{
+  //          if(minPrice==null&&maxPrice=='backdrop'){
+  //            this.httpService.presentToast("请正确填写筛选区间");
+  //            return
+  //         }
+  //         this.pageNum=1;
+  //         this.maxPrice=parseFloat(maxPrice);
+  //         this.minPrice=parseFloat(minPrice);
+  //         if(this.minPrice==839555555){
+  //           this.httpService.get(this.url, {
+  //             'search':this.key,
+  //             'maxPrice':this.maxPrice,
+  //             'pageNum':this.pageNum,
+  //             'pageSize':this.pageSize
+  //           }
+  //           ).then(
+  //             res => this.handleSortSuccess(res));
+  //         }else if(this.maxPrice==839666666){
+  //           this.httpService.get(this.url, {
+  //             'search':this.key,
+  //             'minPrice':this.minPrice,
+  //             'pageNum':this.pageNum,
+  //             'pageSize':this.pageSize
+  //           }
+  //           ).then(
+  //             res => this.handleSortSuccess(res));
+  //         }else{
+  //           this.httpService.get(this.url, {
+  //             'search':this.key,
+  //             'minPrice':this.minPrice,
+  //             'maxPrice':this.maxPrice,
+  //             'pageNum':this.pageNum,
+  //             'pageSize':this.pageSize
+  //           }
+  //           ).then(
+  //             res => this.handleSortSuccess(res));
+  //         }
+  //       })
+  //      }else if(!this.key){
+  //        this.firstChoice=1;
+  //        this.secondChoice=1;
+  //        this.thirdChoice=1;
+  //        this.fourthChoice=0;
+  //        this.fourth=0;
+  //        let popover = this.popoverCtrl.create('PopoverPage',{},{cssClass:"myPopovers"});
+  //        popover.present({
+  //          ev: myEvent
+  //        });
+  //        popover.onDidDismiss((minPrice,maxPrice) =>{
+  //          if(minPrice==null&&maxPrice=='backdrop'){
+  //             this.httpService.presentToast("请正确填写筛选区间");
+  //             return
+  //          }
+  //          this.pageNum=1;
+  //          this.maxPrice=parseFloat(maxPrice);
+  //          this.minPrice=parseFloat(minPrice);
+  //          if(this.minPrice==839555555){
+  //             this.httpService.get(this.url, {
+  //               'maxPrice':this.maxPrice,
+  //               'pageNum':this.pageNum,
+  //               'pageSize':this.pageSize
+  //             }
+  //            ).then(
+  //              res => this.handleSortSuccess(res));
+  //          }else if(this.maxPrice==839666666){
+  //            this.httpService.get(this.url, {
+  //              'minPrice':this.minPrice,
+  //              'pageNum':this.pageNum,
+  //              'pageSize':this.pageSize
+  //            }
+  //            ).then(
+  //              res => this.handleSortSuccess(res));
+  //          }else{
+  //            this.httpService.get(this.url, {
+  //              'minPrice':this.minPrice,
+  //              'maxPrice':this.maxPrice,
+  //              'pageNum':this.pageNum,
+  //              'pageSize':this.pageSize
+  //            }
+  //          ).then(
+  //            res => this.handleSortSuccess(res));
+  //          }
+  //       })
+  //      }
+  //   }
+  // }
   //点击查找按钮
   search(){
     this.flagOne=true;
@@ -1604,5 +1615,229 @@ export class ProductionPage {
   //跳转到分类界面
    test(){
     this.app.getRootNav().push( 'SortPage' );
+  }
+  adjustMin(){
+    if(this.myMinPrice<0){
+      this.myMinPrice=0;
+      this.httpService.presentToast("请正确填写最低价")
+    }
+    if(this.myMinPrice>this.myMaxPrice){
+      this.myMinPrice=0;
+      this.httpService.presentToast("最低价不可高于最高价")
+    }
+  }
+  //填写完区间高价后检查
+  adjustMax(){
+    if(this.myMaxPrice<0){
+      this.myMaxPrice=0;
+      this.httpService.presentToast("请正确填写最高价")
+    }
+    if(this.myMaxPrice<this.myMinPrice){
+      this.myMaxPrice=0;
+      this.httpService.presentToast("最高价不可低于最低价")
+    }
+  }
+  reset(){
+    this.myMinPrice=0;
+    this.myMaxPrice=0;
+  }
+  //提交
+  confirm(){
+    if(this.myMinPrice==null&&this.myMaxPrice==null){
+      this.httpService.presentToast("请正确填写筛选最高价和最低价");
+      return
+    }
+    if(this.myMinPrice!=null){
+      this.min=this.myMinPrice.toString();
+    }else{ this.min ='839555555'}
+    if(this.myMaxPrice!=null){
+      var max=this.myMaxPrice.toString();
+    }else{ max='839666666'}
+    if(this.what==1){
+      if(this.key){
+        this.firstChoice=1;
+        this.secondChoice=1;
+        this.thirdChoice=1;
+        this.fourthChoice=0;
+        this.fourth=0;
+        let minPrice=this.min;
+        let maxPrice=max
+          if(minPrice==null&&maxPrice=='backdrop'){
+            this.httpService.presentToast("请正确填写筛选区间");
+            return
+          }
+          this.pageNum=1;
+          this.maxPrice=parseFloat(maxPrice);
+          this.minPrice=parseFloat(minPrice);
+          if(this.minPrice==839555555){
+            this.httpService.get(this.url, {
+                'catgId':this.idss,
+                'search':this.key,
+                'maxPrice':this.maxPrice,
+                'pageNum':this.pageNum,
+                'pageSize':this.pageSize
+              }
+            ).then(
+              res => this.handleSortSuccess(res));
+          }else if(this.maxPrice==839666666){
+            this.httpService.get(this.url, {
+                'catgId':this.idss,
+                'search':this.key,
+                'minPrice':this.minPrice,
+                'pageNum':this.pageNum,
+                'pageSize':this.pageSize
+              }
+            ).then(
+              res => this.handleSortSuccess(res));
+          }else{
+            this.httpService.get(this.url, {
+                'catgId':this.idss,
+                'search':this.key,
+                'minPrice':this.minPrice,
+                'maxPrice':this.maxPrice,
+                'pageNum':this.pageNum,
+                'pageSize':this.pageSize
+              }
+            ).then(
+              res => this.handleSortSuccess(res));
+          }
+
+      }else if(!this.key){
+        this.firstChoice=1;
+        this.secondChoice=1;
+        this.thirdChoice=1;
+        this.fourthChoice=0;
+        this.fourth=0;
+        let minPrice=this.min;
+        let maxPrice=max
+          if(minPrice==null&&maxPrice=='backdrop'){
+            this.httpService.presentToast("请正确填写筛选区间");
+            return
+          }
+          this.pageNum=1;
+          this.maxPrice=parseFloat(maxPrice);
+          this.minPrice=parseFloat(minPrice);
+          if(this.minPrice==839555555){
+            this.httpService.get(this.url, {
+                'catgId':this.idss,
+                'maxPrice':this.maxPrice,
+                'pageNum':this.pageNum,
+                'pageSize':this.pageSize
+              }
+            ).then(
+              res => this.handleSortSuccess(res));
+          }else if(this.maxPrice==839666666){
+            this.httpService.get(this.url, {
+                'catgId':this.idss,
+                'minPrice':this.minPrice,
+                'pageNum':this.pageNum,
+                'pageSize':this.pageSize
+              }
+            ).then(
+              res => this.handleSortSuccess(res));
+          }else{
+            this.httpService.get(this.url, {
+                'catgId':this.idss,
+                'minPrice':this.minPrice,
+                'maxPrice':this.maxPrice,
+                'pageNum':this.pageNum,
+                'pageSize':this.pageSize
+              }
+            ).then(
+              res => this.handleSortSuccess(res));
+          }
+
+      }
+    } else if(this.what==0||this.what==2){
+      if(this.key){
+        this.firstChoice=1;
+        this.secondChoice=1;
+        this.thirdChoice=1;
+        this.fourthChoice=0;
+        this.fourth=0;
+        let minPrice=this.min;
+        let maxPrice=max
+          if(minPrice==null&&maxPrice=='backdrop'){
+            this.httpService.presentToast("请正确填写筛选区间");
+            return
+          }
+          this.pageNum=1;
+          this.maxPrice=parseFloat(maxPrice);
+          this.minPrice=parseFloat(minPrice);
+          if(this.minPrice==839555555){
+            this.httpService.get(this.url, {
+                'search':this.key,
+                'maxPrice':this.maxPrice,
+                'pageNum':this.pageNum,
+                'pageSize':this.pageSize
+              }
+            ).then(
+              res => this.handleSortSuccess(res));
+          }else if(this.maxPrice==839666666){
+            this.httpService.get(this.url, {
+                'search':this.key,
+                'minPrice':this.minPrice,
+                'pageNum':this.pageNum,
+                'pageSize':this.pageSize
+              }
+            ).then(
+              res => this.handleSortSuccess(res));
+          }else{
+            this.httpService.get(this.url, {
+                'search':this.key,
+                'minPrice':this.minPrice,
+                'maxPrice':this.maxPrice,
+                'pageNum':this.pageNum,
+                'pageSize':this.pageSize
+              }
+            ).then(
+              res => this.handleSortSuccess(res));
+          }
+
+      }else if(!this.key){
+        this.firstChoice=1;
+        this.secondChoice=1;
+        this.thirdChoice=1;
+        this.fourthChoice=0;
+        this.fourth=0;
+        let minPrice=this.min;
+        let maxPrice=max
+          if(minPrice==null&&maxPrice=='backdrop'){
+            this.httpService.presentToast("请正确填写筛选区间");
+            return
+          }
+          this.pageNum=1;
+          this.maxPrice=parseFloat(maxPrice);
+          this.minPrice=parseFloat(minPrice);
+          if(this.minPrice==839555555){
+            this.httpService.get(this.url, {
+                'maxPrice':this.maxPrice,
+                'pageNum':this.pageNum,
+                'pageSize':this.pageSize
+              }
+            ).then(
+              res => this.handleSortSuccess(res));
+          }else if(this.maxPrice==839666666){
+            this.httpService.get(this.url, {
+                'minPrice':this.minPrice,
+                'pageNum':this.pageNum,
+                'pageSize':this.pageSize
+              }
+            ).then(
+              res => this.handleSortSuccess(res));
+          }else{
+            this.httpService.get(this.url, {
+                'minPrice':this.minPrice,
+                'maxPrice':this.maxPrice,
+                'pageNum':this.pageNum,
+                'pageSize':this.pageSize
+              }
+            ).then(
+              res => this.handleSortSuccess(res));
+          }
+
+      }
+    }
+    this.showSift=!this.showSift
   }
 }

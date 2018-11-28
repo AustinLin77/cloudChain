@@ -37,6 +37,6 @@ export class MyInformationPage {
     localStorage.removeItem("teamId");
     localStorage.removeItem("id");
     localStorage.removeItem('sort');
-    this.app.getRootNav().setRoot('GuidPage');
+    this.app.getRootNav().setRoot('LoginPage');
   }
 }

@@ -15,25 +15,35 @@
 
 
 <ion-content >
-  <div  *ngFor="let i of data" (click)="quotationDetails(i.id)" style="border-bottom: solid 1px #eeeeee;padding-bottom: 5px">
-    <div style="width: 100%;height: 30px;margin: 5px;line-height: 30px;display: flex;justify-content: flex-end;padding-left: 10px;padding-right: 10px"><span style="flex: 1;font-size: 14px;color: #101010;font-family: Arial ">报价单号 : {{i.qutationCode}}</span>
-      <span style="width: 80px; color:#B5B5B5;font-family: Arial;" >{{i.quotationDate}}</span>
-    </div>
-    <div class="myDiv">
-      <div class="myInDiv">
-        <div class="otherDiv">商品 : {{i.goodsName}}</div>
-        <div class="otherDiv" *ngIf="isCopy==0">需求单位 : {{i.companyName}}</div>
-        <div class="otherDiv" *ngIf="isCopy==1">供应商 : {{i.supplierName}}</div>
-        <div class="otherDiv">含税价 : {{i.currency}}{{i.price}}</div>
-        <div class="otherDiv">联系人 : {{i.contactor}}——{{i.contactPhone}}</div>
+  <div *ngIf="!showNoContent">
+    <div  *ngFor="let i of data" (click)="quotationDetails(i.id)" style="border-bottom: solid 1px #eeeeee;padding-bottom: 5px;display: flex;">
+      <div style="flex: 1">
+        <div style="width: 100%;min-height: 30px;margin: 5px;line-height: 30px;display: flex;justify-content: flex-end;padding-left: 10px;">
+          <div style="flex: 1;font-size: 15px;color: #101010;font-family: Arial;display: flex "><span style="width: 72px">报价单号 : </span><span style="flex: 1">{{i.qutationCode}}</span></div>
+          <div style="width: 80px; color:#B5B5B5;font-family: Arial;font-size: 13px" >{{i.quotationDate}}</div>
+        </div>
+        <div class="myDiv">
+          <div class="myInDiv">
+            <div class="otherDiv">商品 : {{i.goodsName}}</div>
+            <div class="otherDiv" *ngIf="isCopy==0">需求单位 : {{i.companyName}}</div>
+            <div class="otherDiv" *ngIf="isCopy==1">供应商 : {{i.supplierName}}</div>
+            <div class="otherDiv">含税价 : {{i.currency}}{{i.price}}</div>
+            <div class="otherDiv">联系人 : {{i.contactor}}——{{i.contactPhone}}</div>
+          </div>
+        </div>
       </div>
-      <ion-icon name="arrow-dropright" style="font-size: 25px;width: 10%;text-align: right;margin-right: 10px"></ion-icon>
+      <div style="width: 15px;height: 150px;display: flex;align-items: center">
+        <img src="assets/imgs/yunRight.png" style="width: 8px;height: 13px">
+      </div>
     </div>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="加载中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
   </div>
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载中...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  <div style="width: 100%;height:80%; display: flex;align-items: center;justify-content: center" *ngIf="showNoContent">
+    <img src="../../assets/imgs/noContent.png" class="myNoContent">
+  </div>
 </ion-content>

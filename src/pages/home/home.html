@@ -10,12 +10,12 @@
   </ion-navbar>
 </ion-header>
 <ion-content >
-    <div class="myCancel" *ngIf="showCancel"></div>
+    <!--<div class="myCancel" *ngIf="showCancel"></div>-->
     <div>
       <div class="slidesBorder">
         <ion-slides pager autoplay="600" speed="800"  #sliders  >
           <ion-slide *ngFor="let slide of slides">
-            <img src="{{slide.imgPath}}" class="mySlidesPic">
+            <img src="{{slide.imgPath}}" class="mySlidesPic" (click)="openBigImg()">
           </ion-slide>
         </ion-slides>
       </div>

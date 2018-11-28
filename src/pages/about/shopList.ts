@@ -24,14 +24,6 @@ export class ShopListPage {
   }
   //初始化获得购物车数量
   ionViewWillEnter(){
-    this.checkValue(GlobalVariable.shopCount);
-  }
-  //点击跳转到登录界面
-  login(){
-    this.app.getRootNav().push('GuidPage')
-  }
-  //初始化获得数据，只渲染一次
-  ngOnInit(): void {
     var show=localStorage.getItem("token");
     if(show){
       this.showWhat=1;
@@ -40,11 +32,33 @@ export class ShopListPage {
     }
     console.log(this.showWhat);
     if(this.showWhat==1){
+      this.checkValue(GlobalVariable.shopCount);
       this.httpService.getOrganizea('/app/shopping/car/list', {}
-    ).then(
-      res => this.handleSuccess(res))
+      ).then(
+        res => this.handleSuccess(res))
         .catch(error => this.handleErrora(error));
     }
+
+  }
+  //点击跳转到登录界面
+  login(){
+    this.app.getRootNav().push('LoginPage')
+  }
+  //初始化获得数据，只渲染一次
+  ngOnInit(): void {
+    // var show=localStorage.getItem("token");
+    // if(show){
+    //   this.showWhat=1;
+    // }else {
+    //   this.showWhat=0;
+    // }
+    // console.log(this.showWhat);
+    // if(this.showWhat==1){
+    //   this.httpService.getOrganizea('/app/shopping/car/list', {}
+    // ).then(
+    //   res => this.handleSuccess(res))
+    //     .catch(error => this.handleErrora(error));
+    // }
   }
   handleErrora(error){
     console.log(error)
@@ -74,6 +88,7 @@ export class ShopListPage {
   //查询购物车条数，根据条数进行操作函数
   checkValue(a){
    if(a==0){
+     console.log("aaa")
      var codeMessage='当前购物车无商品，请到商品页挑选您喜欢的商品吧！';
      this.fShowConfirm('Tips', codeMessage, '取消', '确定');
    }

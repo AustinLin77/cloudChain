@@ -172,7 +172,7 @@ export class PurchaseDetailsPage {
         {
           text: '登录',
           handler: () => {
-            this.navCtrl.push('GuidPage')
+            this.navCtrl.push('LoginPage')
           }
         }
       ]

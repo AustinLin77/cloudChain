@@ -29,6 +29,7 @@ export class CustomerManagePage {
   nextPage: number = 1;
   pages: number;
   dataSource: any = [];
+  showNoContent:boolean=false;
   already:string='true';
   unready:string='false';
   tab1: any = ChangePassPage;
@@ -46,9 +47,29 @@ export class CustomerManagePage {
   constructor( public events: Events,private httpService: HttpService, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
               // private photoViewer: PhotoViewer
   ) {
+    events.subscribe('pop:myUnread', (number)=>{
+      console.log(number);
+      this.unread = number;
+      if(this.unread==0){
+        this.showNoContent=true
+      }
+    })
+    events.subscribe('pop:data', (data, time) => {
 
+      console.log('OutboundManagementListPage pop data');
+      console.log(data);
+      // this.obtainDatas();
+      this.removeDatas(data);
+    });
   }
-
+  removeDatas(data) {
+    for (var i = 0; i < this.dataSource1.length; i++) {
+      if(this.dataSource1[i].id === data.id) {
+        this.dataSource1.splice(i, 1);
+        break;
+      }
+    }
+  }
   getItems() {
     if(this.myInput !== '') {
       this.showSearchLoaction = 'false';
@@ -75,7 +96,7 @@ export class CustomerManagePage {
   itemTapped($event, data) {
     this.auditStatus=data;
     console.log(data);
-    this.navCtrl.push('CustomerManageDetailPage', {'data': data});
+    this.navCtrl.push('CustomerManageDetailPage', {'data': data,'type': this.auditStatus});
   }
 
   obtainDatas(){
@@ -92,6 +113,7 @@ export class CustomerManagePage {
   }
 
   onPageTypeChange(type) {
+    this.showNoContent=false;
     console.log(type);
     this.auditStatus = type;
     if(type=='-1'){
@@ -104,8 +126,8 @@ export class CustomerManagePage {
     this.obtainDatas();
   }
   backButtonClick = (e: UIEvent) => {
-    var data= 3;
-    this.events.publish('pop:myUnread',data, Date.now());
+    // var data= 3;
+    this.events.publish('pop:myUnread',this.unread, Date.now());
     this.navCtrl.pop();
   }
   ionViewDidLoad() {
@@ -168,6 +190,9 @@ showSe(e){
   }
   handleUserInfoSuccess(result) {
     console.log(result);
+    if(result.data.length==0){
+      this.showNoContent=true
+    }
     if(this.auditStatus === '-1') {
       this.dataSource1 = result.data;
       console.log(this.dataSource1);

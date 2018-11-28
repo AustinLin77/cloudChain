@@ -13,12 +13,21 @@
 </ion-header>
 
 
-<ion-content padding>
-  <button ion-item *ngFor="let data of dataSource" (click)="itemTapped($event, data)"  id="mynavaaa">
-    <div style="display: inline-block;
-    /*position: absolute;left: 15px;*/
-">{{data.key}}</div>
-    <span style="margin-left: 10px;float: right" *ngIf="chain=='1'">></span>
-    <ion-badge color="secondary" style="float: right" >{{unread}}</ion-badge>
-  </button>
+<ion-content >
+  <!--<button ion-item *ngFor="let data of dataSource" (click)="itemTapped($event, data)"  id="mynavaaa">-->
+    <!--<div style="display: inline-block;-->
+    <!--/*position: absolute;left: 15px;*/">{{data.key}}</div>-->
+    <!--<span style="margin-left: 10px;float: right" *ngIf="chain=='1'">></span>-->
+    <!--<ion-badge color="secondary" style="float: right"  *ngIf="unread!=0" >{{unread}}</ion-badge>-->
+  <!--</button>-->
+  <div style="height: 50px;width: 100%;display: flex;align-items: center;padding-left: 20px;border-bottom: 1px solid #eeeeee" *ngFor="let data of dataSource" (click)="itemTapped($event, data)" >
+    <div style="height: 100%;width: 50%;display: flex;align-items: center;font-size: 14px">{{data.key}}</div>
+    <div style="height: 100%;width: 50%;display: flex;align-items: center;justify-content: flex-end" id="mynavaaa">
+      <ion-badge color="secondary"   *ngIf="unread!=0" >{{unread}}</ion-badge>
+      <span style="margin-right: 20px;margin-left: 10px">
+        <img src="assets/imgs/yunRight.png" style="height: 10px;width: 8px">
+      </span>
+    </div>
+  </div>
 </ion-content>
+

@@ -81,7 +81,7 @@ export class CloudPage {
         {
           text: agreeText,
           handler: () => {
-            this.app.getRootNav().push('GuidPage')
+            this.app.getRootNav().push('LoginPage')
           }
         }
       ]

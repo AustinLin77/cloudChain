@@ -1,6 +1,6 @@
 page-my-purchase {
   .myDiv{
-    height: 110px;
+    height: 100px;
     background-color: white;
     display: flex;
     align-items: center;
@@ -13,10 +13,10 @@ page-my-purchase {
   }
   .myInDiv{
     width: 85%;
-    height: 110px;
+    height: 100px;
     margin-left: 15px;
-    padding-bottom: 10px;
-    color: #5E5E5E;
+    //padding-bottom: 10px;
+    color: #5E5E5E ;
   }
   .nameDiv{
     height: 25px;
@@ -28,9 +28,9 @@ page-my-purchase {
   }
   .otherDiv{
     width: 100%;
-    color:#9E9C9C;
-    font-family: 宋体;
-    font-size: 14px;
+    color:#5E5E5E;
+    font-family:Arial;
+    font-size: 13px;
     margin-bottom: 8px;
     white-space: nowrap;
     overflow: hidden;
@@ -47,5 +47,8 @@ page-my-purchase {
     align-items: center;
     margin-bottom: 5px;
     color:#9E9C9C;
+  }
+  .myNoContent{
+    width: 120px;
   }
 }

@@ -14,29 +14,29 @@ import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angula
   templateUrl: 'popoverr.html',
 })
 export class PopoverrPage {
-  all:number=6;
+  myAll:number=6;
   constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl:ViewController) {
   }
-  allF(){
-    this.all=0;
+  myAllF(){
+    this.myAll=0;
   }
   onGoingF(){
-    this.all=3;
+    this.myAll=3;
   }
   alreadyF(){
-    this.all=1;
+    this.myAll=1;
   }
   soonF(){
-   this.all=4;
+   this.myAll=4;
   }
   unreadyF(){
-   this.all=2;
+   this.myAll=2;
   }
   reset(){
-   this.all=5;
+   this.myAll=5;
   }
   confirm(){
-    this.viewCtrl.dismiss(this.all)
+    this.viewCtrl.dismiss(this.myAll)
   }
 
 }

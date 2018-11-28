@@ -34,8 +34,9 @@ export class PurchasingManagementPage {
     this.dataSource.push(data1);
     var headerParameters={
       status:'0'
+
     }
-    this.httpService.getUser('https://wmsapi.sunwoda.com/api/purchase/reqPurchase/app/detailLines/', headerParameters).then(res => this.handleMyInfoSuccess(res));
+    this.httpService.getUser('https://wmsapi.sunwoda.com/api/purchase/reqPurchase/app/bill', headerParameters).then(res => this.handleMyInfoSuccess(res));
   }
 
   itemTapped(e, item) {

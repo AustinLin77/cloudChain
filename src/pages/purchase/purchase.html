@@ -8,7 +8,8 @@
     <ion-icon name="arrow-back" class="navIcon" (click)="ownerBack()" navPush *ngIf="chain==1"></ion-icon>
     <ion-title>集采列表</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="presentPopover($event)">
+      <button ion-button icon-only   (click)="myShowSift()">
+              <!--(click)="presentPopover($event)">-->
         <ion-icon name="funnel" style="font-size: 18px"></ion-icon>
       </button>
     </ion-buttons>
@@ -73,3 +74,26 @@
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>
+<div class="help" *ngIf="showSift" (click)="closeSift()"></div>
+<div class="siftDiv" *ngIf="showSift">
+  <div class="siftTitle">筛选</div>
+  <div class="border">
+    <button ion-button outline style="height: 40px;width: 35%;" [class.click]="myAll===0" (click)="allF()">已结束</button>
+    <button ion-button outline style="height: 40px;width: 35%;margin-left: 20px" [class.click]="myAll===1" (click)="alreadyF()">已成团</button>
+    <button ion-button outline style="height: 40px;width: 35%;margin-top: 20px" [class.click]="myAll===2" (click)="unreadyF()">未成团</button>
+    <button ion-button outline style="height: 40px;width: 35%;margin-left: 20px;margin-top: 20px" [class.click]="myAll===3" (click)="onGoingF()">进行中</button>
+    <button ion-button outline style="height: 40px;width: 35%;margin-top: 20px" [class.click]="myAll===4" (click)="soonF()">未开始</button>
+  </div>
+  <div class="footer">
+    <ion-grid style="height: 100%;padding: 0">
+      <ion-row style="height: 100%">
+        <ion-col col-6 class="myCol">
+          <button  (click)="reset()" class="myButtonSecond">重置</button>
+        </ion-col>
+        <ion-col col-6 class="myCol">
+         <button  (click)="confirm()" class="myButtonFirst">确定</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>

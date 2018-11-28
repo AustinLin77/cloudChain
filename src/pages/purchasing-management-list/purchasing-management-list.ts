@@ -36,6 +36,7 @@ export class PurchasingManagementListPage {
   dataSource2: any = [];
   showSearch:string='false';
   flag:number=0;
+  showNoContent:boolean=false;
   myInput: string = '';
   showSearchLoaction="false";
   searchLoactionData:any=["东莞李威","小米科技有限公司","石龙仔市场"];
@@ -47,9 +48,11 @@ export class PurchasingManagementListPage {
     events.subscribe('pop:myUnread', (number)=>{
       console.log(number);
       this.unread = number;
+      if(this.unread==0){
+        this.showNoContent=true
+      }
     })
     events.subscribe('pop:data:pml', (data, time) => {
-
       console.log('OutboundManagementListPage pop data');
       console.log(data);
       // this.obtainDatas();
@@ -96,6 +99,7 @@ export class PurchasingManagementListPage {
   }
 
   obtainDatas(){
+    this.showNoContent=false
     this.headerParameters = {
       status: this. auditStatus,
       pageNum:this.nextPage,
@@ -166,6 +170,9 @@ export class PurchasingManagementListPage {
     this.searchLoactionData.splice(index,1)
   }
   handleUserInfoSuccess(result) {
+    if(result.data.length==0){
+      this.showNoContent=true
+    }
     console.log(result);
     if(this.auditStatus === '1') {
       this.dataSource1 = result.data;

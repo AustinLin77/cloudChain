@@ -14,6 +14,7 @@ import { HttpService} from '../../../service/HttpService';
   templateUrl: 'my-purchase.html',
 })
 export class MyPurchasePage {
+  showNoContent:boolean=false;
   data=[];
   pageSize:number=5;
   pageNum:number;
@@ -44,11 +45,12 @@ export class MyPurchasePage {
   handleSuccess(result){
     localStorage.removeItem('whatFlag');
     if(result.data.length==0){
-      if(this.isCopy==0){
-        this.httpService.presentToast("您还没有对任何产品作出报价")
-      }else if(this.isCopy==1){
-        this.httpService.presentToast("没有收到报价")
-      }
+      this.showNoContent=true
+      // if(this.isCopy==0){
+      //   this.httpService.presentToast("您还没有对任何产品作出报价")
+      // }else if(this.isCopy==1){
+      //   this.httpService.presentToast("没有收到报价")
+      // }
     }
     console.log(result);
     this.pageNum++;

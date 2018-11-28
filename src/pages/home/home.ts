@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { NavController, NavParams, Slides,Platform,PopoverController} from 'ionic-angular';
+import { NavController, NavParams, Slides,Platform,PopoverController,Events} from 'ionic-angular';
 import { ViewChild} from '@angular/core';
 import { HttpService } from '../../service/HttpService';
 import {ProductionPage} from "../production/production";
@@ -12,14 +12,18 @@ import { GoodsdetailsPage} from "../goodsdetails/goodsdetails";
 import {ApplyDetailsPage} from "../apply-details/apply-details";
 import {PurchaseDetailsPage} from "../purchase-details/purchase-details";
 import {InviteDetailsPage} from "../invite-details/invite-details";
+import { ModalController } from 'ionic-angular';
+import { GalleryModal } from 'ionic-gallery-modal';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
+
 })
 export class HomePage {
   @ViewChild('sliders')
   sliders : Slides;
-  slides=[1,2,3];
+  slides=[{imgPath:"aaa"},{imgPath:"aaa"},{imgPath:"aaa"}];
+  photos=[];
   options=[{name:"产品",src:'assets/imgs/产品.png'},
            {name:"需求",src:'assets/imgs/需求.png'},
            {name:"集采",src:'assets/imgs/集采.png'},
@@ -37,7 +41,7 @@ export class HomePage {
   purchases=[];
   invites=[];
   constructor(public navCtrl: NavController, public navParams: NavParams,private httpService: HttpService,
-              private app : App,private platform:Platform,public popoverCtrl: PopoverController) {
+              private app : App,private platform:Platform,public popoverCtrl: PopoverController,public modalCtrl: ModalController,public events: Events) {
   }
   //初始化获得数据
    ngOnInit():void {
@@ -48,6 +52,8 @@ export class HomePage {
   }
   myShowCancel(){
     this.showCancel=true;
+    var data=0;
+    this.events.publish('pop:showCancel',data, Date.now());
     document.body.addEventListener('touchmove', function (e) {
       e.preventDefault(); //阻止默认的处理方式(阻止下拉滑动的效果)
     },  false);
@@ -55,6 +61,8 @@ export class HomePage {
   hiddenCan(){
     this.showCancel=false;
     this.searchKey="";
+    var data=1;
+    this.events.publish('pop:showCancel',data, Date.now());
     document.body.removeEventListener('touchmove',function (e) {
       e.preventDefault(); //阻止默认的处理方式(阻止下拉滑动的效果)
     },  false)
@@ -238,5 +246,23 @@ export class HomePage {
   goSearch(){
     window.localStorage.setItem("searchKey",this.searchKey);
     this.app.getRootNav().push('ProductionPage',{whatSend:2});
+    this.hiddenCan()
+    this.hiddenCan()
+    // this.searchKey='';
+    // var data=1;
+    // this.events.publish('pop:showCancel',data, Date.now());
+  }
+  openBigImg(){
+    console.log(this.slides)
+    var a=this.slides;
+    for(var i=0;i<a.length;i++){
+      let b=a[i].imgPath
+      let c={url:b};
+      this.photos.push(c)
+    }
+    let modal = this.modalCtrl.create(GalleryModal, {
+      photos: this.photos,
+    });
+    modal.present();
   }
 }

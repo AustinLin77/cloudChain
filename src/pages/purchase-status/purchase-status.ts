@@ -32,7 +32,7 @@ export class PurchaseStatusPage {
     this.message=this.navParams.data.mes;
     if(this.message=='操作成功'){
       this.status='提交成功';
-      this.logoUrl='assets/imgs/correct.jpg';
+      this.logoUrl='assets/imgs/ic_success.png';
       this.statusNote='集采报名成功！请等待2-3个工作日，若可成团，即可进行接下来的交易。';
     }else{
       this.status='提交失败';

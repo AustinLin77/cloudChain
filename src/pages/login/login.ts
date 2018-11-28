@@ -7,7 +7,7 @@ import  { AgreementPage } from '../../pages/agreement/agreement';
 import { HomePage } from '../home/home';
 import { TabsPage } from '../../pages/tabs/tabs';
 import { APP_SERVE_URL_TEST } from '../../service/Constants';
-
+import { RegisterPage } from '../../pages/register/register';
 // var sha1 = require('node-sha1');
 
 import sha1 from 'node-sha1'
@@ -148,5 +148,8 @@ export class LoginPage {
       this.flagSrc = 'assets/icon_look.png';
     }
     alert(this.flagSrc);
+  }
+  register(){
+    this.navCtrl.push('RegisterPage');
   }
 }

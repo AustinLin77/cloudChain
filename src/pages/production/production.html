@@ -32,20 +32,21 @@
   <ion-grid style="width: 100%;height: 50px">
   <ion-row  style="height: 100%; align-items: center">
     <ion-col col-3 text-center  (click)="normal()" >
-      <div [class.normal]="firstChoice===0"> 综合 </div>
+      <div [class.normal]="firstChoice===0" style="font-size: 1.3rem"> 综合 </div>
     </ion-col>
     <ion-col col-3 text-center  (click)="sortBy()" >
-      <div [class.sortBy]="secondChoice===0"> 上架时间
+      <div [class.sortBy]="secondChoice===0" style="font-size: 1.3rem"> 上架时间
         <ion-icon name="arrow-down" style="font-size: 14px"></ion-icon>
       </div>
     </ion-col>
     <ion-col col-3 text-center  (click)="price()" >
-      <div [class.price]="thirdChoice===0"> 价格
+      <div [class.price]="thirdChoice===0" style="font-size: 1.3rem"> 价格
         <ion-icon name="arrow-up" style="font-size: 14px"></ion-icon>
       </div>
     </ion-col>
-    <ion-col col-3 text-center (click)="presentPopover($event)" >
-      <div [class.sort]="fourthChoice===0">筛选
+    <ion-col col-3 text-center (click)="myShowSift()">
+      <!--(click)="presentPopover($event)" >-->
+      <div [class.sort]="fourthChoice===0" style="font-size: 1.3rem">筛选
         <ion-icon name="funnel" style="font-size: 14px"></ion-icon>
       </div>
     </ion-col>
@@ -53,13 +54,14 @@
   </ion-grid>
 </ion-header>
 <ion-content>
+
   <div *ngIf="!showNoContent">
     <div class="loopContentT">
       <ion-grid class="gird">
         <ion-row wrap class="ionrow">
           <ion-col col-4  *ngFor="let product of products" style="height: 150px;text-align: left;padding:5px;margin-bottom: 20px" (click)="goodsDetails(product.name,product.howHot,product.howMuch,product.id) " >
             <div  class="picSty">
-              <img src='{{product.imgPathList}}' style="max-height: 105px;">
+              <img src='{{product.imgPathList}}' style="max-height: 28vw;">
             </div>
             <div class="dSty">
               <div class="nameSty">{{product.name}}</div>
@@ -107,7 +109,34 @@
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </div>
-  <div *ngIf="showNoContent" style="height: 100%;width: 100%;display: flex;justify-content: center;align-items: center">
-    <img src="../../assets/imgs/noContent.png">
+  <div *ngIf="showNoContent" style="height: 80%;width: 100%;display: flex;justify-content: center;align-items: center">
+    <img src="../../assets/imgs/noContent.png" class="myNoContent">
   </div>
 </ion-content>
+
+<div class="siftDiv" *ngIf="showSift">
+  <div class="siftTitle">筛选</div>
+  <div class="condition">价格区间 (元)</div>
+  <div class="userInput">
+    <input class="inputNum" type="number" placeholder="最低价" [(ngModel)]="myMinPrice" (blur)="adjustMin()">
+    <span style="margin-left: 5px;margin-right: 5px">—</span>
+    <input class="inputNum" type="number" placeholder="最高价" [(ngModel)]="myMaxPrice" (blur)="adjustMax()">
+  </div>
+  <div class="footer">
+    <ion-grid style="height: 100%;padding: 0">
+      <ion-row style="height: 100%">
+        <ion-col col-6 class="myCol">
+          <!--<div class="submitB" >-->
+            <button  (click)="reset()" class="myButtonSecond">重置</button>
+  <!--</div>-->
+        </ion-col>
+        <ion-col col-6 class="myCol">
+          <!--<div class="submitC" >-->
+            <button  (click)="confirm()" class="myButtonFirst">确定</button>
+  <!--</div>-->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>
+<div class="help" *ngIf="showSift" (click)="closeSift()"></div>

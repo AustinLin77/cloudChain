@@ -56,7 +56,7 @@ page-contact {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    border-bottom: solid 1px #eeeeee;
+
   }
   .imgContent{
     width: 20px;
@@ -74,6 +74,7 @@ page-contact {
     margin-left: 13px;
     padding: 10px;
     padding-left: 0;
+    border-bottom: solid 1px #eeeeee;
   }
   .orderTitle{
     flex: 1;

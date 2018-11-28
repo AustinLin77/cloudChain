@@ -36,6 +36,7 @@ page-shop-list-comfirm {
     font-family: 微软雅黑;
     font-size: 16px;
     white-space: nowrap;
+    color: #101010 ;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -43,7 +44,7 @@ page-shop-list-comfirm {
     background-color: white;
     height: 50px;
     display: flex;
-    margin-left: 10px;
+    margin-left: 20px;
     margin-right: 10px;
     border-bottom: solid 1px #eeeeee
   }
@@ -84,17 +85,18 @@ page-shop-list-comfirm {
     width: 100%;
     display: flex;
     align-items: center;
-    padding-left: 10px;
+    padding-left: 20px;
     padding-right: 10px
   }
   .companyName{
     height: 90%;
     flex: 1;
     display: flex;
+    color:#666666 ;
     align-items: center;
-    font-size: 16px;
+    font-size: 14px;
     font-weight:bold;
-    font-family: 宋体;
+    font-family: Arial;
     margin-left: 10px
   }
   .secondDiv{
@@ -108,7 +110,7 @@ page-shop-list-comfirm {
   .pic{
     height: 70px;
     width: 70px;
-    margin-left: 10px
+    margin-left: 20px
   }
   .innerDiv{
     flex: 1;
@@ -117,7 +119,7 @@ page-shop-list-comfirm {
     width: 80%;
   }
   .price{
-    font-size: 12px;
+    font-size: 16px;
     font-family: 宋体;
     color: #488aff;
     margin-top: 10px

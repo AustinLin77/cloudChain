@@ -40,7 +40,8 @@ export class SubmitStatusPage {
     console.log(this.orderId);
     if(this.message=='操作成功'){
       this.status='提交成功';
-      this.logoUrl='assets/imgs/correct.jpg';
+      this.logoUrl='assets/imgs/ic_success.png';
+
       this.statusNote='已申请成功，请等待审批';
     }else{
       this.status='提交失败';

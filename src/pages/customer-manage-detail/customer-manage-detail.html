@@ -8,10 +8,13 @@
 
   <ion-navbar>
     <ion-title>客户</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="approval()" style="background-color: white;color:deepskyblue;font-size: 16px;width: 50px" *ngIf="showApproval == 0">审批</button>
+    </ion-buttons>
   </ion-navbar>
 
   <div class="top">
-    <button (click)="showMess('baseMess')"  id="firBut" style="border-bottom: solid 3px #007aff;border-radius: 0;color: #007aff">基本信息</button>
+    <button (click)="showMess('baseMess')"  id="firBut" style="border-bottom: solid 3px deepskyblue;border-radius: 0;color: deepskyblue">基本信息</button>
     <button (click)="showMess('placeMess')" style="">地点信息</button>
     <button (click)="showMess('telMess')" style="">联系人信息</button>
     <button (click)="showMess('fileMess')" style="">附件信息</button>

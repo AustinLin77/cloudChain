@@ -8,5 +8,53 @@ page-login {
   //  background-image: url("") !important;
   //  background-repeat: repeat-x;
   //}
+  .inputGroup{
+    margin-top: 30px;
+    width: 100%;
+    height: 110px ;
+    padding: 0 20px;
+    .firstInput{
+      height: 44px;
+      width: 100%;
+      border-radius: 5px;
+      position: relative;
+      background-color: #F4F4F4;
+      border: none;
+      text-indent: 53px;
+    }
+    .logo{
+      position: absolute;
+      top: 11px;
+      left: 18px;
+      width: 19px;
+      height: 20px;
+    }
+  }
+  .forgetPass{
+    height: 23px;
+    padding: 0 20px;
+    width: 100%;
+    margin-top: 15px;
+    text-align: right
+  }
+  .submit{
+    height: 44px;
+    margin: 66px 20px 0 20px;
+    border-radius: 5px;
+    border: 1px solid deepskyblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #00A3FF ;
+
+  }
+  .register{
+    height: 23px;
+    margin-top: 10px;
+    width: 100%;
+    padding: 0 131px;
+    color: deepskyblue;
+  }
 }
 

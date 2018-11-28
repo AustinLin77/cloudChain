@@ -12,14 +12,11 @@
     <ion-title>供应链协同管理平台</ion-title>
   </ion-navbar>
 </ion-header>
-
-<ion-content  >
-
+<ion-content>
   <ion-row *ngFor="let items of dataSource">
     <button *ngFor="let item of items" (click)="itemTapped(item.model)" class="colClass" style="background-color: white;border-right: 1px solid #eeeeee;border-bottom: 1px solid #eeeeee;position: relative;">
       <div style="position: absolute;left: 45%;top:30%;"><img src="{{item.icon}}" style="width: 15px;width: 20px;"/></div>
       <div style="position: absolute;left: 33%;top:55%;">{{item.title}}</div>
     </button>
   </ion-row>
-
 </ion-content>

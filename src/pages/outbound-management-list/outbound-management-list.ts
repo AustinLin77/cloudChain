@@ -30,6 +30,7 @@ export class OutboundManagementListPage {
   showSearch:string='false';
   already:string='true';
   unready:string='false';
+  showNoContent:boolean=false;
   flag:number=0;
   myInput: string = '';
   showSearchLoaction="false";
@@ -43,6 +44,9 @@ export class OutboundManagementListPage {
     events.subscribe('pop:myUnread', (number)=>{
       console.log(number);
       this.unread = number;
+      if(this.unread==0){
+        this.showNoContent=true
+      }
     })
     events.subscribe('pop:data', (data, time) => {
 
@@ -103,6 +107,7 @@ export class OutboundManagementListPage {
   }
 
   onPageTypeChange(type) {
+    this.showNoContent=false;
     console.log(type);
     this.auditStatus = type;
     if(type=='1'){
@@ -161,6 +166,9 @@ export class OutboundManagementListPage {
     this.searchLoactionData.splice(index,1)
   }
   handleUserInfoSuccess(result) {
+    if(result.data.length==0){
+      this.showNoContent=true
+    }
     console.log(result);
     if(this.auditStatus === '1') {
       this.dataSource1 = result.data;

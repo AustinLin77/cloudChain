@@ -31,6 +31,7 @@ export class PurchasingManagementListDetailPage {
   showPage:string="baseMess";
   showApproval: number = 0;
   type: string;
+  unread:number=0;
 
   constructor(private httpService: HttpService, public navCtrl: NavController,
               public navParams: NavParams, private photoViewer: PhotoViewer,
@@ -87,7 +88,7 @@ export class PurchasingManagementListDetailPage {
   }
   backButtonClick = (e: UIEvent) => {
     // var data= 3;
-    // this.events.publish('pop:myUnread',data, Date.now());
+
     this.navCtrl.pop();
   }
   showConfirm(msg) {
@@ -201,8 +202,8 @@ export class PurchasingManagementListDetailPage {
   }
   handleMyInfoSuccess(res){
     console.log(res.total)
-    var unread=res.total
-    this.events.publish('pop:myUnread',unread, Date.now());
+    this.unread=res.total
+    this.events.publish('pop:myUnread',this.unread, Date.now());
     this.events.publish('pop:data:pml',this.data, Date.now());
     this.navCtrl.pop();
   }

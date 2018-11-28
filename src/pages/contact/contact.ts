@@ -81,7 +81,7 @@ export class ContactPage {
   }
   //跳转到登录界面
   login(){
-    this.app.getRootNav().push('GuidPage')
+    this.app.getRootNav().push('LoginPage')
   }
   //跳转到我的产品界面
   myProduction(){

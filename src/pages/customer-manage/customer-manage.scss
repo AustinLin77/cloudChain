@@ -6,6 +6,9 @@ page-customer-manage {
     height: 100%;
     width: 20%;
   }
+  .myNoContent{
+    width: 120px;
+  }
   .ready>button:first-child{
     top:0;
     left: 15%;
@@ -40,10 +43,12 @@ page-customer-manage {
     color: #aaa;
   }
   .already{
-    background-color: antiquewhite;
+    border-bottom: 3px solid deepskyblue;
+    //background-color: #eeeeee;
   }
   .unready{
-    background-color: antiquewhite;
+    //background-color: #eeeeee;
+    border-bottom: 3px solid deepskyblue;
   }
   button{
     background-color: white;

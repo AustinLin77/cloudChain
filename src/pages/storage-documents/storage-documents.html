@@ -24,7 +24,7 @@
     </ion-buttons>
   </ion-navbar>
 
-  <div style="height: 40px; position: relative" class="ready" *ngIf="showSearchLoaction == 'false'" id="mynavaaa">
+  <div style="height: 40px; position: relative;border-bottom: 1px solid #eeeeee;" class="ready" *ngIf="showSearchLoaction == 'false'" id="mynavaaa">
     <button   (click)="onPageTypeChange('1')" [class.already]="already == 'true'">
       已审批
     </button>
@@ -33,6 +33,7 @@
       <ion-badge color="secondary" style="position: absolute;top: 0;right: 0" *ngIf="unread!=0" id="mybad">{{unread}}</ion-badge>
     </button>
   </div>
+
   <div class="searchLoaction" *ngIf="showSearchLoaction == 'true'">
     <ul *ngFor="let data of searchLoactionData let i = index">
       <li>
@@ -45,26 +46,28 @@
 </ion-header>
 
 <ion-content>
-  <div style="background-color: #eee;height:100%;" *ngIf="showSearchLoaction == 'false'" >
-    <button ion-item *ngFor="let data of dataSource1" (click)="itemTapped($event, data)" style="border-top: solid 10px #eee ">
-      <div style=" color: #333;
-    font-size: 15px;
-    font-weight: bold;
-    width: 80%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;">单据编号：{{data.billCode}}</div>
-      <div style="position: absolute;top: 9%;right: 3%;color: #e51c23;font-size: 14px">{{data.status}}</div>
-      <div style="margin-left: 10px">
-        <div style="padding-top: 10px;color: #666;font-size: 14px">库存组织:{{data.orgName}}</div>
-        <div style="color: #666;margin-top: 3px;font-size: 14px">单据类型:{{data.billType}}</div>
-        <div style="color: #666;margin-top: 3px;font-size: 14px">单据日期:{{data.billDate}}</div>
-        <div style="color: #666;margin-top: 3px;font-size: 14px">备注:{{data.remark}}</div>
-      </div>
+  <div *ngIf="!showNoContent" style="height: 100%">
+    <div style="background-color: #eee;height:100%;" *ngIf="showSearchLoaction == 'false'" >
+      <button ion-item *ngFor="let data of dataSource1" (click)="itemTapped($event, data)" style="border-bottom: solid 10px #eee ">
+        <div style="color: #333;font-size: 15px;font-weight: bold;width:88%;">
+          <span style="width: 75px;float: left">单据编号：</span>
+          <span style="color: #333;font-size: 15px;font-weight: bold;width:150px;white-space: normal">{{data.billCode}}</span>
+        </div>
+        <div style="position: absolute;top: 9%;right: 3%;color: #e51c23;font-size: 14px">{{data.status}}</div>
+        <div style="margin-left: 0px">
+          <div style="padding-top: 10px;color: #666;font-size: 14px">库存组织:{{data.orgName}}</div>
+          <div style="color: #666;margin-top: 3px;font-size: 14px">单据类型:{{data.billType}}</div>
+          <div style="color: #666;margin-top: 3px;font-size: 14px">单据日期:{{data.billDate}}</div>
+          <div style="color: #666;margin-top: 3px;font-size: 14px">备注:{{data.remark}}</div>
+        </div>
 
-      <div style="position: absolute;top: 0;right: 0;height: 100%;display: flex;justify-content: center;align-items: center">
-      </div>
-    </button>
+        <div style="position: absolute;top: 0;right: 0;height: 100%;display: flex;justify-content: center;align-items: center">
+        </div>
+      </button>
+    </div>
+  </div>
+  <div *ngIf="showNoContent" style="height: 80%;width: 100%;display: flex;justify-content: center;align-items: center">
+    <img src="../../assets/imgs/noContent.png" class="myNoContent">
   </div>
 
 

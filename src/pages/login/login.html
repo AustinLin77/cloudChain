@@ -7,22 +7,41 @@
 </ion-header>
 
 <ion-content>
+  <div class="inputGroup">
+    <div style="position: relative">
+      <input class="firstInput" placeholder="请输入会员名" [(ngModel)]="userName">
+      <img src="assets/ic_username.png" class="logo"/>
+    </div>
+    <div style="margin-top: 22px;position: relative">
+      <input class="firstInput" placeholder="请输入密码" type="password"  [(ngModel)]="password">
+      <img src="assets/ic_password.png" class="logo"/>
+    </div>
+  </div>
+  <div class="forgetPass">
+    <div (click)="forgetPassw()" style="font-size: 13px;color:#E51C23 ;">忘记密码？</div>
+  </div>
+  <div class="submit" (click)="login()">
+    提交
+  </div>
+  <div class="register" (click)="register()">
+    还没账号 ? 去注册
+  </div>
   <!--<ion-img src="assets/bg_logo.png" [width]="logoWidth" [height]="logoHeight"></ion-img>-->
-  <ion-item style="line-height: 35px;padding-top: 30px;">
-    <ion-label><img src="assets/ic_username.png" style="width: 15px;width: 20px;"/></ion-label>
-    <ion-input placeholder="请输入用户名" [(ngModel)]="userName" id="userName"></ion-input>
-  </ion-item>
-  <ion-item style="line-height: 35px;">
-    <ion-label><img src="assets/ic_password.png" style="width: 15px;width: 20px;"/></ion-label>
-    <ion-input placeholder="请输入登录密码" type="{{inFlag ? 'password': 'text'}}" [(ngModel)]="password" id="password"></ion-input>
-    <!--<div item-content (click)="showOrHidePassw()" style="width: 50px;height: 35px;"><img src="{{flagSrc}}" style="width: 15px;width: 20px;margin-left: 15px;"/></div>-->
-  </ion-item>
-  <ion-row style="padding-top: 50px;margin-left: 15px;display: flex;justify-content: center">
-    <button (click)="login()" ion-button round style="width: 320px;height: 45px;">登录</button>
-  </ion-row>
-  <ion-row style="padding-top: 20px;">
-    <button  (click)="forgetPassw()" style="font-size: 13px;text-align: right;position: absolute;right: 15px;background:white;color:#dddddd;">忘记密码？</button>
-  </ion-row>
+  <!--<ion-item style="line-height: 35px;padding-top: 30px;">-->
+    <!--<ion-label><img src="assets/ic_username.png" style="width: 15px;width: 20px;"/></ion-label>-->
+    <!--<ion-input placeholder="请输入用户名" [(ngModel)]="userName" id="userName"></ion-input>-->
+  <!--</ion-item>-->
+  <!--<ion-item style="line-height: 35px;">-->
+    <!--<ion-label><img src="assets/ic_password.png" style="width: 15px;width: 20px;"/></ion-label>-->
+    <!--<ion-input placeholder="请输入登录密码" type="{{inFlag ? 'password': 'text'}}" [(ngModel)]="password" id="password"></ion-input>-->
+    <!--&lt;!&ndash;<div item-content (click)="showOrHidePassw()" style="width: 50px;height: 35px;"><img src="{{flagSrc}}" style="width: 15px;width: 20px;margin-left: 15px;"/></div>&ndash;&gt;-->
+  <!--</ion-item>-->
+  <!--<ion-row style="padding-top: 50px;margin-left: 15px;display: flex;justify-content: center">-->
+    <!--<button (click)="login()" ion-button round style="width: 320px;height: 45px;">登录</button>-->
+  <!--</ion-row>-->
+  <!--<ion-row style="padding-top: 20px;">-->
+    <!--<button  (click)="forgetPassw()" style="font-size: 13px;text-align: right;position: absolute;right: 15px;background:white;color:#dddddd;">忘记密码？</button>-->
+  <!--</ion-row>-->
 </ion-content>
 
 <!--color="#008ec3"  style="background: white !important;color: #008ec3;border: 1px solid #008ec3;-->

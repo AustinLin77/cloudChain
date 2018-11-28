@@ -13,11 +13,11 @@
     </ion-buttons>
     <ion-icon name="arrow-back" class="navIcon" (click)="ownerBack()" navPush *ngIf="chain==1"></ion-icon>
     <ion-title>我参与的集采</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="presentPopover($event)">
-        <ion-icon name="funnel" style="font-size: 18px"></ion-icon>
-      </button>
-    </ion-buttons>
+    <!--<ion-buttons end>-->
+      <!--<button ion-button icon-only (click)="presentPopover($event)">-->
+        <!--<ion-icon name="funnel" style="font-size: 18px"></ion-icon>-->
+      <!--</button>-->
+    <!--</ion-buttons>-->
   </ion-navbar>
 </ion-header>
 <ion-content style="background-color: #eeeeee;padding-bottom: 10px" id="content">
@@ -81,7 +81,7 @@
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </div>
-  <div style="width: 100%;height:100%; display: flex;align-items: center;justify-content: center" *ngIf="showNoContent">
-    <img src="../../assets/imgs/noContent.png">
+  <div style="width: 100%;height:80%; display: flex;align-items: center;justify-content: center" *ngIf="showNoContent">
+    <img src="../../assets/imgs/noContent.png" class="myNoContent">
   </div>
 </ion-content>

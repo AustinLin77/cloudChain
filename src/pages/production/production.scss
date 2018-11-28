@@ -1,5 +1,13 @@
 page-production {
-
+  .siftTitle{
+    font-size: 18px;
+    width: 100%;
+    height: 50px;
+    padding-left: 20px;
+    line-height: 50px;
+    color: #333333;
+    border-bottom: 1px solid #cccccc;
+  }
   ::-webkit-scrollbar{
     display:none;
   }
@@ -41,8 +49,8 @@ page-production {
     z-index: 99999
   }
   .picSty{
-    height:105px;
-    width: 105px;
+    height:28vw;
+    width: 28vw;
     border:1px solid #eeeeee;
     //border-radius: 10px;
     box-shadow: #cccccc;
@@ -142,8 +150,135 @@ page-production {
     background: #F9F0DA;
     color: #9E9C9C;
   }
+  .myNoContent{
+    width: 120px;
+  }
+  .siftDiv{
+    z-index: 9999;
+    height: 100%;
+    width: 65%;
+    position: fixed;
+    top:0;
+    right: 0;
+    background-color: white;
+    -webkit-animation:righteaseinAnimate 0.1s ;
+  }
+  @-webkit-keyframes righteaseinAnimate {
+    0% {
+      right:-1000px;
+      top:0;
+    }
+    20% {
+      left:95%;
+      top:0;
+    }
+    40% {
+      left:80%;
+      top:0;
+    }
+    60% {
+      left:65%;
+      top:0;
+    }
+    80% {
+      left:50%;
+      top:0;
+    }
+    100% {
+      left:35%;
+      top:0;
 
+    }
+  }
+  .help{
+    z-index: 9997;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #cccccc;
+    opacity: 0.5;
+  }
+  .myButtonFirst{
+    width: 100%;
+    height:100%;
+    background-color:#FF525C ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: white
+  }
+  .myButtonSecond{
+    width: 100%;
+    height:100%;
+    background-color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: black
+  }
+  .myCol{
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+  }
+  .footer{
+    height: 50px;
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    display: flex;
 
+    align-items: center;
+
+  }
+  .userInput{
+    display: flex;
+    margin-left: 15px;
+    margin-top: 25px;
+    align-items: center;
+    margin-right: 15px
+  }
+  .condition{
+    font-size: 16px;
+    width: 100%;
+    height: 50px;
+    color: #999999;
+    padding-top: 25px;
+    padding-left: 15px
+  }
+  .inputNum{
+    width: 40%;
+    border: solid 1px #eee;
+    height: 30px;
+    border-radius: 3px;
+    background-color: #f3f3f3;
+    color: #999999;
+    text-align: center;
+  }
+  .submitB{
+    border-radius: 5px;
+    height: 100%;
+    background-color:deepskyblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px
+  }
+  .submitC{
+    border-radius: 5px;
+    height: 100%;
+    background-color:deepskyblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px
+  }
 }
 

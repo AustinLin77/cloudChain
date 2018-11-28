@@ -243,7 +243,6 @@ export class HttpService {
     // this.dismissLoading();
     if(this.loading) this.loading.dismiss();
     if (result['error'] === 'invalid_token') {
-      console.log("sxj")
       this.showAlert();
     }
     return result;

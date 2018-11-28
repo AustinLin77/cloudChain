@@ -17,6 +17,8 @@ import { PopoverController } from 'ionic-angular';
   templateUrl: 'purchase.html',
 })
 export class PurchasePage {
+  myAll:number=6;
+  showSift:boolean=false;
   data =[];
   pageNum: number;
   pageSize = 6;
@@ -30,6 +32,59 @@ export class PurchasePage {
   twoflag:number=0;
   constructor(public navCtrl: NavController, public navParams: NavParams, private httpService: HttpService,public popoverCtrl: PopoverController) {
   }
+  allF(){
+    this.myAll=0;
+  }
+  onGoingF(){
+    this.myAll=3;
+  }
+  alreadyF(){
+    this.myAll=1;
+  }
+  soonF(){
+    this.myAll=4;
+  }
+  unreadyF(){
+    this.myAll=2;
+  }
+  reset(){
+    this.myAll=5;
+  }
+  confirm(){
+    var all=this.myAll
+    this.all=all;
+    console.log(all);
+    if(this.all==6||this.all==null){
+      return;
+    }
+    if(this.all==0||this.all==1||this.all==2||this.all==3||this.all==4){
+      this.twoflag=1
+    }
+    console.log(this.flag)
+    switch(all){
+      case 0:
+        this.gatherStatus=2;
+        break;
+      case 1 :
+        this.gatherStatus=4;
+        break;
+      case 2 :
+        this.gatherStatus=3;
+        break;
+      case 3 :
+        this.gatherStatus=1;
+        break;
+      case 4 :
+        this.gatherStatus=0;
+        break;
+    }
+    this.pageNum = 1;
+    this.httpService.get('/no/filter/app/gather/goods/list', {'pageNum': this.pageNum, 'pageSize': this.pageSize,'gatherStatus':this.gatherStatus}
+    ).then(
+      res => this.handleSearchSuccess(res));
+    this.showSift=!this.showSift
+  }
+
    //初始化获得是哪个平台
   ionViewDidLoad() {
     console.log('ionViewDidLoad PurchasePage');
@@ -40,6 +95,12 @@ export class PurchasePage {
   ownerBack() {
     // this.navCtrl.setRoot(TabsPage);
     this.navCtrl.popToRoot()
+  }
+  myShowSift(){
+    this.showSift=true
+  }
+  closeSift(){
+    this.showSift=!this.showSift
   }
   //下滑刷新
   doInfinite(infiniteScroll) {
@@ -122,44 +183,44 @@ export class PurchasePage {
     this.navCtrl.push('PurchaseDetailsPage',{"orderId":n})
   }
   //根据集采状态筛选集采数据
-  presentPopover(myEvent) {
-    let popover = this.popoverCtrl.create('PopoverrPage');
-    popover.present({
-      ev: myEvent
-    });
-    popover.onDidDismiss((all)=>{
-      this.all=all;
-      console.log(all);
-      if(this.all==6||this.all==null){
-        return;
-      }
-      if(this.all==0||this.all==1||this.all==2||this.all==3||this.all==4){
-        this.twoflag=1
-      }
-      console.log(this.flag)
-      switch(all){
-        case 0:
-          this.gatherStatus=2;
-          break;
-        case 1 :
-          this.gatherStatus=4;
-          break;
-        case 2 :
-          this.gatherStatus=3;
-          break;
-        case 3 :
-          this.gatherStatus=1;
-          break;
-        case 4 :
-          this.gatherStatus=0;
-          break;
-      }
-      this.pageNum = 1;
-      this.httpService.get('/no/filter/app/gather/goods/list', {'pageNum': this.pageNum, 'pageSize': this.pageSize,'gatherStatus':this.gatherStatus}
-      ).then(
-        res => this.handleSearchSuccess(res));
-    })
-  }
+  // presentPopover(myEvent) {
+  //   let popover = this.popoverCtrl.create('PopoverrPage');
+  //   popover.present({
+  //     ev: myEvent
+  //   });
+  //   popover.onDidDismiss((all)=>{
+  //     this.all=all;
+  //     console.log(all);
+  //     if(this.all==6||this.all==null){
+  //       return;
+  //     }
+  //     if(this.all==0||this.all==1||this.all==2||this.all==3||this.all==4){
+  //       this.twoflag=1
+  //     }
+  //     console.log(this.flag)
+  //     switch(all){
+  //       case 0:
+  //         this.gatherStatus=2;
+  //         break;
+  //       case 1 :
+  //         this.gatherStatus=4;
+  //         break;
+  //       case 2 :
+  //         this.gatherStatus=3;
+  //         break;
+  //       case 3 :
+  //         this.gatherStatus=1;
+  //         break;
+  //       case 4 :
+  //         this.gatherStatus=0;
+  //         break;
+  //     }
+  //     this.pageNum = 1;
+  //     this.httpService.get('/no/filter/app/gather/goods/list', {'pageNum': this.pageNum, 'pageSize': this.pageSize,'gatherStatus':this.gatherStatus}
+  //     ).then(
+  //       res => this.handleSearchSuccess(res));
+  //   })
+  // }
   handleSearchSuccess(result){
     console.log(result);
     this.pageNum++;

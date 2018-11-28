@@ -40,12 +40,15 @@ page-purchasing-management-list {
     color: #aaa;
   }
   .already{
-    background-color: antiquewhite;
+    border-bottom: 3px solid deepskyblue;
   }
   .unready{
-    background-color: antiquewhite;
+    border-bottom: 3px solid deepskyblue;
   }
   button{
     background-color: white;
+  }
+  .myNoContent{
+    width: 120px;
   }
 }
